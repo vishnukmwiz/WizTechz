@@ -116,37 +116,19 @@
                 <th></th>
               </tr>
             </thead>
+            @foreach($dataproduct as $item)
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td><img width="100px" src="https://maxcdn.icons8.com/iOS7/PNG/512/Alphabet/100-512.png" alt=""></td>
-                <td>Computer</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td class="fs-4" >@mdo<br><a class="btn btn-outline-warning btn-sm " href="">Purchase New Stock</a></td>
+                <th scope="row">{{ $item->id }}</th>
+                <td><img width="100px" src="{{ URL::asset('assets/images/'.$item->image) }}" alt=""></td>
+                <td>{{ $item->name }}</td>
+                <td>{{ $item->sprice }}</td>
+                <td>{{ $item->cprice }}</td>
+                <td class="fs-4" >{{ $item->stock }}<br><a class="btn btn-outline-warning btn-sm " href="">Purchase New Stock</a></td>
                 <td><a href="">View Details</a></td>
                 <td><a class="btn btn-outline-warning" href="">Edit</a></td>
               </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td><img width="100px" src="https://maxcdn.icons8.com/iOS7/PNG/512/Alphabet/100-512.png" alt=""></td>
-                <td>laptop</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td class="fs-4" >@mdo<br><a class="btn btn-outline-warning btn-sm " href="">Purchase New Stock</a></td>
-                <td><a href="">View Details</a></td>
-                <td><a class="btn btn-outline-warning" href="">Edit</a></td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td><img width="100px" src="https://maxcdn.icons8.com/iOS7/PNG/512/Alphabet/100-512.png" alt=""></td>
-                <td>mouse</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td class="fs-4" >@mdo<br><a class="btn btn-outline-warning btn-sm " href="">Purchase New Stock</a></td>
-                <td><a href="">View Details</a></td>
-                <td><a class="btn btn-outline-warning" href="">Edit</a></td>
-              </tr>
+            @endforeach
             </tbody>
         </table>
       </div>

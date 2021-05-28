@@ -64,7 +64,9 @@ class AdminController extends Controller
     }
     public function productpage()
     {
-        return view('Admin/ProductList');
+       
+        $dataproduct=Item::all();
+        return view('Admin/ProductList',compact('dataproduct'));
     }
     public function productdpage()
     {
