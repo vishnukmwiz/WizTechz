@@ -116,8 +116,9 @@
                 <th></th>
               </tr>
             </thead>
-            @foreach($dataproduct as $item)
+            
             <tbody>
+            @foreach($dataproduct as $item)
               <tr>
                 <th scope="row">{{ $item->id }}</th>
                 <td><img width="100px" src="{{ URL::asset('assets/images/'.$item->image) }}" alt=""></td>

@@ -73,34 +73,19 @@
             <th></th>
           </tr>
         </thead>
-        @foreach($datavendor as $vendor)
+        
         <tbody>
+        @foreach($datavendor as $vendor)
           <tr>
             <th scope="row">{{ $vendor->id }}</th>
             <td>{{ $vendor->name }}}</td>
             <td>{{ $vendor->phone }}</td>
             <td>{{ $vendor->email }}</td>
             <td>{{ $vendor->status }}</td>
-            <td><a href="">View Details</a></td>
-            <td><a class="btn btn-outline-warning" href="">Edit Vendor</a></td>
+            <td><a href={{"VendorDetails/".$vendor->id}} >View Details</a></td>
+            <td><a class="btn btn-outline-warning" href={{"EditVendor/".$vendor->id}}>Edit Vendor</a></td>
           </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td><a href="">View Details</a></td>
-            <td><a class="btn btn-outline-warning" href="">Edit Vendor</a></td>
-          </tr><tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td><a href="">View Details</a></td>
-            <td><a class="btn btn-outline-warning" href="">Edit Vendor</a></td>
-          </tr>
+        @endforeach
         </tbody>
       </table>
     </div>

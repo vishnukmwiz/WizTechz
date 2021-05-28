@@ -1,4 +1,4 @@
-@extends('Admin/Theme')
+@extends('Admin/InnerTheme')
 @section('admincontent')
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -63,16 +63,18 @@
       <div class="container ">
         <div class="row bg-white shadow">
           <div class="col-4 p-4">
-            <label class="fs-5" for=""><strong>Vendor ID: </strong><i> 12345678987654</i></label>
-            <label class="fs-5" for=""><strong>Vendor Name: </strong><i> dgh,dghbdhk</i></label>
-            <label class="fs-5" for=""><strong>Phone Number: </strong><i> 9876543120</i></label>
+            <label class="fs-5" for=""><strong>Vendor ID: </strong><i> {{$datavendor->id}}</i></label>
+            <label class="fs-5" for=""><strong>Vendor Name: </strong><i> {{$datavendor->name}}</i></label>
+            <label class="fs-5" for=""><strong>Phone Number: </strong><i> {{$datavendor->phone}}</i></label>
+            <label class="fs-5" for=""><strong>Email: </strong><i> {{$datavendor->email}}</i></label>
           </div>
           <div class="col-4 p-4">
             <strong class="fs-5">Address</strong>
             <address class="fs-5">
-              jsthfgukygfuyjsdgf <br>
-              kjyfgkyhfgbjhsbdfjhb <br>
-              fsbfugsbujhbshbh <br>
+            {{$datavendor->room}} <br>
+            {{$datavendor->city}} <br>
+            {{$datavendor->district}}<br>
+            {{$datavendor->pin}}
             </address>
           </div>
         </div>

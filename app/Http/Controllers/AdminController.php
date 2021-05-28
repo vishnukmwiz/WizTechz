@@ -44,17 +44,18 @@ class AdminController extends Controller
     }
     public function cusdpage()
     {
-        $datavendor=Vendor::all();
-        return view('Admin/CustomerDetails',compact('datavendor'));
+        
+        return view('Admin/CustomerDetails');
     }
     public function vendorpage()
     {
-        return view('Admin/Vendors');
+        $datavendor=Vendor::all();
+        return view('Admin/Vendors',compact('datavendor'));
     }
-    public function vendordpage()
+    public function vendordpage($id)
     {
-        
-        return view('Admin/VendorDetails');
+        $datavendor=Vendor::find($id);
+        return view('Admin/VendorDetails',compact('datavendor'));
     }
     public function vendaddpage()
     {

@@ -30,7 +30,7 @@ Route::get('Admin/OrderDetails',[AdminController::class,'orderdpage']);
 Route::get('Admin/Customers',[AdminController::class,'cuspage']);
 Route::get('Admin/CustomerDetails',[AdminController::class,'cusdpage']);
 Route::get('Admin/Vendors',[AdminController::class,'vendorpage']);
-Route::get('Admin/VendorDetails',[AdminController::class,'vendordpage']);
+Route::get('Admin/VendorDetails/{id}',[AdminController::class,'vendordpage']);
 Route::get('Admin/AddVendor',[AdminController::class,'vendaddpage']);
 Route::get('Admin/EditVendor',[AdminController::class,'vendeditpage']);
 Route::get('Admin/ProductList',[AdminController::class,'productpage']);
