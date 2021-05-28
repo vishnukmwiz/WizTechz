@@ -61,9 +61,10 @@ class AdminController extends Controller
     {
         return view('Admin/AddVendor');
     }
-    public function vendeditpage()
+    public function vendeditpage($id)
     {
-        return view('Admin/EditVendor');
+        $datavendor=Vendor::find($id);
+        return view('Admin/EditVendor',compact('datavendor'));
     }
     public function productpage()
     {

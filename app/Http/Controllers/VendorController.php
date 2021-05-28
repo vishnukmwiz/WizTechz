@@ -96,7 +96,34 @@ class VendorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vendor = Vendor::find($id);
+
+        $vname=request("name");
+        $vroom=request("room");
+        $vcity=request("city");
+        $vdistrict=request("district");
+        $vpin=request("pin");
+        $vphone=request("phone");
+        $vemail=request("email");
+        $vstatus='active';
+        $this->validate($request,[
+            'name'=>'required',
+        ]);
+
+        
+
+        $vendor->name=$vname;
+        $vendor->room=$vroom;
+        $vendor->city=$vcity;
+        $vendor->district=$vdistrict;
+        $vendor->pin=$vpin;
+        $vendor->phone=$vphone;
+        $vendor->email=$vemail;
+        $vendor->status=$vstatus;
+
+        $vendor->save();
+        echo "<script>alert('Successfully edited vendor');window.location='/Admin/VendorDetails/{$id}';</script>";
+         echo "success";
     }
 
     /**

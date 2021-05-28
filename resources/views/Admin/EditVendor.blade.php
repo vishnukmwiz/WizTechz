@@ -1,4 +1,4 @@
-@extends('Admin/Theme')
+@extends('Admin/InnerTheme')
 @section('admincontent')
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -60,40 +60,41 @@
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
         <h3 class="mt-4">Edit Vendor Details</h3>
-        <form action="" class="from">
+        <form action="/editvendor/{{ $datavendor->id }}" class="from" method="post">
+        {{ csrf_field() }}
             <div class="row">
                 <div class="col-7">
                     <table class="table table-borderless table-warning">
-                        <tr>
+                    <tr>
                             <td><label for="">Vendor Name</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="name" value="{{ $datavendor->name }}"></td>
                         </tr>
                         <tr>
                             <td><label for="">Building Name/No.</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="room" value="{{ $datavendor->room }}"></td>
                         </tr>
                         <tr>
                             <td><label for="">City</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="city" value="{{ $datavendor->city }}"></td>
                         </tr>
                         <tr>
                             <td><label for="">District</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="district" value="{{ $datavendor->district }}"></td>
                         </tr>
                         <tr>
                             <td><label for="">Pin</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="pin" value="{{ $datavendor->pin }}"></td>
                         </tr>
                         <tr>
                             <td><label for="">Phone</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="phone" value="{{ $datavendor->phone }}"></td>
                         </tr>
                         <tr>
                             <td><label for="">Email</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="email" value="{{ $datavendor->email }}"></td>
                         </tr>
                         <tr>
-                            <td><a href="Vendors" class="btn btn-outline-warning  col-12">CANCEL</a></td>
+                            <td><a href="../Vendors" class="btn btn-outline-warning  col-12">CANCEL</a></td>
                             <td><button class="btn btn-warning  col-12">SAVE CHANGES</button></td>
                         </tr>
                     </table>

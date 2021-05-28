@@ -87,8 +87,8 @@
         <div class="col-sm-3 col-3 ">
           <a href="AddProduct" class="text-decoration-none text-dark">
             <div class="well p-2 shadow bg-warning">
-              <h4><i class="fs-3 bi bi-plus"></i>Add New Product</h4>
-              <p>Add new product details</p> 
+              <h4><i class="bi bi-plus"></i>Add New Product</h4>
+              <p>Add new product & details</p> 
             </div>
           </a>
         </div>
