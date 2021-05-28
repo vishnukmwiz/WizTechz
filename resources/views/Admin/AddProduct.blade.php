@@ -74,6 +74,18 @@
 
                                             <select name="category" id="category" class="form-control" >
 
+                                            @foreach($vdata as $vendor)
+                                            <option>{{$vendor->name }}</option>
+                                            @endforeach 
+                                         
+                                            </select>
+                                            </td>
+                                            </tr>
+                                        <tr>
+                                            <td>
+
+                                            <select name="category" id="category" class="form-control" >
+
                                             @foreach($cdata as $category)
                                             <option>{{$category->name }}</option>
                                             @endforeach 
@@ -81,6 +93,7 @@
                                             </select>
                                             </td>
                                             </tr>
+
                                             <tr>
                                             <td>
 

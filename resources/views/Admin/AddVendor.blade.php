@@ -60,7 +60,8 @@
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
         <h3 class="mt-4">Add New Vendor</h3>
-        <form action="" class="from">
+        <form action="/addvendor" class="from" method="post">
+        {{ csrf_field() }}
             <div class="row">
                 <div class="col-7">
                     <table class="table table-borderless table-warning">

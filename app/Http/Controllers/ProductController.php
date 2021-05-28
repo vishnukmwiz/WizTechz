@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Brand;
+use App\Models\Vendor;
 
 class ProductController extends Controller
 {
@@ -20,10 +21,11 @@ class ProductController extends Controller
     }
     public function view()
     {
+        $vdata=Vendor::all();
         $cdata=Category::all();
         $scdata=Subcategory::all();
         $bdata=Brand::all();
-        return view('Admin/AddProduct',compact('cdata','scdata','bdata'));
+        return view('Admin/AddProduct',compact('vdata','cdata','scdata','bdata'));
     }
 
     /**

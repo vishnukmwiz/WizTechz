@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Vendor;
 
 class VendorController extends Controller
 {
@@ -34,7 +35,34 @@ class VendorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $vname=request("name");
+        $vroom=request("room");
+        $vcity=request("city");
+        $vdistrict=request("district");
+        $vpin=request("pin");
+        $vphone=request("phone");
+        $vemail=request("email");
+        $vstatus='active';
+        $this->validate($request,[
+            'name'=>'required',
+        ]);
+
+        $vendor = new Vendor();
+
+        $vendor->name=$vname;
+        $vendor->room=$vroom;
+        $vendor->city=$vcity;
+        $vendor->district=$vdistrict;
+        $vendor->pin=$vpin;
+        $vendor->phone=$vphone;
+        $vendor->email=$vemail;
+        $vendor->status=$vstatus;
+
+        $vendor->save();
+        echo "<script>alert('Successfully Added Category');window.location='Admin/SubcategoryList';</script>";
+         echo "success";
+
     }
 
     /**

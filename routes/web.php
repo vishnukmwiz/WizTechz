@@ -46,6 +46,7 @@ Route::post('/addcategory',[ProductController::class,'categorystore']);
 Route::post('/addsubcategory',[ProductController::class,'subcategorystore']);
 Route::post('/addbrand',[ProductController::class,'brandstore']);
 Route::post('/addproduct',[ProductController::class,'productstore']);
+Route::post('/addvendor',[VendorController::class,'store']);
 
 Route::post('Auth/Reg',[MainController::class,'save']);
 Route::post('Auth/Log',[MainController::class,'check']);
