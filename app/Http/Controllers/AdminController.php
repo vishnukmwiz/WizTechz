@@ -44,7 +44,8 @@ class AdminController extends Controller
     }
     public function cusdpage()
     {
-        return view('Admin/CustomerDetails');
+        $datavendor=Vendor::all();
+        return view('Admin/CustomerDetails',compact('datavendor'));
     }
     public function vendorpage()
     {
@@ -52,6 +53,7 @@ class AdminController extends Controller
     }
     public function vendordpage()
     {
+        
         return view('Admin/VendorDetails');
     }
     public function vendaddpage()

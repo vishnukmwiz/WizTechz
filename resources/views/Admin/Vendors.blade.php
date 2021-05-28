@@ -73,13 +73,14 @@
             <th></th>
           </tr>
         </thead>
+        @foreach($datavendor as $vendor)
         <tbody>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark sfsrwrasdf</td>
-            <td>0987654321</td>
-            <td>kafkhb@ksd.com</td>
-            <td>active</td>
+            <th scope="row">{{ $vendor->id }}</th>
+            <td>{{ $vendor->name }}}</td>
+            <td>{{ $vendor->phone }}</td>
+            <td>{{ $vendor->email }}</td>
+            <td>{{ $vendor->status }}</td>
             <td><a href="">View Details</a></td>
             <td><a class="btn btn-outline-warning" href="">Edit Vendor</a></td>
           </tr>
