@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Brand;
 use App\Models\Vendor;
+use App\Models\Item;
 
 class ProductController extends Controller
 {
@@ -111,6 +112,55 @@ class ProductController extends Controller
 
         $brand->save();
         echo "<script>alert('Successfully Added Category');window.location='Admin/BrandList';</script>";
+         echo "success";
+
+    }
+    public function productstore(Request $request)
+    {
+        $vname=request("vid");
+        $cname=request("cid");
+        $sname=request("scid");
+        $bname=request("bid");
+        $pmodel=request("model");
+        $ppackage=request("package");
+        $pname=request("name");
+        $psize=request("size");
+        $pcolor=request("color");
+        $pdesc=request("desc");
+        $psprice=request("sprice");
+        $pcprice=request("cprice");
+        $pimage=$request->file('image');
+        $name=$pimage->getClientOriginalName();
+        $pimage->move(public_path('assets/images'),$name);
+
+        $this->validate($request,[
+            'name'=>'required',
+        ]);
+
+        $vendor = Vendor::where('name','=', $vname)->first();
+        $category = Category::where('name','=', $cname)->first();
+        $scategory = Subcategory::where('name','=', $sname)->first();
+        $brand = Brand::where('name','=', $bname)->first();
+        
+        $product = new Item();
+
+        $product->vid=$vendor->id;
+        $product->cid=$category->id;
+        $product->scid=$scategory->id;
+        $product->bid=$brand->id;
+        $product->model=$pmodel;
+        $product->package=$ppackage;
+        $product->name=$pname;
+        $product->size=$psize;
+        $product->color=$pcolor;
+        $product->desc=$pdesc;
+        $product->stock='0';
+        $product->sprice=$psprice;
+        $product->cprice=$pcprice;
+        $product->image=$name;
+
+        $product->save();
+        echo "<script>alert('Successfully Added Category');window.location='Admin/ProductList';</script>";
          echo "success";
 
     }

@@ -72,7 +72,7 @@
                                         <tr>
                                             <td>
 
-                                            <select name="category" id="category" class="form-control" >
+                                            <select name="vid" id="category" class="form-control" >
 
                                             @foreach($vdata as $vendor)
                                             <option>{{$vendor->name }}</option>
@@ -84,7 +84,7 @@
                                         <tr>
                                             <td>
 
-                                            <select name="category" id="category" class="form-control" >
+                                            <select name="cid" id="category" class="form-control" >
 
                                             @foreach($cdata as $category)
                                             <option>{{$category->name }}</option>
@@ -97,7 +97,7 @@
                                             <tr>
                                             <td>
 
-                                            <select name="category" id="category" class="form-control" >
+                                            <select name="scid" id="category" class="form-control" >
 
                                             @foreach($scdata as $subcategory)
                                             <option>{{$subcategory->name }}</option>
@@ -109,7 +109,7 @@
                                             <tr>
                                             <td>
                                             <br>
-                                            <select name="brand" id="brand" class="form-control" >
+                                            <select name="bid" id="brand" class="form-control" >
 
                                             @foreach($bdata as $brand)
                                             <option>{{$brand->name }}</option>
@@ -118,16 +118,30 @@
                                             </td>
                                             </tr>
                                             <tr>
+                                            <td> <br> <input type="text" class="form-control" id="name" name="model" value=""  placeholder="Product Model"></td>
+                                                </tr>
+                                                <tr>
+                                            <td> <br> <input type="text" class="form-control" id="name" name="package" value=""  placeholder="Product Package"></td>
+                                                </tr>
+                                            <tr>
                                             <td> <br> <input type="text" class="form-control" id="name" name="name" value=""  placeholder="Product Name"></td>
+                                                </tr>
+                                                <tr>
+                                            <td> <br> <input type="text" class="form-control" id="name" name="size" value=""  placeholder="Product Name"></td>
+                                                </tr><tr>
+                                            <td> <br> <input type="text" class="form-control" id="name" name="color" value=""  placeholder="Product Name"></td>
                                                 </tr>
                                                 <tr>
                                             <td> <br> <input type="textarea" class="form-control" id="desc" name="desc" value=""  placeholder="Product Description"></td>
                                                 </tr>
                                                 <tr>
-                                            <td>  <input type="text" class="form-control" id="name" name="price" value=""  placeholder="Price"></td>
+                                            <td>  <input type="text" class="form-control" id="name" name="sprice" value=""  placeholder="Price"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><input  name="pimage" type="file" class="form-control"></td>
+                                            <td>  <input type="text" class="form-control" id="name" name="cprice" value=""  placeholder="Price"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input  name="image" type="file" class="form-control"></td>
                                                 </tr>
                                         </table>
                                     </div>
