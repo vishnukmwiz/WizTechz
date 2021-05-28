@@ -20,9 +20,7 @@ class AuthCheck
             return redirect('Auth/Login')->with('fail','You must be logged in');
         }
 
-        if((session('LoggedUser') == '1') && ($request->path() == 'User/Home' ) ){
-            return redirect('Admin/Home');
-        }else{
+        
             if(session()->has('LoggedUser') && ($request->path() == 'Auth/Login' ) ){
                 return redirect('User/Home');
             }elseif(session()->has('LoggedUser') && ($request->path() == 'Auth/Register' ) ){
@@ -35,7 +33,7 @@ class AuthCheck
                 return redirect('User/ProductList');
             }else{
             }
-        }
+        
         
         
         return $next($request)->header('Cache-Control','no-cache, no-store, max-age=0, must-revalidate')

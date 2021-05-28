@@ -59,7 +59,40 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
-      <a href="AddProduct" class="btn btn-warning btn-lg mt-4 col-12"><i class="fs-3 bi bi-plus"></i>Add New Product</a>
+      <div class="row mt-1 ">
+        <div class="col-sm-3 col-3 ">
+          <a href="Categories" class="text-decoration-none text-dark">
+            <div class="well p-2 shadow">
+              <h4>Categories</h4>
+              <p>1 Million</p> 
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-3 col-3 ">
+          <a href="Subategories" class="text-decoration-none text-dark">
+            <div class="well p-2 shadow">
+              <h4>Sub-Categories</h4>
+              <p>1 Million</p> 
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-3 col-3 ">
+          <a href="Brands" class="text-decoration-none text-dark">
+            <div class="well p-2 shadow">
+              <h4>Brands</h4>
+              <p>1 Million</p> 
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-3 col-3 ">
+          <a href="AddProduct" class="text-decoration-none text-dark">
+            <div class="well p-2 shadow bg-warning">
+              <h4><i class="fs-3 bi bi-plus"></i>Add New Product</h4>
+              <p>Add new product details</p> 
+            </div>
+          </a>
+        </div>
+      </div>
       <div class="row mt-5">
       <div class="col-4">
         <h3 class=" col-4">Products</h3>
