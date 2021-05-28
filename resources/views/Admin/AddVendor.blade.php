@@ -66,31 +66,31 @@
                     <table class="table table-borderless table-warning">
                         <tr>
                             <td><label for="">Vendor Name</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="name"></td>
                         </tr>
                         <tr>
                             <td><label for="">Building Name/No.</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="room"></td>
                         </tr>
                         <tr>
                             <td><label for="">City</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="city"></td>
                         </tr>
                         <tr>
                             <td><label for="">District</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="district"></td>
                         </tr>
                         <tr>
                             <td><label for="">Pin</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="pin"></td>
                         </tr>
                         <tr>
                             <td><label for="">Phone</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="phone"></td>
                         </tr>
                         <tr>
                             <td><label for="">Email</label></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control" name="email"></td>
                         </tr>
                         <tr>
                             <td><a href="Vendors" class="btn btn-outline-warning  col-12">CANCEL</a></td>

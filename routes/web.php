@@ -35,13 +35,17 @@ Route::get('Admin/AddVendor',[AdminController::class,'vendaddpage']);
 Route::get('Admin/EditVendor',[AdminController::class,'vendeditpage']);
 Route::get('Admin/ProductList',[AdminController::class,'productpage']);
 Route::get('Admin/ProductDetails',[AdminController::class,'productdpage']);
-Route::get('Admin/AddProduct',[AdminController::class,'productaddpage']);
+Route::get('Admin/AddProduct',[ProductController::class,'view']);
 Route::get('Admin/AddCategory',[AdminController::class,'categoryaddpage']);
 Route::get('Admin/AddSubcategory',[AdminController::class,'subcategoryaddpage']);
 Route::get('Admin/AddBrand',[AdminController::class,'brandaddpage']);
 Route::get('Admin/CategoryList',[AdminController::class,'categorypage']);
 Route::get('Admin/SubcategoryList',[AdminController::class,'subcategorypage']);
 Route::get('Admin/BrandList',[AdminController::class,'brandpage']);
+Route::post('/addcategory',[ProductController::class,'categorystore']);
+Route::post('/addsubcategory',[ProductController::class,'subcategorystore']);
+Route::post('/addbrand',[ProductController::class,'brandstore']);
+Route::post('/addproduct',[ProductController::class,'productstore']);
 
 Route::post('Auth/Reg',[MainController::class,'save']);
 Route::post('Auth/Log',[MainController::class,'check']);

@@ -59,7 +59,37 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
+    <form class="row contact_form" action="/addbrand" method="post" enctype="multipart/form-data" novalidate="novalidate">
+                                {{csrf_field()}}
+                               
+
+                                <div class="col-md-12 form-group p_star" style='max-width:40%'>
+                                
+                                
+                                   
+                                    </div>
+                                                                
+                                        <div class="col-md-12 form-group p_star">
+                                        <input type="text" class="form-control"  name="name" value=""
+                                            placeholder="Brand Name">
+                                            <input type="text" class="form-control"  name="desc" value=""
+                                            placeholder="Brand Description">
+                                        <table>
+                                        <tr>
+                                            <td></td>
+                                            <td><input  name="cimage" type="file" class="form-control"></td>
+                                        </tr>
+                                        </table>
+                                    </div>
         
+                                    <div class="col-md-12 form-group">
+                                      
+                                        <button type="submit" value="submit" class="btn_3">
+                                            Add
+                                        </button>
+                                       
+                                    </div>
+                                </form>
       
     </div>
   </div>

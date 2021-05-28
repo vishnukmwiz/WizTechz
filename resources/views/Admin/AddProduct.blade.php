@@ -59,7 +59,74 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
+    <form class="row contact_form" action="/addproduct" method="post" enctype="multipart/form-data" >
+                                {{csrf_field()}}
+                               
+
+                                <div class="col-md-12 " style='max-width:40%'>
+  
+                                    </div>
+                                                          
+                                        <div class="col-md-12 ">
+                                        <table> 
+                                        <tr>
+                                            <td>
+
+                                            <select name="category" id="category" class="form-control" >
+
+                                            @foreach($cdata as $category)
+                                            <option>{{$category->name }}</option>
+                                            @endforeach 
+                                         
+                                            </select>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td>
+
+                                            <select name="category" id="category" class="form-control" >
+
+                                            @foreach($scdata as $subcategory)
+                                            <option>{{$subcategory->name }}</option>
+                                            @endforeach 
+                                         
+                                            </select>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td>
+                                            <br>
+                                            <select name="brand" id="brand" class="form-control" >
+
+                                            @foreach($bdata as $brand)
+                                            <option>{{$brand->name }}</option>
+                                            @endforeach 
+                                            </select>
+                                            </td>
+                                            </tr>
+                                            <tr>
+                                            <td> <br> <input type="text" class="form-control" id="name" name="name" value=""  placeholder="Product Name"></td>
+                                                </tr>
+                                                <tr>
+                                            <td> <br> <input type="textarea" class="form-control" id="desc" name="desc" value=""  placeholder="Product Description"></td>
+                                                </tr>
+                                                <tr>
+                                            <td>  <input type="text" class="form-control" id="name" name="price" value=""  placeholder="Price"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input  name="pimage" type="file" class="form-control"></td>
+                                                </tr>
+                                        </table>
+                                    </div>
         
+                                    <div class="col-md-12 form-group">
+                                      
+                                        <button type="submit" value="submit" class="btn_3">
+                                            Add
+                                        </button>
+                                       
+                                    </div>
+                                </form>
       
     </div>
   </div>
