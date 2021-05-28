@@ -70,6 +70,32 @@ class AdminController extends Controller
     {
         return view('Admin/ProductDetails');
     }
+    public function productaddpage()
+    {
+        return view('Admin/AddProduct');
+    }
+    public function categoryaddpage()
+    {
+        return view('Admin/AddCategory');
+    }
+    public function subcategoryaddpage()
+    {
+        return view('Admin/AddSubcategory');
+    }
+    public function brandaddpage()
+    {
+        return view('Admin/AddBrand');
+    }public function categorypage()
+    {
+        return view('Admin/CategoryList');
+    }
+    public function subcategorypage()
+    {
+        return view('Admin/SubcategoryList');
+    }public function brandpage()
+    {
+        return view('Admin/BrandList');
+    }
     /**
      * Show the form for creating a new resource.
      *
