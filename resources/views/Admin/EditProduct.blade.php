@@ -1,4 +1,4 @@
-@extends('Admin/Theme')
+@extends('Admin/InnerTheme')
 @section('admincontent')
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -59,7 +59,7 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
-    <form class="row contact_form" action="/editproduct" method="post" enctype="multipart/form-data" >
+    <form class="row contact_form" action="/editproduct/{{ $dataproduct->id }}" method="post" enctype="multipart/form-data" >
                                 {{csrf_field()}}
                                
 
@@ -73,7 +73,7 @@
                                             <td>
 
                                             <select name="vid" id="category" class="form-control" >
-
+                                            <option value="{{ $dataproduct->vendor->name }}" selected>{{ $dataproduct->vendor->name }} </option>
                                             @foreach($vdata as $vendor)
                                             <option>{{$vendor->name }}</option>
                                             @endforeach 
@@ -85,7 +85,7 @@
                                             <td>
 
                                             <select name="cid" id="category" class="form-control" >
-
+                                            <option value="{{ $dataproduct->category->name }}" selected>{{ $dataproduct->category->name }} </option>
                                             @foreach($cdata as $category)
                                             <option>{{$category->name }}</option>
                                             @endforeach 
@@ -98,7 +98,7 @@
                                             <td>
 
                                             <select name="scid" id="category" class="form-control" >
-
+                                            <option value="{{ $dataproduct->subcategory->name }}" selected>{{ $dataproduct->subcategory->name }} </option>
                                             @foreach($scdata as $subcategory)
                                             <option>{{$subcategory->name }}</option>
                                             @endforeach 
@@ -110,7 +110,7 @@
                                             <td>
                                             <br>
                                             <select name="bid" id="brand" class="form-control" >
-
+                                            <option value="{{ $dataproduct->brand->name }}" selected>{{ $dataproduct->brand->name }} </option>
                                             @foreach($bdata as $brand)
                                             <option>{{$brand->name }}</option>
                                             @endforeach 
@@ -118,27 +118,27 @@
                                             </td>
                                             </tr>
                                             <tr>
-                                            <td> <br> <input type="text" class="form-control" id="name" name="model" value=""  placeholder="Product Model"></td>
+                                            <td> <br> <input type="text" class="form-control" id="name" name="model" value="{{ $dataproduct->model }}"  placeholder="Product Model"></td>
                                                 </tr>
                                                 <tr>
-                                            <td> <br> <input type="text" class="form-control" id="name" name="package" value=""  placeholder="Product Package"></td>
+                                            <td> <br> <input type="text" class="form-control" id="name" name="package" value="{{ $dataproduct->package }}"  placeholder="Product Package"></td>
                                                 </tr>
                                             <tr>
-                                            <td> <br> <input type="text" class="form-control" id="name" name="name" value=""  placeholder="Product Name"></td>
+                                            <td> <br> <input type="text" class="form-control" id="name" name="name" value="{{ $dataproduct-> name}}"  placeholder="Product Name"></td>
                                                 </tr>
                                                 <tr>
-                                            <td> <br> <input type="text" class="form-control" id="name" name="size" value=""  placeholder="Product Name"></td>
+                                            <td> <br> <input type="text" class="form-control" id="name" name="size" value="{{ $dataproduct->size }}"  placeholder="Product Name"></td>
                                                 </tr><tr>
-                                            <td> <br> <input type="text" class="form-control" id="name" name="color" value=""  placeholder="Product Name"></td>
+                                            <td> <br> <input type="text" class="form-control" id="name" name="color" value="{{ $dataproduct->color }}"  placeholder="Product Name"></td>
                                                 </tr>
                                                 <tr>
-                                            <td> <br> <input type="textarea" class="form-control" id="desc" name="desc" value=""  placeholder="Product Description"></td>
+                                            <td> <br> <input type="textarea" class="form-control" id="desc" name="desc" value="{{ $dataproduct->desc }}"  placeholder="Product Description"></td>
                                                 </tr>
                                                 <tr>
-                                            <td>  <input type="text" class="form-control" id="name" name="sprice" value=""  placeholder="Price"></td>
+                                            <td>  <input type="text" class="form-control" id="name" name="sprice" value="{{ $dataproduct->sprice }}"  placeholder="Price"></td>
                                                 </tr>
                                                 <tr>
-                                            <td>  <input type="text" class="form-control" id="name" name="cprice" value=""  placeholder="Price"></td>
+                                            <td>  <input type="text" class="form-control" id="name" name="cprice" value="{{ $dataproduct->cprice }}"  placeholder="Price"></td>
                                                 </tr>
                                                 <tr>
                                                     <td><input  name="image" type="file" class="form-control"></td>

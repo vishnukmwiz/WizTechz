@@ -65,7 +65,7 @@
           <a href="Customers" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Customers</h4>
-              <p>1 Million</p> 
+              <p>{{ $ucount }}</p> 
             </div>
           </a>
         </div>
@@ -73,7 +73,7 @@
           <a href="ProductList" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Products</h4>
-              <p>1 Million</p> 
+              <p>{{ $pcount }}</p> 
             </div>
           </a>
         </div>
@@ -81,7 +81,7 @@
           <a href="Orders" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Orders</h4>
-              <p>1 Million</p> 
+              <p>{{ $ocount }}</p> 
             </div>
           </a>
         </div>
@@ -92,7 +92,7 @@
           <a href="Vendors" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Vendors</h4>
-              <p>1 Million</p> 
+              <p>{{ $vcount }}</p> 
             </div>
           </a>
         </div>
@@ -107,35 +107,27 @@
       </div>
       <div class="row mt-5 ">
         <h3>Products</h3>
-        <div class="col-sm-3 col-3 ">
-          <a href="Categories" class="text-decoration-none text-dark">
+        <div class="col-sm-4 col-4 ">
+          <a href="CategoryList" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Categories</h4>
-              <p>1 Million</p> 
+              <p>{{ $ccount }}</p> 
             </div>
           </a>
         </div>
-        <div class="col-sm-3 col-3 ">
-          <a href="Subategories" class="text-decoration-none text-dark">
+        <div class="col-sm-4 col-4 ">
+          <a href="SubcategoryList" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Sub-Categories</h4>
-              <p>1 Million</p> 
+              <p>{{ $sccount }}</p> 
             </div>
           </a>
         </div>
-        <div class="col-sm-3 col-3 ">
-          <a href="Brands" class="text-decoration-none text-dark">
+        <div class="col-sm-4 col-4 ">
+          <a href="BrandList" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Brands</h4>
-              <p>1 Million</p> 
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-3 col-3 ">
-          <a href="Items" class="text-decoration-none text-dark">
-            <div class="well p-2 shadow">
-              <h4>Items</h4>
-              <p>1 Million</p> 
+              <p>{{ $bcount }}</p> 
             </div>
           </a>
         </div>

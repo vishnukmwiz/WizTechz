@@ -78,7 +78,7 @@
         @foreach($datavendor as $vendor)
           <tr>
             <th scope="row">{{ $vendor->id }}</th>
-            <td>{{ $vendor->name }}}</td>
+            <td>{{ $vendor->name }}</td>
             <td>{{ $vendor->phone }}</td>
             <td>{{ $vendor->email }}</td>
             <td>{{ $vendor->status }}</td>

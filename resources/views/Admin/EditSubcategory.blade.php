@@ -1,4 +1,4 @@
-@extends('Admin/Theme')
+@extends('Admin/InnerTheme')
 @section('admincontent')
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -70,9 +70,9 @@
                                     </div>
                                                                 
                                         <div class="col-md-12 form-group p_star">
-                                        <input type="text" class="form-control"  name="name" value="{{ $datasubcategory->id }}"
+                                        <input type="text" class="form-control"  name="name" value="{{ $datasubcategory->name }}"
                                             placeholder="Subcategory Name">
-                                            <input type="text" class="form-control"  name="desc" value="{{ $datasubcategory->id }}"
+                                            <input type="text" class="form-control"  name="desc" value="{{ $datasubcategory->desc }}"
                                             placeholder="Subcategory Description">
                                         
                                     </div>

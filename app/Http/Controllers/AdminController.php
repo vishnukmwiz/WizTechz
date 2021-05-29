@@ -27,7 +27,15 @@ class AdminController extends Controller
     public function index()
     {
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
-        return view('Admin/Home',$data);
+        
+        $ucount=Admin::where('phone','NOT LIKE',"0123456789")->count();
+        $pcount=Item::all()->count();
+        $ocount=Morder::all()->count();
+        $vcount=Vendor::all()->count();
+        $ccount=Category::all()->count();
+        $sccount=Subcategory::all()->count();
+        $bcount=Brand::all()->count();
+        return view('Admin/Home',$data,compact('ucount','pcount','ocount','vcount','ccount','sccount','bcount'));
     }
 
     public function orderpage()
@@ -107,6 +115,23 @@ class AdminController extends Controller
         $databrand=Brand::all();
         return view('Admin/BrandList',compact('databrand'));
     }
+    public function cateditpage($id)
+    {
+        $datacategory=Category::find($id);
+        return view('Admin/EditCategory',compact('datacategory'));
+    }
+    public function scateditpage($id)
+    {
+        $datasubcategory=Subcategory::find($id);
+        return view('Admin/EditSubcategory',compact('datasubcategory'));
+    }
+    public function brandeditpage($id)
+    {
+        $databrand=Brand::find($id);
+        return view('Admin/EditBrand',compact('databrand'));
+    }
+    
+
     /**
      * Show the form for creating a new resource.
      *
