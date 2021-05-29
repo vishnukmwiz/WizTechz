@@ -48,7 +48,8 @@ class AdminController extends Controller
     }
     public function cuspage()
     {
-        return view('Admin/Customers');
+        $datacustomer=Admin::where('phone','NOT LIKE',"0123456789")->get();
+        return view('Admin/Customers',compact('datacustomer'));
     }
     public function cusdpage()
     {
@@ -63,7 +64,8 @@ class AdminController extends Controller
     public function vendordpage($id)
     {
         $datavendor=Vendor::find($id);
-        return view('Admin/VendorDetails',compact('datavendor'));
+        $dataproduct=Item::where('vid','=',$id)->get();
+        return view('Admin/VendorDetails',compact('datavendor','dataproduct'));
     }
     public function vendaddpage()
     {

@@ -67,32 +67,18 @@
       <th scope="col">Customer ID</th>
       <th scope="col">Customer Name</th>
       <th scope="col">Phone Number</th>
-      <th scope="col">Status</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
+    @foreach($datacustomer as $customer)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{ $customer->id }}</th>
+      <td>{{ $customer->name }}</td>
+      <td>{{ $customer->phone }}</td>
       <td><a href="">View Details</a></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td><a href="">View Details</a></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>Thornton</td>
-      <td>@twitter</td>
-      <td><a href="">View Details</a></td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
     </div>

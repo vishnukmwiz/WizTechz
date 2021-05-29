@@ -79,9 +79,43 @@
           </div>
         </div>
       </div>
-      <div class="row mt-4">
-        <h3>Products from this Vendor</h3>
-         
+      <div class="row mt-5">
+      <div class="col-6">
+        <h3 >Products from this vendor</h3>
+      </div>
+      <div class="col-6">
+        <input class="form-control col-8" type="text" id="prosearch" onkeyup="psfunc()" placeholder="Search for products..">
+      </div>
+        
+       </div>
+      <div class="table-responsive">
+        <table id="protable" class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Product Image</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Cost Price</th>
+                <th scope="col">Selling Price</th>
+                <th scope="col">Stock</th>
+                <th></th>
+              </tr>
+            </thead>
+            
+            <tbody>
+            @foreach($dataproduct as $item)
+              <tr>
+                <th scope="row">{{ $item->id }}</th>
+                <td><img width="100px" src="{{ URL::asset('assets/images/'.$item->image) }}" alt=""></td>
+                <td>{{ $item->name }}</td>
+                <td>{{ $item->sprice }}</td>
+                <td>{{ $item->cprice }}</td>
+                <td class="fs-4" >{{ $item->stock }}<br><a class="btn btn-outline-warning btn-sm " href="">Purchase New Stock</a></td>
+                <td><a href="">View Details</a></td>
+              </tr>
+            @endforeach
+            </tbody>
+        </table>
       </div>
     </div>
   </div>
