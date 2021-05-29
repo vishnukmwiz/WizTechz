@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -24,6 +25,11 @@ class MainController extends Controller
         ]);
 
         $user = new Admin;
+        $customer = new Customer;
+        
+        $customer->email='not specified';
+        $customer->gender='not specified';
+        $customer->image='not specified';
         $user->name =$req->name;
         $user->phone =$req->phone;
         $user->password =Hash::make($req->password);
@@ -32,7 +38,8 @@ class MainController extends Controller
         }        
         else{
             $save = $user->save();
-
+            $customer->cid =$user->id;
+            $save2 = $customer->save();
             if($save){
                 return back()->with('success','User successfully registered');
             }else{
