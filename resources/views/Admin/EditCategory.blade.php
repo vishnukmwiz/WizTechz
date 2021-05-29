@@ -59,38 +59,32 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
-    <form class="row contact_form" action="/editcategory/{{ $datacategory->id }}" method="post" enctype="multipart/form-data" novalidate="novalidate">
-                                {{csrf_field()}}
-                               
-
-                                <div class="col-md-12 form-group p_star" style='max-width:40%'>
-                                
-                                
-                                   
-                                    </div>
-                                                                
-                                        <div class="col-md-12 form-group p_star">
-                                        <input type="text" class="form-control"  name="name" value="{{ $datacategory-> name}}"
-                                            placeholder="Category Name">
-                                            <input type="text" class="form-control"  name="desc" value="{{ $datacategory->desc }}"
-                                            placeholder="Category Description">
-                                        <table>
-                                        <tr>
-                                            <td></td>
-                                            <td><input  name="cimage" type="file" class="form-control"></td>
-                                        </tr>
-                                        </table>
-                                    </div>
-        
-                                    <div class="col-md-12 form-group">
-                                      
-                                        <button type="submit" value="submit" class="btn_3">
-                                            Add
-                                        </button>
-                                       
-                                    </div>
-                                </form>
-      
+    <h3 class="mt-4">Edit Category</h3>
+      <form class="row contact_form" action="/editcategory/{{ $datacategory->id }}" method="post" enctype="multipart/form-data" novalidate="novalidate">
+        {{csrf_field()}}
+        <div class="row">
+          <div class="col-7">
+            <table class="table table-borderless table-warning">
+              <tr>
+                <td><label for="">Category Name</label></td>
+                <td><input type="text" class="form-control"  name="name" value="{{ $datacategory-> name}}" ></td>
+              </tr>
+              <tr>
+                <td><label for="">Category Description</label></td>
+                <td><input type="text" class="form-control"  name="desc" value="{{ $datacategory->desc }}" ></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><input  name="cimage" type="file" class="form-control"></td>
+              </tr>
+              <tr>
+                <td><a href="CategoryList" class="btn btn-outline-warning  col-12">CANCEL</a></td>
+                <td><button class="btn btn-warning  col-12">SAVE</button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

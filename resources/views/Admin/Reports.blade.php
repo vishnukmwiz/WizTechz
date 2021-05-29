@@ -31,7 +31,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fs-6" href="ProductList">
+            <a class="nav-link fs-6" href="ProductList">
               <i class="bi bi-cart"> Products</i> 
             </a>
           </li>
@@ -46,7 +46,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fs-6" href="Reports">
+            <a class="nav-link active fs-6" href="Reports">
               <i class="bi bi-flag"> Reports</i> 
             </a>
           </li>
@@ -59,44 +59,81 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
-      <div class="row">
-        <div class="col-6"><a href="ProductList" class="btn btn-outline-warning btn-lg mt-4 m-2 col-12"><i class="fs-3 bi bi-arrow-counterclockwise"></i>Back to Product List</a></div>
-        <div class="col-6"><a href="AddSubcategory" class="btn btn-warning btn-lg mt-4 m-2 col-12"><i class="fs-3 bi bi-plus"></i>Add New Subcategory</a></div>
-      </div>    
-      <div class="row mt-5">
-      <div class="col-4">
-        <h3 class=" col-4">SubCategory</h3>
-      </div>
-      <div class="col-8">
-        <input class="form-control col-8" type="text" id="prosearch" onkeyup="psfunc2()" placeholder="Search for products..">
-      </div>
-        
-       </div>
-      <div class="table-responsive">
-        <table id="protable" class="table table-bordered align-middle">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Sub-Category Name</th>
-                <th scope="col">Sub-Category Description</th>
-                <th></th>
-              </tr>
-            </thead>
-            
-            <tbody>
-            @foreach($datasubcategory as $subcategory)
-              <tr>
-                <th scope="row">{{ $subcategory->id }}</th>
-                <td>{{ $subcategory->name }}</td>
-                <td>{{ $subcategory->desc }}</td>
-                <td><a class="btn btn-outline-warning" href={{"EditSubcategory/".$subcategory->id}}>Edit</a></td>
-              </tr>
-            @endforeach
-            </tbody>
-        </table>
-      </div>
+    <table class="table table-bordered" id="example">
 
+<thead>
+  <th>S/N</th>
+  <th>Firstname</th>
+  <th>Lastname</th>
+</thead>
+
+<tbody>
+  <tr>
+    <td>1</td>
+    <td>Saheedb</td>
+    <td>Babatunde</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Saheedb</td>
+    <td>Babatunde</td>
+  </tr>
+
+  <tr>
+    <td>3</td>
+    <td>Saheedb</td>
+    <td>Babatunde</td>
+  </tr>
+</tbody>
+
+</table>
+
+<center>
+<button class="btn btn-success" id="json">JSON</button>
+
+<button class="btn btn-success" id="pdf">PDF</button>
+
+<button class="btn btn-success" id="csv">CSV</button>
+
+</center>
+
+
+      
     </div>
   </div>
 </div>
-@endsection
+<script type="text/javascript" src="src/jquery-3.3.1.slim.min.js"></script>
+
+<script type="text/javascript" src="src/jspdf.min.js"></script>
+
+<script type="text/javascript" src="src/jspdf.plugin.autotable.min.js"></script>
+
+<script type="text/javascript" src="src/tableHTMLExport.js"></script>
+
+<script type="text/javascript">
+  
+  $("#json").on("click",function(){
+    $("#example").tableHTMLExport({
+      type:'json',
+      filename:'sample.json'
+    });
+  });
+
+  $("#pdf").on("click",function(){
+    $("#example").tableHTMLExport({
+      type:'pdf',
+      filename:'sample.pdf'
+    });
+  });
+
+  $("#csv").on("click",function(){
+    $("#example").tableHTMLExport({
+      type:'csv',
+      filename:'sample.csv'
+    });
+  });
+
+</script>
+
+</body>
+</html>

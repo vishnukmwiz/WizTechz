@@ -1,4 +1,4 @@
-@extends('Admin/Theme')
+@extends('Admin/InnerTheme')
 @section('admincontent')
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -67,7 +67,7 @@
                    
                     <img class="me-2 ms-2" width="100%" src="https://maxcdn.icons8.com/iOS7/PNG/512/Alphabet/100-512.png" alt="">
                     <div class="row">
-                            <a  class="btn btn-lg btn-outline-warning md-2" href={{"EditProduct/".$product->id}}></i>Edit Product</a>
+                            <a  class="btn btn-lg btn-outline-warning md-2" href={{"../EditProduct/".$dataproduct->id}}></i>Edit Product</a>
                             <button class="btn btn-lg btn-warning mt-2 md-2"></i>Add More Stocks</button>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
         </div>
         <div class="col-6 ">
             <div class="row p-3 m-1 bg-white shadow">
-                <h3 class="md-2" >Heading</h3>
+                <h3 class="md-2" >{{$dataproduct->name}}</h3>
                 <h4>Cost Price: &#8377 45346</h4>
                 <h4>Selling Price: &#8377 45346</h4>
 

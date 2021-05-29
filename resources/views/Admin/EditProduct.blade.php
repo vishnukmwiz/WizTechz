@@ -59,102 +59,100 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
-    <form class="row contact_form" action="/editproduct/{{ $dataproduct->id }}" method="post" enctype="multipart/form-data" >
-                                {{csrf_field()}}
-                               
-
-                                <div class="col-md-12 " style='max-width:40%'>
-  
-                                    </div>
-                                                          
-                                        <div class="col-md-12 ">
-                                        <table> 
-                                        <tr>
-                                            <td>
-
-                                            <select name="vid" id="category" class="form-control" >
-                                            <option value="{{ $dataproduct->vendor->name }}" selected>{{ $dataproduct->vendor->name }} </option>
-                                            @foreach($vdata as $vendor)
-                                            <option>{{$vendor->name }}</option>
-                                            @endforeach 
-                                         
-                                            </select>
-                                            </td>
-                                            </tr>
-                                        <tr>
-                                            <td>
-
-                                            <select name="cid" id="category" class="form-control" >
-                                            <option value="{{ $dataproduct->category->name }}" selected>{{ $dataproduct->category->name }} </option>
-                                            @foreach($cdata as $category)
-                                            <option>{{$category->name }}</option>
-                                            @endforeach 
-                                         
-                                            </select>
-                                            </td>
-                                            </tr>
-
-                                            <tr>
-                                            <td>
-
-                                            <select name="scid" id="category" class="form-control" >
-                                            <option value="{{ $dataproduct->subcategory->name }}" selected>{{ $dataproduct->subcategory->name }} </option>
-                                            @foreach($scdata as $subcategory)
-                                            <option>{{$subcategory->name }}</option>
-                                            @endforeach 
-                                         
-                                            </select>
-                                            </td>
-                                            </tr>
-                                            <tr>
-                                            <td>
-                                            <br>
-                                            <select name="bid" id="brand" class="form-control" >
-                                            <option value="{{ $dataproduct->brand->name }}" selected>{{ $dataproduct->brand->name }} </option>
-                                            @foreach($bdata as $brand)
-                                            <option>{{$brand->name }}</option>
-                                            @endforeach 
-                                            </select>
-                                            </td>
-                                            </tr>
-                                            <tr>
-                                            <td> <br> <input type="text" class="form-control" id="name" name="model" value="{{ $dataproduct->model }}"  placeholder="Product Model"></td>
-                                                </tr>
-                                                <tr>
-                                            <td> <br> <input type="text" class="form-control" id="name" name="package" value="{{ $dataproduct->package }}"  placeholder="Product Package"></td>
-                                                </tr>
-                                            <tr>
-                                            <td> <br> <input type="text" class="form-control" id="name" name="name" value="{{ $dataproduct-> name}}"  placeholder="Product Name"></td>
-                                                </tr>
-                                                <tr>
-                                            <td> <br> <input type="text" class="form-control" id="name" name="size" value="{{ $dataproduct->size }}"  placeholder="Product Name"></td>
-                                                </tr><tr>
-                                            <td> <br> <input type="text" class="form-control" id="name" name="color" value="{{ $dataproduct->color }}"  placeholder="Product Name"></td>
-                                                </tr>
-                                                <tr>
-                                            <td> <br> <input type="textarea" class="form-control" id="desc" name="desc" value="{{ $dataproduct->desc }}"  placeholder="Product Description"></td>
-                                                </tr>
-                                                <tr>
-                                            <td>  <input type="text" class="form-control" id="name" name="sprice" value="{{ $dataproduct->sprice }}"  placeholder="Price"></td>
-                                                </tr>
-                                                <tr>
-                                            <td>  <input type="text" class="form-control" id="name" name="cprice" value="{{ $dataproduct->cprice }}"  placeholder="Price"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><input  name="image" type="file" class="form-control"></td>
-                                                </tr>
-                                        </table>
-                                    </div>
-        
-                                    <div class="col-md-12 form-group">
-                                      
-                                        <button type="submit" value="submit" class="btn_3">
-                                            Add
-                                        </button>
-                                       
-                                    </div>
-                                </form>
-      
+    <h3 class="mt-4">Edit Product</h3>
+      <form class="form" action="/editproduct/{{ $dataproduct->id }}" method="post" enctype="multipart/form-data" >
+        {{csrf_field()}}   
+        <div class="row">
+          <div class="col-8 ">
+            <table class="table table-borderless table-warning">
+              <tr>
+                <td><label for="">Select Vendor</label></td>
+                <td>
+                  <select name="vid"  class="form-select" >
+                    <option value="{{ $dataproduct->vendor->name }}" selected>{{ $dataproduct->vendor->name }} </option>
+                    @foreach($vdata as $vendor)
+                      <option>{{$vendor->name }}</option>
+                    @endforeach 
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="">Select Category</label></td>
+                <td>
+                  <select name="cid" class="form-select" >
+                    <option value="{{ $dataproduct->category->name }}" selected>{{ $dataproduct->category->name }} </option>
+                    @foreach($cdata as $category)
+                      <option>{{$category->name }}</option>
+                    @endforeach 
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="">Select Sub-Category</label></td>
+                <td>
+                  <select name="scid" id="category" class="form-select">
+                    <option value="{{ $dataproduct->subcategory->name }}" selected>{{ $dataproduct->subcategory->name }} </option>
+                    @foreach($scdata as $subcategory)
+                      <option>{{$subcategory->name }}</option>
+                    @endforeach 
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="">Select Brand</label></td>
+                <td>
+                  <select name="bid" id="brand" class="form-select" >
+                    <option value="{{ $dataproduct->brand->name }}" selected>{{ $dataproduct->brand->name }} </option>
+                    @foreach($bdata as $brand)
+                      <option>{{$brand->name }}</option>
+                    @endforeach 
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="">Model Number</label></td>
+                <td><input type="text" class="form-control" name="model" value="{{$dataproduct->model}}" ></td>
+              </tr>
+              <tr>
+                <td><label for="">Inside Package</label></td>
+                <td><input type="text" class="form-control" name="package" value="{{$dataproduct->package}}"></td>
+              </tr>
+              <tr>
+                <td><label for="">Product Name</label></td>
+                <td><input type="text" class="form-control" name="name" value="{{$dataproduct->name}}" ></td>
+              </tr>
+              <tr>
+                <td><label for="">Dimensions</label></td>
+                <td><input type="text" class="form-control" name="size" value="{{$dataproduct->size}}"></td>
+              </tr>
+              <tr>
+                <td><label for="">Color</label></td>
+                <td><input type="text" class="form-control" name="color" value="{{$dataproduct->color}}" ></td>
+              </tr>
+              <tr>
+                <td><label for="">Description</label></td>
+                <td><input type="textarea" class="form-control" name="desc" value="{{$dataproduct->desc}}"></td>
+              </tr>
+              <tr>
+                <td><label for="">Selling Price</label></td>
+                <td><input type="text" class="form-control" name="sprice" value="{{$dataproduct->sprice}}"></td>
+              </tr>
+              <tr>
+                <td><label for="">Cost Price</label></td>
+                <td><input type="text" class="form-control" name="cprice" value="{{$dataproduct->cprice}}"></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><input  name="image" type="file" class="form-control"></td>
+              </tr>
+              <tr>
+                <td><a href="ProductList" class="btn btn-outline-warning  col-12">CANCEL</a></td>
+                <td><button class="btn btn-warning  col-12">SAVE</button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

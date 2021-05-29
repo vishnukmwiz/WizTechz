@@ -59,8 +59,11 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
-    <a href="AddCategory" class="btn btn-warning btn-lg mt-4 col-12"><i class="fs-3 bi bi-plus"></i>Add New Category</a>
-    <div class="row mt-5">
+      <div class="row">
+        <div class="col-6"><a href="ProductList" class="btn btn-outline-warning btn-lg mt-4 m-2 col-12"><i class="fs-3 bi bi-arrow-counterclockwise"></i>Back to Product List</a></div>
+        <div class="col-6"><a href="AddCategory" class="btn btn-warning btn-lg mt-4 m-2 col-12"><i class="fs-3 bi bi-plus"></i>Add New Category</a></div>
+      </div>
+      <div class="row mt-5">
       <div class="col-4">
         <h3 class=" col-4">Category</h3>
       </div>

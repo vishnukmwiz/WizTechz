@@ -89,7 +89,12 @@ class AdminController extends Controller
     }
     public function productdpage($id)
     {
-        return view('Admin/ProductDetails');
+        $dataproduct=Item::find($id);
+        $datavendor=Vendor::where('id','=',$dataproduct->vid)->first();
+        $datavendor=Category::where('id','=',$dataproduct->cid)->first();
+        $datasubcategory=Subcategory::where('id','=',$dataproduct->scid)->first();
+        $databrand=Brand::where('id','=',$dataproduct->bid)->first();
+        return view('Admin/ProductDetails',compact('dataproduct','datavendor','datavendor','datasubcategory','databrand'));
     }
     public function productaddpage()
     {
@@ -135,7 +140,23 @@ class AdminController extends Controller
         $databrand=Brand::find($id);
         return view('Admin/EditBrand',compact('databrand'));
     }
-    
+
+    public function reportindex()
+    {
+        $dataproduct=Item::all();
+        return view('Admin/PurchaseReport',compact('dataproduct'));
+    }
+    public function reportstore(Request $request)
+    {
+        $date1=request('date1');
+        $date2=request('date2');
+        $dataproduct=Item::select('*')->whereBetween('created_at', [$date1, $date2])->get();
+        return view('Admin/PurchaseReport',compact('dataproduct'));
+    }
+    public function reports()
+    {
+        return view('Admin/Reports');
+    }
 
     /**
      * Show the form for creating a new resource.

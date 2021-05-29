@@ -59,33 +59,28 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
-    <form class="row contact_form" action="/editsubcategory/{{ $datasubcategory->id }}" method="post" enctype="multipart/form-data" novalidate="novalidate">
-                                {{csrf_field()}}
-                               
-
-                                <div class="col-md-12 form-group p_star" style='max-width:40%'>
-                                
-                                
-                                   
-                                    </div>
-                                                                
-                                        <div class="col-md-12 form-group p_star">
-                                        <input type="text" class="form-control"  name="name" value="{{ $datasubcategory->name }}"
-                                            placeholder="Subcategory Name">
-                                            <input type="text" class="form-control"  name="desc" value="{{ $datasubcategory->desc }}"
-                                            placeholder="Subcategory Description">
-                                        
-                                    </div>
-        
-                                    <div class="col-md-12 form-group">
-                                      
-                                        <button type="submit" value="submit" class="btn_3">
-                                            Add
-                                        </button>
-                                       
-                                    </div>
-                                </form>
-      
+    <h3 class="mt-4">Add New Sub-Category</h3>
+      <form class="row contact_form" action="/editsubcategory/{{ $datasubcategory->id }}" method="post" enctype="multipart/form-data" novalidate="novalidate">
+        {{csrf_field()}}
+        <div class="row">
+          <div class="col-7">
+            <table class="table table-borderless table-warning">
+              <tr>
+                <td><label for="">Sub-Category Name</label></td>
+                <td><input type="text" class="form-control"  name="name" value="{{ $datasubcategory->name }}" ></td>
+              </tr>
+              <tr>
+                <td><label for="">Sub-Category Description</label></td>
+                <td><input type="text" class="form-control"  name="desc" value="{{ $datasubcategory->desc }}" ></td>
+              </tr>
+              <tr>
+                <td><a href="SubcategoryList" class="btn btn-outline-warning  col-12">CANCEL</a></td>
+                <td><button class="btn btn-warning  col-12">SAVE</button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

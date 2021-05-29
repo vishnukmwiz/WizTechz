@@ -59,42 +59,42 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
-    <a href="AddBrand" class="btn btn-warning btn-lg mt-4 col-12"><i class="fs-3 bi bi-plus"></i>Add New Brand</a>
-    <div class="row mt-5">
-      <div class="col-4">
-        <h3 class=" col-4">Brand</h3>
+      <div class="row">
+        <div class="col-6"><a href="ProductList" class="btn btn-outline-warning btn-lg mt-4 m-2 col-12"><i class="fs-3 bi bi-arrow-counterclockwise"></i>Back to Product List</a></div>
+        <div class="col-6"><a href="AddBrand" class="btn btn-warning btn-lg mt-4 m-2 col-12"><i class="fs-3 bi bi-plus"></i>Add New Brand</a></div>
       </div>
-      <div class="col-8">
-        <input class="form-control col-8" type="text" id="prosearch" onkeyup="psfunc()" placeholder="Search for products..">
+      <div class="row mt-5">
+        <div class="col-4">
+          <h3 class=" col-4">Brand</h3>
+        </div>
+        <div class="col-8">
+          <input class="form-control col-8" type="text" id="prosearch" onkeyup="psfunc()" placeholder="Search for products..">
+        </div>
       </div>
-        
-       </div>
       <div class="table-responsive">
         <table id="protable" class="table table-bordered align-middle">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Brand Logo</th>
-                <th scope="col">Brand Name</th>
-                <th scope="col">Brand Description</th>
-                <th></th>
-              </tr>
-            </thead>
-            
-            <tbody>
-            @foreach($databrand as $brand)
-              <tr>
-                <th scope="row">{{ $brand->id }}</th>
-                <td><img width="100px" src="{{ URL::asset('assets/images/'.$brand->logo) }}" alt=""></td>
-                <td>{{ $brand->name }}</td>
-                <td>{{ $brand->desc }}</td>
-                <td><a class="btn btn-outline-warning" href={{"EditBrand/".$brand->id}}>Edit</a></td>
-              </tr>
-            @endforeach
-            </tbody>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Brand Logo</th>
+              <th scope="col">Brand Name</th>
+              <th scope="col">Brand Description</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          @foreach($databrand as $brand)
+            <tr>
+              <th scope="row">{{ $brand->id }}</th>
+              <td><img width="100px" src="{{ URL::asset('assets/images/'.$brand->logo) }}" alt=""></td>
+              <td>{{ $brand->name }}</td>
+              <td>{{ $brand->desc }}</td>
+              <td><a class="btn btn-outline-warning" href={{"EditBrand/".$brand->id}}>Edit</a></td>
+            </tr>
+          @endforeach
+          </tbody>
         </table>
       </div>
-      
     </div>
   </div>
 </div>

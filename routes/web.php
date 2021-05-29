@@ -57,6 +57,13 @@ Route::post('/editsubcategory/{id}',[ProductController::class,'subcategoryupdate
 Route::post('/editbrand/{id}',[ProductController::class,'brandupdate']);
 Route::post('/editproduct/{id}',[ProductController::class,'productupdate']);
 
+
+Route::get('Admin/PurchaseReport',[AdminController::class,'reportindex']);
+Route::post('Admin/PurchaseReport',[AdminController::class,'reportstore']);
+
+Route::get('Admin/Reports',[AdminController::class,'reports']);
+
+
 Route::post('Auth/Reg',[MainController::class,'save']);
 Route::post('Auth/Log',[MainController::class,'check']);
 Route::get('Auth/Logout',[MainController::class,'logout']);
