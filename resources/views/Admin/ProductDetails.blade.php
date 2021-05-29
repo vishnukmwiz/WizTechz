@@ -67,7 +67,7 @@
                    
                     <img class="me-2 ms-2" width="100%" src="https://maxcdn.icons8.com/iOS7/PNG/512/Alphabet/100-512.png" alt="">
                     <div class="row">
-                            <button class="btn btn-lg btn-outline-warning md-2"></i>Edit Product</button>
+                            <a  class="btn btn-lg btn-outline-warning md-2" href={{"EditProduct/".$product->id}}></i>Edit Product</a>
                             <button class="btn btn-lg btn-warning mt-2 md-2"></i>Add More Stocks</button>
                     </div>
                 </div>

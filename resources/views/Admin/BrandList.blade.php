@@ -88,7 +88,7 @@
                 <td><img width="100px" src="{{ URL::asset('assets/images/'.$brand->logo) }}" alt=""></td>
                 <td>{{ $brand->name }}</td>
                 <td>{{ $brand->desc }}</td>
-                <td><a class="btn btn-outline-warning" href="">Edit</a></td>
+                <td><a class="btn btn-outline-warning" href={{"EditBrand/".$brand->id}}>Edit</a></td>
               </tr>
             @endforeach
             </tbody>

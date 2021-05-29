@@ -127,7 +127,7 @@
                 <td>{{ $item->cprice }}</td>
                 <td class="fs-4" >{{ $item->stock }}<br><a class="btn btn-outline-warning btn-sm " href="">Purchase New Stock</a></td>
                 <td><a href="">View Details</a></td>
-                <td><a class="btn btn-outline-warning" href="">Edit</a></td>
+                <td><a class="btn btn-outline-warning" href={{"EditProduct/".$product->id}}>Edit</a></td>
               </tr>
             @endforeach
             </tbody>

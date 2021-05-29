@@ -86,7 +86,7 @@
                 <th scope="row">{{ $subcategory->id }}</th>
                 <td>{{ $subcategory->name }}</td>
                 <td>{{ $subcategory->desc }}</td>
-                <td><a class="btn btn-outline-warning" href="">Edit</a></td>
+                <td><a class="btn btn-outline-warning" href={{"EditSubcategory/".$subcategory->id}}>Edit</a></td>
               </tr>
             @endforeach
             </tbody>
