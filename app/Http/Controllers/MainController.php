@@ -64,7 +64,7 @@ class MainController extends Controller
                 $req->session()->put('LoggedUser',$UserInfo->id);
                 if($req->phone == '0123456789'){
                     
-                    return redirect('../Admin/Home')->with('phone','01233456789');
+                    return redirect('../Admin/Home')->with('phone','0123456789');
                 }else{
                     return redirect('../User/Home');
                 }
