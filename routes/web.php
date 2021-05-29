@@ -28,7 +28,7 @@ Route::get('Admin/Home',[AdminController::class,'index']);
 Route::get('Admin/Orders',[AdminController::class,'orderpage']);
 Route::get('Admin/OrderDetails',[AdminController::class,'orderdpage']);
 Route::get('Admin/Customers',[AdminController::class,'cuspage']);
-Route::get('Admin/CustomerDetails',[AdminController::class,'cusdpage']);
+Route::get('Admin/CustomerDetails/{id}',[AdminController::class,'cusdpage']);
 Route::get('Admin/Vendors',[AdminController::class,'vendorpage']);
 Route::get('Admin/VendorDetails/{id}',[AdminController::class,'vendordpage']);
 Route::get('Admin/AddVendor',[AdminController::class,'vendaddpage']);
@@ -38,7 +38,7 @@ Route::get('Admin/EditSubcategory/{id}',[AdminController::class,'scateditpage'])
 Route::get('Admin/EditBrand/{id}',[AdminController::class,'brandeditpage']);
 Route::get('Admin/EditProduct/{id}',[ProductController::class,'editpro']);
 Route::get('Admin/ProductList',[AdminController::class,'productpage']);
-Route::get('Admin/ProductDetails',[AdminController::class,'productdpage']);
+Route::get('Admin/ProductDetails/{id}',[AdminController::class,'productdpage']);
 Route::get('Admin/AddProduct',[ProductController::class,'view']);
 Route::get('Admin/AddCategory',[AdminController::class,'categoryaddpage']);
 Route::get('Admin/AddSubcategory',[AdminController::class,'subcategoryaddpage']);

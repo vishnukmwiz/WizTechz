@@ -1,4 +1,4 @@
-@extends('Admin/Theme')
+@extends('Admin/InnerTheme')
 @section('admincontent')
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -66,19 +66,19 @@
                     <table class=" table table-warning table-borderless">
                         <tr>
                             <td><h4>Name:</h4></td>
-                            <td><input class="form-control" type="text" value="1234567890" disabled></td>
-                        </tr>
-                        <tr>
-                            <td><h4>Gender:</h4></td>
-                            <td><input class="form-control" type="text" value="Male/Female" disabled></td>
-                        </tr>
-                        <tr>
-                            <td><h4>Email:</h4></td>
-                            <td><input class="form-control" type="text" value="email@email.com" disabled></td>
+                            <td><input class="form-control" type="text" value="{{$datauser->name}}" disabled></td>
                         </tr>
                         <tr>
                             <td><h4>Phone Number:</h4></td>
-                            <td><input class="form-control" type="text" value="1234567890" disabled></td>
+                            <td><input class="form-control" type="text" value="{{$datauser->phone}}" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><h4>Gender:</h4></td>
+                            <td><input class="form-control" type="text" value="{{$datacustomer->gender}}" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><h4>Email:</h4></td>
+                            <td><input class="form-control" type="text" value="{{$datacustomer->email}}" disabled></td>
                         </tr>
                     </table>
                 </div>

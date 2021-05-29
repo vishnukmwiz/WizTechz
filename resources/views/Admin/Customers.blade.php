@@ -76,7 +76,7 @@
       <th scope="row">{{ $customer->id }}</th>
       <td>{{ $customer->name }}</td>
       <td>{{ $customer->phone }}</td>
-      <td><a href="">View Details</a></td>
+      <td><a href={{"CustomerDetails/".$customer->id}}>View Details</a></td>
     </tr>
     @endforeach
   </tbody>

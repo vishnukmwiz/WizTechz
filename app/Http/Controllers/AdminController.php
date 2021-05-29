@@ -51,10 +51,13 @@ class AdminController extends Controller
         $datacustomer=Admin::where('phone','NOT LIKE',"0123456789")->get();
         return view('Admin/Customers',compact('datacustomer'));
     }
-    public function cusdpage()
+    public function cusdpage($id)
     {
+        $datauser=Admin::find($id);
+        $datacustomer=Customer::where('cid','=',$id)->first();
         
-        return view('Admin/CustomerDetails');
+        $datamorder=Morder::where('cid','=',$id)->get();
+        return view('Admin/CustomerDetails',compact('datauser','datacustomer','datamorder'));
     }
     public function vendorpage()
     {
@@ -84,7 +87,7 @@ class AdminController extends Controller
         $dataproduct=Item::all();
         return view('Admin/ProductList',compact('dataproduct','ccount','sccount','bcount'));
     }
-    public function productdpage()
+    public function productdpage($id)
     {
         return view('Admin/ProductDetails');
     }
