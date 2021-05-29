@@ -15,11 +15,10 @@ class CreateCpurchasesTable extends Migration
     {
         Schema::create('cpurchases', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mpid');
-            $table->foreign('mpid')->references('id')->on('mpurchases')->onUpdate('cascade')->OnDelete('cascade');
             $table->unsignedBigInteger('iid');
             $table->foreign('iid')->references('id')->on('items')->onUpdate('cascade')->OnDelete('cascade');
             $table->string('qty');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -61,26 +61,26 @@
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
       <div class="row mt-1 ">
         <div class="col-sm-3 col-3 ">
-          <a href="Categories" class="text-decoration-none text-dark">
+          <a href="CategoryList" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Categories</h4>
-              <p>1 Million</p> 
+              <p>{{ $ccount }}</p> 
             </div>
           </a>
         </div>
         <div class="col-sm-3 col-3 ">
-          <a href="Subategories" class="text-decoration-none text-dark">
+          <a href="SubcategoryList" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Sub-Categories</h4>
-              <p>1 Million</p> 
+              <p>{{ $sccount }}</p> 
             </div>
           </a>
         </div>
         <div class="col-sm-3 col-3 ">
-          <a href="Brands" class="text-decoration-none text-dark">
+          <a href="BrandList" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Brands</h4>
-              <p>1 Million</p> 
+              <p>{{ $sccount }}</p> 
             </div>
           </a>
         </div>

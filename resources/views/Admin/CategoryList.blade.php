@@ -59,7 +59,41 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
+    <a href="AddCategory" class="btn btn-warning btn-lg mt-4 col-12"><i class="fs-3 bi bi-plus"></i>Add New Category</a>
+    <div class="row mt-5">
+      <div class="col-4">
+        <h3 class=" col-4">Category</h3>
+      </div>
+      <div class="col-8">
+        <input class="form-control col-8" type="text" id="prosearch" onkeyup="psfunc()" placeholder="Search for products..">
+      </div>
         
+       </div>
+      <div class="table-responsive">
+        <table id="protable" class="table table-bordered align-middle">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Category Image</th>
+                <th scope="col">Category Name</th>
+                <th scope="col">Category Description</th>
+                <th></th>
+              </tr>
+            </thead>
+            
+            <tbody>
+            @foreach($datacategory as $category)
+              <tr>
+                <th scope="row">{{ $category->id }}</th>
+                <td><img width="100px" src="{{ URL::asset('assets/images/'.$category->image) }}" alt=""></td>
+                <td>{{ $category->name }}</td>
+                <td>{{ $category->desc }}</td>
+                <td><a class="btn btn-outline-warning" href="">Edit</a></td>
+              </tr>
+            @endforeach
+            </tbody>
+        </table>
+      </div>
       
     </div>
   </div>

@@ -68,9 +68,11 @@ class AdminController extends Controller
     }
     public function productpage()
     {
-       
+        $ccount=Category::all()->count();
+        $sccount=Subcategory::all()->count();
+        $bcount=Brand::all()->count();
         $dataproduct=Item::all();
-        return view('Admin/ProductList',compact('dataproduct'));
+        return view('Admin/ProductList',compact('dataproduct','ccount','sccount','bcount'));
     }
     public function productdpage()
     {
@@ -93,14 +95,17 @@ class AdminController extends Controller
         return view('Admin/AddBrand');
     }public function categorypage()
     {
-        return view('Admin/CategoryList');
+        $datacategory=Category::all();
+        return view('Admin/CategoryList',compact('datacategory'));
     }
     public function subcategorypage()
     {
-        return view('Admin/SubcategoryList');
+        $datasubcategory=Subcategory::all();
+        return view('Admin/SubcategoryList',compact('datasubcategory'));
     }public function brandpage()
     {
-        return view('Admin/BrandList');
+        $databrand=Brand::all();
+        return view('Admin/BrandList',compact('databrand'));
     }
     /**
      * Show the form for creating a new resource.
