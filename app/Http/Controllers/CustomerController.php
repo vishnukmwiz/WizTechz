@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Admin;
+use App\Models\Customer;
 
 class CustomerController extends Controller
 {
@@ -15,6 +17,15 @@ class CustomerController extends Controller
     {
         //
     }
+    public function userprofile()
+    {
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $datauser=Admin::find($data2->id);
+        $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        return view('User/Profile',$data,compact('datauser','datacustomer'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

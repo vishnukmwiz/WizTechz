@@ -64,36 +64,43 @@
         <div class="col-6  ">
             <div class="row bg-white shadow p-3 m-1">
                 <div class="col">
-                   
-                    <img class="me-2 ms-2" width="100%" src="https://maxcdn.icons8.com/iOS7/PNG/512/Alphabet/100-512.png" alt="">
+                    <img class="me-2 ms-2" width="100%" src="{{ URL::asset('assets/images/'.$dataproduct->image) }}" alt="">
+                    <div class="row">
+                      <form action="/addstock/{{$dataproduct->id}}" class="form" method="post">
+                      {{csrf_field()}}
+                        <table class="table table-borderless">
+                          <tr>
+                            <td><input type="number" class="form-control m-2 col-12" name="ustock"></td>
+                            <td><button class="btn  btn-warning m-2 col-12"></i>Add To Stocks</button></td>
+                          </tr>
+                        </table>
+                      </form>
+                    </div>
                     <div class="row">
                             <a  class="btn btn-lg btn-outline-warning md-2" href={{"../EditProduct/".$dataproduct->id}}></i>Edit Product</a>
-                            <button class="btn btn-lg btn-warning mt-2 md-2"></i>Add More Stocks</button>
-                    </div>
+                    </div>   
                 </div>
             </div>
         </div>
         <div class="col-6 ">
             <div class="row p-3 m-1 bg-white shadow">
-                <h3 class="md-2" >{{$dataproduct->name}}</h3>
-                <h4>Cost Price: &#8377 45346</h4>
-                <h4>Selling Price: &#8377 45346</h4>
+                <h3 class="md-2" >{{$databrand->name}} {{$dataproduct->name}} {{$dataproduct->model}}</h3>
+                <h4>Cost Price: &#8377 {{$dataproduct->cprice}}</h4>
+                <h4>Selling Price: &#8377 {{$dataproduct->sprice}}</h4>
 
                 <table class="table table-borderless">
                     <tbody>
                         <tr>
                             <td><label class="fs-5" for="">Features</label></td>
-                            <td>
-                                <ul>
-                                    <li>sdfsdmgjv</li>
-                                    <li>sdfsdmgjv</li>
-                                    <li>sdfsdmgjv</li>
-                                </ul>
-                            </td>
+                            <td><label class="fs-5" for=""> {{$dataproduct->desc}}</label></td>
                         </tr>
                         <tr>
-                            <td><label class="fs-5" for="">Seller</label></td>
-                            <td><label class="fs-5" for="">new</label></td>
+                            <td><label class="fs-5" for="">Vendor</label></td>
+                            <td><label class="fs-5" for="">  {{$datavendor->name}}</label></td>
+                        </tr>
+                        <tr>
+                            <td><label class="fs-5" for="">Stock</label></td>
+                            <td><label class="fs-4 text-success" for=""> {{$dataproduct->stock}}</label></td>
                         </tr>
                     </tbody>
                 </table>
@@ -104,24 +111,20 @@
                             <table class="table table-borderless ">
                                 <tbody >
                                     <tr>
-                                        <td ><label for="">Seller</label></td>
-                                        <td><label for="">Seller</label></td>
+                                        <td ><label for="">Model Number</label></td>
+                                        <td><label for="">{{$dataproduct->model}}</label></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="">Seller</label></td>
-                                        <td><label for="">Seller</label></td>
+                                        <td><label for="">Inside Package</label></td>
+                                        <td><label for="">{{$dataproduct->package}}</label></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="">Seller</label></td>
-                                        <td><label for="">Seller</label></td>
+                                        <td><label for="">Dimensions</label></td>
+                                        <td><label for="">{{$dataproduct->size}}</label></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="">Seller</label></td>
-                                        <td><label for="">Seller</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="">Seller</label></td>
-                                        <td><label for="">Seller</label></td>
+                                        <td><label for="">Color</label></td>
+                                        <td><label for="">{{$dataproduct->color}}</label></td>
                                     </tr>
                                 </tbody>
                             </table>

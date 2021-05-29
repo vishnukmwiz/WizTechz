@@ -91,10 +91,10 @@ class AdminController extends Controller
     {
         $dataproduct=Item::find($id);
         $datavendor=Vendor::where('id','=',$dataproduct->vid)->first();
-        $datavendor=Category::where('id','=',$dataproduct->cid)->first();
+        $datacategory=Category::where('id','=',$dataproduct->cid)->first();
         $datasubcategory=Subcategory::where('id','=',$dataproduct->scid)->first();
         $databrand=Brand::where('id','=',$dataproduct->bid)->first();
-        return view('Admin/ProductDetails',compact('dataproduct','datavendor','datavendor','datasubcategory','databrand'));
+        return view('Admin/ProductDetails',compact('dataproduct','datavendor','datacategory','datasubcategory','databrand'));
     }
     public function productaddpage()
     {

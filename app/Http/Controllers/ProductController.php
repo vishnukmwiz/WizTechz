@@ -326,7 +326,16 @@ class ProductController extends Controller
          echo "success";
 
     }
-
+    public function updatestock(Request $request, $id)
+    {
+        $product = Item::find($id);
+        $oldstock = $product->stock;
+        $newstock = request("ustock");
+        $product->stock =$oldstock + $newstock;
+        $product->save();
+        echo "<script>alert('Successfully edited Stock');window.location='/Admin/ProductDetails/{$id}';</script>";
+         echo "success";
+    }
     /**
      * Remove the specified resource from storage.
      *
