@@ -62,8 +62,8 @@
       <div class="col-3 ">
         <div class="d-flex flex-column p-3 text-dark bg-White shadow" style="width: 100%;">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <img width="20%" src="https://th.bing.com/th/id/OIP.LR1V9zRTqWaBbL9fUdthCQHaHa?pid=ImgDet&rs=1" alt="">
-            <span class="fs-4">&nbsp Full Name</span>
+          <img class="rounded-circle" width="20%" src="{{ URL::asset('assets/images/'.$datacustomer->image) }}" alt="">
+            <span class="fs-4">{{ $LoggedUserInfo['name'] }}</span>
           </a>
         </div>
         <div class="d-flex flex-column mt-3 p-3 text-dark bg-White shadow" style="width: 100%;">

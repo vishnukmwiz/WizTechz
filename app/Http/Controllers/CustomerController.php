@@ -37,7 +37,10 @@ class CustomerController extends Controller
     public function passpage()
     {
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
-        return view('User/ChangePassword',$data);
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $datauser=Admin::find($data2->id);
+        $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        return view('User/ChangePassword',$data,compact('datauser','datacustomer'));
     }
 
 
