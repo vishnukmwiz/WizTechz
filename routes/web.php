@@ -22,8 +22,6 @@ use App\Http\Controllers\FeedbackController;
 |
 */
 
-
-
 Route::get('Admin/Home',[AdminController::class,'index']);
 Route::get('Admin/Orders',[AdminController::class,'orderpage']);
 Route::get('Admin/OrderDetails',[AdminController::class,'orderdpage']);
@@ -46,18 +44,19 @@ Route::get('Admin/AddBrand',[AdminController::class,'brandaddpage']);
 Route::get('Admin/CategoryList',[AdminController::class,'categorypage']);
 Route::get('Admin/SubcategoryList',[AdminController::class,'subcategorypage']);
 Route::get('Admin/BrandList',[AdminController::class,'brandpage']);
+
 Route::post('/addcategory',[ProductController::class,'categorystore']);
 Route::post('/addsubcategory',[ProductController::class,'subcategorystore']);
 Route::post('/addbrand',[ProductController::class,'brandstore']);
 Route::post('/addproduct',[ProductController::class,'productstore']);
-Route::post('/addvendor',[VendorController::class,'store']);
-Route::post('/editvendor/{id}',[VendorController::class,'update']);
 Route::post('/editcategory/{id}',[ProductController::class,'categoryupdate']);
 Route::post('/editsubcategory/{id}',[ProductController::class,'subcategoryupdate']);
 Route::post('/editbrand/{id}',[ProductController::class,'brandupdate']);
 Route::post('/editproduct/{id}',[ProductController::class,'productupdate']);
 Route::post('/addstock/{id}',[ProductController::class,'updatestock']);
 
+Route::post('/addvendor',[VendorController::class,'store']);
+Route::post('/editvendor/{id}',[VendorController::class,'update']);
 
 Route::get('Admin/PurchaseReport',[AdminController::class,'reportindex']);
 Route::post('Admin/PurchaseReport',[AdminController::class,'reportstore']);
@@ -65,6 +64,11 @@ Route::post('Admin/PurchaseReport',[AdminController::class,'reportstore']);
 Route::get('Admin/Reports',[AdminController::class,'reports']);
 
 Route::get('User/Profile',[CustomerController::class,'userprofile']);
+Route::get('User/EditProfile',[CustomerController::class,'editprofile']);
+Route::post('/editprofile/{id}',[CustomerController::class,'update']);
+Route::get('User/ChangePassword',[CustomerController::class,'passpage']);
+Route::post('/changepassword',[CustomerController::class,'changepassword']);
+Route::get('User/Logout',[MainController::class,'logout']);
 
 Route::post('Auth/Reg',[MainController::class,'save']);
 Route::post('Auth/Log',[MainController::class,'check']);

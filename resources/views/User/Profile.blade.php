@@ -117,8 +117,8 @@
                     </tr>
                 </table>
                 <div class="row justify-content-center align-items-center">
-                  <div class="col-4"><a href={{"EditProfile/".$datacustomer->id}} class="btn btn-outline-warning btn-lg">Edit My Profile</a></div>
-                  <div class="col-4"><a href={{"ChangePassword/".$datacustomer->id}} class="btn btn-outline-warning btn-lg">Change Password</a></div>  
+                  <div class="col-4"><a href="EditProfile" class="btn btn-outline-warning btn-lg">Edit My Profile</a></div>
+                  <div class="col-4"><a href="ChangePassword" class="btn btn-outline-warning btn-lg">Change Password</a></div>  
                 </div>
             </div>
             <div class="col-4">
