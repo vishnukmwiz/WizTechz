@@ -64,11 +64,17 @@ Route::post('Admin/PurchaseReport',[AdminController::class,'reportstore']);
 Route::get('Admin/Reports',[AdminController::class,'reports']);
 
 Route::get('User/Profile',[CustomerController::class,'userprofile']);
+Route::get('User/Addresses',[CustomerController::class,'address']);
+Route::get('User/AddAddress',[CustomerController::class,'addaddress']);
+Route::get('User/EditAddress/{id}',[CustomerController::class,'editaddress']);
 Route::get('User/EditProfile',[CustomerController::class,'editprofile']);
 Route::get('User/Cart',[CustomerController::class,'cart']);
 Route::post('/editprofile/{id}',[CustomerController::class,'update']);
+Route::post('/editaddress/{id}',[CustomerController::class,'updateaddress']);
+Route::get('/deleteaddress/{id}',[CustomerController::class,'deleteaddress']);
 Route::get('User/ChangePassword',[CustomerController::class,'passpage']);
 Route::post('/changepassword',[CustomerController::class,'changepassword']);
+Route::post('/addaddress',[CustomerController::class,'addaddresses']);
 Route::get('User/Logout',[MainController::class,'logout']);
 
 Route::post('Auth/Reg',[MainController::class,'save']);

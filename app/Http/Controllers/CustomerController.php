@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Customer;
+use App\Models\Address;
 use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
@@ -51,6 +52,34 @@ class CustomerController extends Controller
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
         return view('User/Cart',$data,compact('datauser','datacustomer'));
     }
+
+    public function address()
+    {
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $datauser=Admin::find($data2->id);
+        $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        $dataaddress=Address::where('cid','=',$datacustomer->id)->get();
+        return view('User/Addresses',$data,compact('datauser','datacustomer','dataaddress'));
+    }
+    public function addaddress()
+    {
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $datauser=Admin::find($data2->id);
+        $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        return view('User/AddAddress',$data,compact('datauser','datacustomer'));
+    }
+    public function editaddress($id)
+    {
+        
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $datauser=Admin::find($data2->id);
+        $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        $dataaddress=Address::where('id','=',$id)->first();
+        return view('User/EditAddress',$data,compact('datauser','datacustomer','dataaddress'));
+    }
     
 
     /**
@@ -69,9 +98,40 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function addaddresses(Request $request)
     {
-        //
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $acid=$data2->id;
+        $aname=request('name');
+        $aphone=request('phone');
+        $apin=request('pin');
+        $alocality=request('locality');
+        $aalternatephone=request('alternatephone');
+        $aaddress=request('address');
+        $acity=request('city');
+        $adistrict=request('district');
+        $astate=request('state');
+        $alandmark=request('landmark');
+        $atype=request('type');
+
+        $address = new Address();
+        $address->cid = $acid;
+        $address->name = $aname;
+        $address->phone = $aphone;
+        $address->pin = $apin;
+        $address->locality = $alocality;
+        $address->alternatephone = $aalternatephone;
+        $address->address = $aaddress;
+        $address->city = $acity;
+        $address->district = $adistrict;
+        $address->state = $astate;
+        $address->landmark = $alandmark;
+        $address->type = $atype;
+
+        $address->save();
+        echo "<script>alert('Address Added');window.location='User/Addresses';</script>";
+         echo "success";
+
     }
 
     /**
@@ -158,14 +218,52 @@ class CustomerController extends Controller
         }
 
     }
+    public function updateaddress(Request $request, $id)
+    {
+        $address = Address::find($id);
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $acid=$data2->id;
+        $aname=request('name');
+        $aphone=request('phone');
+        $apin=request('pin');
+        $alocality=request('locality');
+        $aalternatephone=request('alternatephone');
+        $aaddress=request('address');
+        $acity=request('city');
+        $adistrict=request('district');
+        $astate=request('state');
+        $alandmark=request('landmark');
+        $atype=request('type');
+
+        $address->cid = $acid;
+        $address->name = $aname;
+        $address->phone = $aphone;
+        $address->pin = $apin;
+        $address->locality = $alocality;
+        $address->alternatephone = $aalternatephone;
+        $address->address = $aaddress;
+        $address->city = $acity;
+        $address->district = $adistrict;
+        $address->state = $astate;
+        $address->landmark = $alandmark;
+        $address->type = $atype;
+
+        $address->save();
+        echo "<script>alert('Address Edited');window.location='../User/Addresses';</script>";
+         echo "success";
+
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteaddress($id)
     {
-        //
+        $address = Address::find($id);
+        $address->delete();
+        echo "<script>alert('Address Deleted');window.location='../User/Addresses';</script>";
+         echo "success";
     }
 }

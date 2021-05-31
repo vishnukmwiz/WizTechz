@@ -95,38 +95,70 @@
         </div>   
       </div>  
       <div class="col-9 p-4 bg-white shadow">
-        <h3>Saved Addresses</h3><br>
-        @foreach($dataaddress as $address)
-        <div class=" container bg-light  shadow unititem pb-3 pt-3 ">
-          <div class="row ">
-            <div class="col-3 ">
-              <label for="">{{$datacustomer->id}}</label><br>
-              <label for="">{{$address->name}}</label><br>
-              <label for="">{{$address->phone}}</label><br>
-              <label for="">{{$address->alternatephone}}</label><br>
-              <label for="">{{$address->type}}</label><br>
+        <h3 class="mt-4">Edit Address</h3>
+        <form action="/editaddress/{{$dataaddress->id}}" class="from" method="post">
+        {{ csrf_field() }}
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-borderless table-warning">
+                        <tr>
+                            <td><label for="">Name</label></td>
+                            <td><input type="text" class="form-control" name="name" value="{{$dataaddress->name}}"></td>
+                            <td><label for="">Phone</label></td>
+                            <td><input type="text" class="form-control" name="phone" value="{{$dataaddress->phone}}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="">Pin</label></td>
+                            <td><input type="text" class="form-control" name="pin" value="{{$dataaddress->pin}}"></td>
+                            <td><label for="">Locality</label></td>
+                            <td><input type="text" class="form-control" name="locality" value="{{$dataaddress->locality}}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="">City</label></td>
+                            <td><input type="text" class="form-control" name="city" value="{{$dataaddress->city}}"></td>
+                            <td><label for="">District</label></td>
+                            <td><input type="text" class="form-control" name="district" value="{{$dataaddress->district}}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="">State</label></td>
+                            <td><input type="text" class="form-control" name="state" value="{{$dataaddress->state}}"></td>
+                            <td><label for="">Landmark</label></td>
+                            <td><input type="text" class="form-control" name="landmark" value="{{$dataaddress->landmark}}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="">Alternate Phone</label></td>
+                            <td><input type="text" class="form-control" name="alternatephone" value="{{$dataaddress->alternatephone}}"></td>
+                            <td><label for="">Type</label></td>
+                            <!-- @if($dataaddress->type == 'Home')
+                              {{$a="selected"}}
+                              {{$b=""}}
+                            @elseif($dataaddress->type == 'Work')
+                              {{$a=""}}
+                              {{$b="selected"}}
+                            @else
+                              {{$a=""}}
+                              {{$b=""}}
+                            @endif -->
+                            <td><select class="form-select" name="type" id="type">
+                                    <option value="Home" {{$a}}>Home</option>
+                                    <option value="Work" {{$b}}>Work</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="">Address</label></td>
+                            <td colspan="3"><input type="text" class="form-control" name="address" value="{{$dataaddress->address}}"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><a href="Vendors" class="btn btn-outline-warning  col-12">CANCEL</a></td>
+                            <td></td>
+                            <td><button class="btn btn-warning  col-12">SAVE</button></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div class="col-4">
-              <address>
-                <label for="">{{$address->locality}}</label><br>
-                <label for="">{{$address->address}}</label><br>
-              </address>
-            </div>
-            <div class="col-3">
-              <label for="">{{$address->city}}</label><br>
-              <label for="">{{$address->district}}</label><br>
-              <label for="">{{$address->state}}</label><br>
-              <label for="">{{$address->landmark}}</label><br>
-              <label for="">{{$address->pin}}</label><br>
-            </div>
-            <div class="col-2">
-            <a href={{"EditAddress/".$address->id}} class="btn btn-outline-success mt-4 m-2 col-12"><i class=" bi bi-pencil"></i>Edit</a><br>
-            <a href={{"/deleteaddress/".$address->id}} class="btn btn-outline-danger mt-4 m-2 col-12"><i class=" bi bi-x"></i>Delete</a>
-            </div>
-          </div>
-        </div>
-        @endforeach
-        <a href="AddAddress" class="btn btn-warning btn-lg mt-4 m-2 col-12"><i class="fs-3 bi bi-plus"></i>Add New Address</a>
+        </form> 
       </div>
     </div>
   </div>  
