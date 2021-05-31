@@ -1,4 +1,4 @@
-@extends('Theme')
+@extends('User/Theme')
 @section('content')
 <header class="p-3 bg-dark text-white sticky-top">
   <div class="container">

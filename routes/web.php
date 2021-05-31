@@ -65,6 +65,7 @@ Route::get('Admin/Reports',[AdminController::class,'reports']);
 
 Route::get('User/Profile',[CustomerController::class,'userprofile']);
 Route::get('User/EditProfile',[CustomerController::class,'editprofile']);
+Route::get('User/Cart',[CustomerController::class,'cart']);
 Route::post('/editprofile/{id}',[CustomerController::class,'update']);
 Route::get('User/ChangePassword',[CustomerController::class,'passpage']);
 Route::post('/changepassword',[CustomerController::class,'changepassword']);

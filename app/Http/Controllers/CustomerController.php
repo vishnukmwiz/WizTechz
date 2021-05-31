@@ -43,6 +43,15 @@ class CustomerController extends Controller
         return view('User/ChangePassword',$data,compact('datauser','datacustomer'));
     }
 
+    public function cart()
+    {
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $datauser=Admin::find($data2->id);
+        $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        return view('User/Cart',$data,compact('datauser','datacustomer'));
+    }
+    
 
     /**
      * Show the form for creating a new resource.
