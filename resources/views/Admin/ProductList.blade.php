@@ -80,7 +80,7 @@
           <a href="BrandList" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Brands</h4>
-              <p>{{ $sccount }}</p> 
+              <p>{{ $bcount }}</p> 
             </div>
           </a>
         </div>

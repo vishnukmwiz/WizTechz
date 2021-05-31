@@ -62,13 +62,13 @@
       <h3>Vendor Details</h3>
       <div class="container ">
         <div class="row bg-white shadow">
-          <div class="col-4 p-4">
-            <label class="fs-5" for=""><strong>Vendor ID: </strong><i> {{$datavendor->id}}</i></label>
-            <label class="fs-5" for=""><strong>Vendor Name: </strong><i> {{$datavendor->name}}</i></label>
-            <label class="fs-5" for=""><strong>Phone Number: </strong><i> {{$datavendor->phone}}</i></label>
+          <div class="col-5 p-4">
+            <label class="fs-5" for=""><strong>Vendor ID: </strong><i> {{$datavendor->id}}</i></label><br>
+            <label class="fs-5" for=""><strong>Vendor Name: </strong><i> {{$datavendor->name}}</i></label><br>
+            <label class="fs-5" for=""><strong>Phone Number: </strong><i> {{$datavendor->phone}}</i></label><br>
             <label class="fs-5" for=""><strong>Email: </strong><i> {{$datavendor->email}}</i></label>
           </div>
-          <div class="col-4 p-4">
+          <div class="col-5 p-4">
             <strong class="fs-5">Address</strong>
             <address class="fs-5">
             {{$datavendor->room}} <br>
