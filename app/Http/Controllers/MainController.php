@@ -40,7 +40,7 @@ class MainController extends Controller
             $save = $user->save();
             $customer->cid =$user->id;
             $save2 = $customer->save();
-            if($save){
+            if($save && $save2){
                 return back()->with('success','User successfully registered');
             }else{
                 return back()->with('fail','Error in creating user account');

@@ -119,13 +119,15 @@
             
             <tbody>
             @foreach($dataproduct as $item)
+            <!-- @if($item->stock==0){{ $cls='text-danger'}}@else{{$cls='text-success'}}@endif -->
               <tr>
                 <th scope="row">{{ $item->id }}</th>
                 <td><img width="100px" src="{{ URL::asset('assets/images/'.$item->image) }}" alt=""></td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->sprice }}</td>
                 <td>{{ $item->cprice }}</td>
-                <td class="fs-4" >{{ $item->stock }}<br><a class="btn btn-outline-warning btn-sm " href="">Purchase New Stock</a></td>
+                
+                <td class="fs-4 {{$cls}}" >{{ $item->stock }}<br></td>
                 <td><a href={{"ProductDetails/".$item->id}}>View Details</a></td>
                 <td><a class="btn btn-outline-warning" href={{"EditProduct/".$item->id}}>Edit</a></td>
               </tr>

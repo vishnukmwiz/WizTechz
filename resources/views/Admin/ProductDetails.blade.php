@@ -84,7 +84,7 @@
         </div>
         <div class="col-6 ">
             <div class="row p-3 m-1 bg-white shadow">
-                <h3 class="md-2" >{{$databrand->name}} {{$dataproduct->name}} {{$dataproduct->model}}</h3>
+                <h3 class="md-2" >{{$databrand->name}} {{$dataproduct->model}}</h3>
                 <h4>Cost Price: &#8377 {{$dataproduct->cprice}}</h4>
                 <h4>Selling Price: &#8377 {{$dataproduct->sprice}}</h4>
 
@@ -100,14 +100,15 @@
                         </tr>
                         <tr>
                             <td><label class="fs-5" for="">Stock</label></td>
-                            <td><label class="fs-4 text-success" for=""> {{$dataproduct->stock}}</label></td>
+                            <!-- @if($dataproduct->stock==0){{ $cls='text-danger'}}@else{{$cls='text-success'}}@endif -->
+                            <td><label class="fs-4 {{$cls}}" for=""> {{$dataproduct->stock}}</label></td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="card ">
                     <h4 class="card-header">Specifications</h4>
                     <div class="card-body">
-                        <div class="col-6">
+                        <div class="col-12">
                             <table class="table table-borderless ">
                                 <tbody >
                                     <tr>

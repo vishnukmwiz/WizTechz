@@ -146,7 +146,7 @@
                 <td><input  name="image" type="file" class="form-control"></td>
               </tr>
               <tr>
-                <td><a href="ProductList" class="btn btn-outline-warning  col-12">CANCEL</a></td>
+                <td><a href="../ProductList" class="btn btn-outline-warning  col-12">CANCEL</a></td>
                 <td><button class="btn btn-warning  col-12">SAVE</button></td>
               </tr>
             </table>

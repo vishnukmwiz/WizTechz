@@ -8,6 +8,7 @@ use App\Models\Subcategory;
 use App\Models\Brand;
 use App\Models\Vendor;
 use App\Models\Item;
+use App\Models\Cpurchase;
 
 class ProductController extends Controller
 {
@@ -95,7 +96,7 @@ class ProductController extends Controller
         $scategory->desc=$scdesc;
 
         $scategory->save();
-        echo "<script>alert('Successfully Added Category');window.location='Admin/SubcategoryList';</script>";
+        echo "<script>alert('Successfully Added Sub-category');window.location='Admin/SubcategoryList';</script>";
          echo "success";
 
     }
@@ -120,7 +121,7 @@ class ProductController extends Controller
         $brand->logo=$name;
 
         $brand->save();
-        echo "<script>alert('Successfully Added Category');window.location='Admin/BrandList';</script>";
+        echo "<script>alert('Successfully Added Brand');window.location='Admin/BrandList';</script>";
          echo "success";
 
     }
@@ -169,7 +170,7 @@ class ProductController extends Controller
         $product->image=$name;
 
         $product->save();
-        echo "<script>alert('Successfully Added Category');window.location='Admin/ProductList';</script>";
+        echo "<script>alert('Successfully Added Product');window.location='Admin/ProductList';</script>";
          echo "success";
 
     }
@@ -227,7 +228,7 @@ class ProductController extends Controller
         $category->image=$name;
 
         $category->save();
-        echo "<script>alert('Successfully Added Category');window.location='/Admin/CategoryList';</script>";
+        echo "<script>alert('Successfully Edited Category');window.location='/Admin/CategoryList';</script>";
          echo "success";
 
     }
@@ -247,7 +248,7 @@ class ProductController extends Controller
         $scategory->desc=$scdesc;
 
         $scategory->save();
-        echo "<script>alert('Successfully Added Category');window.location='/Admin/SubcategoryList';</script>";
+        echo "<script>alert('Successfully Edited Sub-category');window.location='/Admin/SubcategoryList';</script>";
          echo "success";
 
     }
@@ -273,7 +274,7 @@ class ProductController extends Controller
         $brand->logo=$name;
 
         $brand->save();
-        echo "<script>alert('Successfully Added Category');window.location='/Admin/BrandList';</script>";
+        echo "<script>alert('Successfully Edited Brand');window.location='/Admin/BrandList';</script>";
          echo "success";
 
     }
@@ -322,7 +323,7 @@ class ProductController extends Controller
         $product->image=$name;
 
         $product->save();
-        echo "<script>alert('Successfully Added Category');window.location='/Admin/ProductList';</script>";
+        echo "<script>alert('Successfully Edited Product');window.location='/Admin/ProductDetails/{$id}';</script>";
          echo "success";
 
     }
@@ -333,6 +334,14 @@ class ProductController extends Controller
         $newstock = request("ustock");
         $product->stock =$oldstock + $newstock;
         $product->save();
+        $purchase = new Cpurchase();
+        $piid = $id;
+        $pqty = $newstock;
+        $pstatus = 'Purchase Confirmed';
+        $purchase->iid=$piid;
+        $purchase->qty=$pqty;
+        $purchase->status=$pstatus;
+        $purchase->save();
         echo "<script>alert('Successfully edited Stock');window.location='/Admin/ProductDetails/{$id}';</script>";
          echo "success";
     }

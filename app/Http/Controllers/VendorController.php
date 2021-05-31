@@ -60,7 +60,7 @@ class VendorController extends Controller
         $vendor->status=$vstatus;
 
         $vendor->save();
-        echo "<script>alert('Successfully Added Category');window.location='Admin/SubcategoryList';</script>";
+        echo "<script>alert('Successfully Added Category');window.location='Admin/Vendors';</script>";
          echo "success";
 
     }

@@ -55,7 +55,6 @@ class AdminController extends Controller
     {
         $datauser=Admin::find($id);
         $datacustomer=Customer::where('cid','=',$id)->first();
-        
         $datamorder=Morder::where('cid','=',$id)->get();
         return view('Admin/CustomerDetails',compact('datauser','datacustomer','datamorder'));
     }

@@ -122,7 +122,7 @@ class CustomerController extends Controller
         $user->name=$uname;
         $user->save();
        
-        echo "<script>alert('Successfully edited vendor');window.location='/User/Profile';</script>";
+        echo "<script>alert('User Profile Updated');window.location='/User/Profile';</script>";
          echo "success";
     }
 
@@ -140,7 +140,7 @@ class CustomerController extends Controller
             {
                 $change=Admin::where('phone','=',$getphone)->update(['password'=>$hashedPassword]); 
                
-                echo "<script>alert('Password Changed');window.location='User/Profile';</script>";
+                echo "<script>alert('Password Changed Successfully');window.location='User/Profile';</script>";
       
             }
             else{
@@ -152,7 +152,7 @@ class CustomerController extends Controller
         }
         else
         {
-            echo "<script>alert('Inputed Old Password is not recognized');window.location='User/ChangePassword';</script>"; 
+            echo "<script>alert('Incorrect Old Password');window.location='User/ChangePassword';</script>"; 
 
     
         }
