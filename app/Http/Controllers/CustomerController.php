@@ -7,6 +7,8 @@ use App\Models\Admin;
 use App\Models\Customer;
 use App\Models\Address;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Category;
+
 
 class CustomerController extends Controller
 {
@@ -57,10 +59,13 @@ class CustomerController extends Controller
     {
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
         $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $acid=$data2->id;
+        $check = Address::where('cid','=',$acid)->count();
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
         $dataaddress=Address::where('cid','=',$datacustomer->id)->get();
-        return view('User/Addresses',$data,compact('datauser','datacustomer','dataaddress'));
+        $datacategory=Category::all();
+        return view('User/Addresses',$data,compact('datauser','datacustomer','dataaddress','check','datacategory'));
     }
     public function addaddress()
     {
@@ -68,6 +73,7 @@ class CustomerController extends Controller
         $data2 = Admin::where('id','=',session('LoggedUser'))->first();
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        
         return view('User/AddAddress',$data,compact('datauser','datacustomer'));
     }
     public function editaddress($id)
@@ -102,6 +108,8 @@ class CustomerController extends Controller
     {
         $data2 = Admin::where('id','=',session('LoggedUser'))->first();
         $acid=$data2->id;
+        $check = Address::where('cid','=',$acid)->count();
+        if($check<5){
         $aname=request('name');
         $aphone=request('phone');
         $apin=request('pin');
@@ -131,7 +139,11 @@ class CustomerController extends Controller
         $address->save();
         echo "<script>alert('Address Added');window.location='User/Addresses';</script>";
          echo "success";
-
+        }
+        else{
+            echo "<script>alert('Only 5 Addresses allowed');window.location='User/Addresses';</script>";
+            echo "success";
+        }
     }
 
     /**

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Customer;
+use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Item;
+use App\Models\Brand;
 
 class MainController extends Controller
 {
@@ -84,7 +87,11 @@ class MainController extends Controller
 
     function userhome(){
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
-        return view('User/Home',$data);
+        $datacategory=Category::all();
+        $databrand=Brand::all();
+        $bcount=Brand::all()->count();
+        $dataitem=Item::all();
+        return view('User/Home',$data,compact('datacategory','dataitem','databrand','bcount'));
     }
 
     function authhome(){

@@ -1,5 +1,6 @@
 @extends('User/Theme')
 @section('usercontent')
+
 <header class="p-3 bg-dark text-white sticky-top">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -39,24 +40,26 @@
 </header>
 <nav class="navbar navbar-expand-lg navbar-white bg-white shadow">
   <div class=" me-lg-auto ms-lg-auto">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon bg-dark"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav gap-5">
+        @foreach($datacategory as $category)
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            {{$category->name}}
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" href="#">Action</a></li>
           </ul>
         </li>
+        @endforeach
       </ul>
     </div>
   </div>
 </nav>
-<main class="main m-2">
+
   <div class="container-fluid mt-3">
     <div class="row">
       <div class="col-3 ">
@@ -94,8 +97,9 @@
           </ul>
         </div>   
       </div>  
-      <div class="col-9 p-4 bg-white shadow">
-        <h3>Saved Addresses</h3><br>
+      <div class="col-9 p-4 bg-white shadow  mb-auto">
+        <h3>Saved Addresses</h3> <label for="">{{$check}} out of 5</label><br>
+        
         @foreach($dataaddress as $address)
         <div class=" container bg-light  shadow unititem pb-3 pt-3 ">
           <div class="row ">
@@ -125,9 +129,13 @@
             </div>
           </div>
         </div>
+        <hr width="0">
         @endforeach
-        <a href="AddAddress" class="btn btn-warning btn-lg mt-4 m-2 col-12"><i class="fs-3 bi bi-plus"></i>Add New Address</a>
+        @if($check < 5)
+        <a href="AddAddress" class="btn btn-warning btn-lg mt-4 m-2 col-12 mt-auto"><i class="fs-3 bi bi-plus"></i>Add New Address</a><br>
+        @endif
       </div>
     </div>
   </div>  
-</main>
+
+@endsection
