@@ -59,7 +59,17 @@ class CustomerController extends Controller
         $data2 = Admin::where('id','=',session('LoggedUser'))->first();
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
-        return view('User/Cart',$data,compact('datauser','datacustomer'));
+        $check=Morder::where('cid','=',$data2->id)->where('status','=','oncart')->count();
+        if($check == 0 )
+        {
+            return view('User/CartEmpty',$data,compact('datauser','datacustomer'));
+        }
+        else{
+            $morder=Morder::where('cid','=',$data2->id)->where('status','=','oncart')->first();
+            $corder=Corder::where('moid','=',$morder->id)->get();
+            return view('User/Cart',$data,compact('datauser','datacustomer','morder','corder'));
+        }
+        
     }
 
     public function address()

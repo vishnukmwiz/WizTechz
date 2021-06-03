@@ -69,6 +69,7 @@ Route::get('User/AddAddress',[CustomerController::class,'addaddress']);
 Route::get('User/EditAddress/{id}',[CustomerController::class,'editaddress']);
 Route::get('User/EditProfile',[CustomerController::class,'editprofile']);
 Route::get('User/Cart',[CustomerController::class,'cart']);
+Route::get('User/CartEmpty',[CustomerController::class,'cart']);
 Route::get('User/ProductList',[ProductController::class,'productlist']);
 Route::get('User/ProductDetails/{id}',[ProductController::class,'productdetails']);
 Route::post('/editprofile/{id}',[CustomerController::class,'update']);
@@ -80,6 +81,7 @@ Route::post('/addaddress',[CustomerController::class,'addaddresses']);
 Route::get('User/Logout',[MainController::class,'logout']);
 Route::get('/addtocart/{id}',[CustomerController::class,'addtocart']);
 Route::get('/checkout/{id}',[CustomerController::class,'checkout']);
+Route::get('/addtoqty/{qty}',[CustomerController::class,'addtoqty']);
 
 Route::post('Auth/Reg',[MainController::class,'save']);
 Route::post('Auth/Log',[MainController::class,'check']);

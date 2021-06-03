@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Corder extends Model
 {
     use HasFactory;
+    public function item(){
+        return $this->belongsTo('App\Models\Item','iid');
+    }
 }

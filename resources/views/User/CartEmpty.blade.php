@@ -1,5 +1,5 @@
-@extends('Theme')
-@section('content')
+@extends('User/Theme')
+@section('usercontent')
 <header class="p-3 bg-dark text-white sticky-top">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -38,7 +38,7 @@
     <div class="row m-2 ps-5 pe-5 bg-white">
         <h3 class="mt-2">My Cart</h3>
         <div class="col-6 d-flex flex-column justify-content-center align-items-center">
-            <img src="img/CartEmpty.png" alt="">
+            <img src="../assets/images/CartEmpty.png" alt="">
         </div>
         <div class="col-3 d-flex flex-column justify-content-center align-items-center">
             <label class="m-2" for="">Your cart is empty.Add items..</label>

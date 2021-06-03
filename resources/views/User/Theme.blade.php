@@ -50,6 +50,11 @@
     </footer>
     
     <script>
+        var qty   = window.document.getElementById('qty').value;
+        var link = "/addtoqty/";
+        window.location=link.concat(qty);
+    </script>
+    <script>
         let input = document.getElementById('form-check-input')
         let button = document.getElementById('delbtn')
 

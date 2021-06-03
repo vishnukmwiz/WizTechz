@@ -1,5 +1,5 @@
 @extends('User/Theme')
-@section('content')
+@section('usercontent')
 <header class="p-3 bg-dark text-white sticky-top">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -40,35 +40,38 @@
                 <div class="card">
                     <h5 class="card-header">My Cart</h5>
                     <div class="card-body">
+                      @foreach($corder as $child)
                         <div class="unititem">
                             <div class="row d-flex flex-row justify-content-center">
                                 <div class="col-2">
-                                    <img width="100%" src="https://maxcdn.icons8.com/iOS7/PNG/512/Alphabet/100-512.png" alt="">
+                                    <img width="100%" src="{{ URL::asset('assets/images/'.$child->item->image) }}" alt="">
                                 </div>
                                 <div class="col-6">
-                                    <h4 class="md-2" >Heading</h4>
+                                    <h4 class="md-2" >{{$child->item->name}}</h4>
                                     <tr>
                                         <td><label class="fs-6" for="">Seller</label></td>
-                                        <td><label class="fs-6" for="">new</label></td>
+                                        <td><label class="fs-6" for="">{{$child->item->vendor->name}}</label></td>
                                     </tr>
-                                    <h3>Price: &#8377 45346</h3>
+                                    <h3>Price: &#8377 {{$child->item->sprice}}</h3>
                                 </div>
                                 <div class="col-4">
                                     <tr>
                                         <td><label class="fs-7" for="">Delivery Expected by</label></td>
-                                        <td><label class="fs-7" for="">new</label></td>
+                                         <td><label class="fs-7 fw-bold" for=""> <!--{{$d= date_add($child->created_at,date_interval_create_from_date_string("5 days"))}}--> {{date_format($d,"d-M-y")}} </label></td> 
                                     </tr>
+                                    
+
                                 </div>
                             </div>
                             <div class="mt-2 d-flex flex-row justify-content-start gap-3">
-                                <button style="border-radius: 50%;" class="btn btn-warning"><</button>
-                                <input type="text" class="" size="1" disabled value="1">
-                                <button style="border-radius: 50%;" class="btn btn-warning">></button>
+                                
+                                <input id="qty" onChange="incQty()" type="number" class="form-control" style="width:70px;"  size="1" max="5" value="{{$child->quantity}}">
+                                <label for="">Units</label>
                                 <a href="" class="mbtn ms-2 me-2  fs-5 text-decoration-none">REMOVE</a>
-                                <a href="" class="mbtn ms-2 me-2  fs-5 text-decoration-none">SAVE FOR LATER</a>
                             </div>
                         </div>
                         <hr>
+                      @endforeach
                     </div>
                     <div class="card-footer shadow">
                         <button class="btn btn-warning btn-lg ps-5 pe-5 p-3" style="float:right">PLACE ORDER</button>
