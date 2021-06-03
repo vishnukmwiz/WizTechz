@@ -273,6 +273,7 @@
         <hr class="m-0">
         <div class="row row-cols-1 row-cols-md-4 g-4 md-auto m-1">
         @foreach($dataitem as $item)
+          <a class="text-decoration-none text-dark" href={{"ProductDetails/".$item->id}}>
           <div class="col">
           
             <div class="card h-100 shadow">
@@ -289,6 +290,7 @@
             </div>
           
           </div>
+          </a>
           @endforeach
         </div>
         <hr>

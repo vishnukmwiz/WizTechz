@@ -50,6 +50,16 @@ class ProductController extends Controller
         
         return view('User/ProductList',$data,compact('datavendor','datacategory','datasubcategory','databrand','dataitem'));
     }
+    public function productdetails($id)
+    {
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $dataitem=Item::find($id);
+        $datavendor=Vendor::where('id','=',$dataitem->vid)->first();
+        $datasubcategory=Subcategory::where('id','=',$dataitem->scid)->first();
+        $databrand=Brand::where('id','=',$dataitem->bid)->first();
+        $datacategory=Category::where('id','=',$datasubcategory->cid)->first();
+        return view('User/ProductDetails',$data,compact('datavendor','datacategory','datasubcategory','databrand','dataitem'));
+    }
 
     /**
      * Show the form for creating a new resource.
