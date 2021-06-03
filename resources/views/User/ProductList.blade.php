@@ -106,7 +106,7 @@
                   <ul class="list-unstyled ps-2">
                     <li class="mb-1">
                       <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse-sub" aria-expanded="false">
-                        
+                        Home
                       </button>
                       <div class="collapse" id="home-collapse-sub">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -272,18 +272,24 @@
         </div>
         <hr class="m-0">
         <div class="row row-cols-1 row-cols-md-4 g-4 md-auto m-1">
+        @foreach($dataitem as $item)
           <div class="col">
+          
             <div class="card h-100 shadow">
-              <img src="..." class="card-img-top" alt="...">
+              <img  class="p-4" src="{{ URL::asset('assets/images/'.$item->image) }}" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text">{{$item->name}}</p>
+                <p style="font-size:10px" class="m-0 p-0 card-text">{{$item->color}}</p>
+                <h4 class="card-title">&#8377 {{$item->sprice}}</h4>
+                
               </div>
               <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-muted">View more details <i class="bi bi-arrow-right"></i> </small>
               </div>
             </div>
+          
           </div>
+          @endforeach
         </div>
         <hr>
         <div class="row m-1">
