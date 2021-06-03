@@ -63,8 +63,8 @@
                 <div class="col-12">
                     <img class="me-2 ms-2 p-5" width="100%" src="{{ URL::asset('assets/images/'.$dataitem->image) }}" alt="">
                     <div class="row">
-                            <button class="btn btn-lg btn-outline-warning md-2"><i class="bi-cart-fill"></i> Add to cart</button>
-                            <button class="btn btn-lg btn-warning mt-2 md-2"><i class="bi-lightning-charge-fill"></i> Buy Now</button>
+                            <a href="/addtocart/{{$dataitem->id}}" class="btn btn-lg btn-outline-warning md-2"><i class="bi-cart-fill"></i> Add to cart</a>
+                            <a href="/checkout/{{$dataitem->id}}" class="btn btn-lg btn-warning mt-2 md-2"><i class="bi-lightning-charge-fill"></i> Buy Now</a>
                     </div>
                 </div>
             </div>
