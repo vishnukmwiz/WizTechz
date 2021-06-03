@@ -50,7 +50,10 @@
             {{$category->name}}
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            
+            @foreach($category->id as $catsub)
+            <li><a class="dropdown-item" href="#">{{$catsub->category->name}}</a></li>
+            @endforeach
           </ul>
         </li>
       @endforeach

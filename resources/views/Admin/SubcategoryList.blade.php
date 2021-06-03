@@ -77,6 +77,7 @@
             <thead>
               <tr>
                 <th scope="col">ID</th>
+                <th scope="col">Category</th>
                 <th scope="col">Sub-Category Name</th>
                 <th scope="col">Sub-Category Description</th>
                 <th></th>
@@ -87,6 +88,7 @@
             @foreach($datasubcategory as $subcategory)
               <tr>
                 <th scope="row">{{ $subcategory->id }}</th>
+                <td>{{ $subcategory->category->name }}</td>
                 <td>{{ $subcategory->name }}</td>
                 <td>{{ $subcategory->desc }}</td>
                 <td><a class="btn btn-outline-warning" href={{"EditSubcategory/".$subcategory->id}}>Edit</a></td>

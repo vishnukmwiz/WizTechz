@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Item;
 use App\Models\Brand;
+use App\Models\Subcategory;
 
 class MainController extends Controller
 {
@@ -88,10 +89,11 @@ class MainController extends Controller
     function userhome(){
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
         $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
         $databrand=Brand::all();
         $bcount=Brand::all()->count();
         $dataitem=Item::all();
-        return view('User/Home',$data,compact('datacategory','dataitem','databrand','bcount'));
+        return view('User/Home',$data,compact('datacategory','datasubcategory','dataitem','databrand','bcount'));
     }
 
     function authhome(){

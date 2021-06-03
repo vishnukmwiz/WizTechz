@@ -17,8 +17,6 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('vid');
             $table->foreign('vid')->references('id')->on('vendors')->onUpdate('cascade')->OnDelete('cascade');
-            $table->unsignedBigInteger('cid');
-            $table->foreign('cid')->references('id')->on('categories')->onUpdate('cascade')->OnDelete('cascade');
             $table->unsignedBigInteger('scid');
             $table->foreign('scid')->references('id')->on('subcategories')->onUpdate('cascade')->OnDelete('cascade');
             $table->unsignedBigInteger('bid');

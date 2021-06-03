@@ -69,6 +69,8 @@ Route::get('User/AddAddress',[CustomerController::class,'addaddress']);
 Route::get('User/EditAddress/{id}',[CustomerController::class,'editaddress']);
 Route::get('User/EditProfile',[CustomerController::class,'editprofile']);
 Route::get('User/Cart',[CustomerController::class,'cart']);
+Route::get('User/ProductList',[ProductController::class,'productlist']);
+Route::get('User/ProductDetails/{$id}',[ProductController::class,'productdetails']);
 Route::post('/editprofile/{id}',[CustomerController::class,'update']);
 Route::post('/editaddress/{id}',[CustomerController::class,'updateaddress']);
 Route::get('/deleteaddress/{id}',[CustomerController::class,'deleteaddress']);

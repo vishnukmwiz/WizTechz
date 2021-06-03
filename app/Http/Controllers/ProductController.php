@@ -38,6 +38,16 @@ class ProductController extends Controller
         $bdata=Brand::all();
         return view('Admin/EditProduct',compact('dataproduct','vdata','cdata','scdata','bdata'));
     }
+    public function productlist()
+    {
+        $datavendor=Vendor::all();
+        $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $dataitem=Item::all();
+        
+        return view('Admin/AddProduct',compact('datavendor','datacategory','datasubcategory','databrand','dataitem',''));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -83,6 +93,7 @@ class ProductController extends Controller
     public function subcategorystore(Request $request)
     {
         
+        $cname=request("cid");
         $scname=request("name");
         $scdesc=request("desc");
 
@@ -90,8 +101,10 @@ class ProductController extends Controller
             'name'=>'required',
         ]);
 
+        $category = Category::where('name','=', $cname)->first();
         $scategory = new Subcategory();
 
+        $scategory->cid=$category->id;
         $scategory->name=$scname;
         $scategory->desc=$scdesc;
 
@@ -128,7 +141,6 @@ class ProductController extends Controller
     public function productstore(Request $request)
     {
         $vname=request("vid");
-        $cname=request("cid");
         $sname=request("scid");
         $bname=request("bid");
         $pmodel=request("model");
@@ -148,14 +160,12 @@ class ProductController extends Controller
         ]);
 
         $vendor = Vendor::where('name','=', $vname)->first();
-        $category = Category::where('name','=', $cname)->first();
         $scategory = Subcategory::where('name','=', $sname)->first();
         $brand = Brand::where('name','=', $bname)->first();
         
         $product = new Item();
 
         $product->vid=$vendor->id;
-        $product->cid=$category->id;
         $product->scid=$scategory->id;
         $product->bid=$brand->id;
         $product->model=$pmodel;
@@ -235,6 +245,8 @@ class ProductController extends Controller
     public function subcategoryupdate(Request $request, $id)
     {
         $scategory = Subcategory::find($id);
+        
+        $cname=request("cid");
         $scname=request("name");
         $scdesc=request("desc");
 
@@ -242,8 +254,9 @@ class ProductController extends Controller
             'name'=>'required',
         ]);
 
+        $category = Category::where('name','=', $cname)->first();
         
-
+        $scategory->cid=$category->id;
         $scategory->name=$scname;
         $scategory->desc=$scdesc;
 
@@ -268,6 +281,7 @@ class ProductController extends Controller
         ]);
 
         
+        
 
         $brand->name=$bname;
         $brand->desc=$bdesc;
@@ -282,7 +296,6 @@ class ProductController extends Controller
     {
         $product = Item::find($id);
         $vname=request("vid");
-        $cname=request("cid");
         $sname=request("scid");
         $bname=request("bid");
         $pmodel=request("model");
@@ -302,14 +315,12 @@ class ProductController extends Controller
         ]);
 
         $vendor = Vendor::where('name','=', $vname)->first();
-        $category = Category::where('name','=', $cname)->first();
         $scategory = Subcategory::where('name','=', $sname)->first();
         $brand = Brand::where('name','=', $bname)->first();
         
         
 
         $product->vid=$vendor->id;
-        $product->cid=$category->id;
         $product->scid=$scategory->id;
         $product->bid=$brand->id;
         $product->model=$pmodel;

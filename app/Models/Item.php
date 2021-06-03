@@ -12,9 +12,6 @@ class Item extends Model
     public function vendor(){
         return $this->belongsTo('App\Models\Vendor','vid');
     }
-    public function category(){
-        return $this->belongsTo('App\Models\Category','cid');
-    }
     public function subcategory(){
         return $this->belongsTo('App\Models\Subcategory','scid');
     }

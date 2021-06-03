@@ -105,7 +105,8 @@ class AdminController extends Controller
     }
     public function subcategoryaddpage()
     {
-        return view('Admin/AddSubcategory');
+        $cdata=Category::all();
+        return view('Admin/AddSubcategory',compact('cdata'));
     }
     public function brandaddpage()
     {
@@ -131,8 +132,10 @@ class AdminController extends Controller
     }
     public function scateditpage($id)
     {
+        
         $datasubcategory=Subcategory::find($id);
-        return view('Admin/EditSubcategory',compact('datasubcategory'));
+        $cdata=Category::all()->where('id','!=',$datasubcategory->cid);
+        return view('Admin/EditSubcategory',compact('datasubcategory','cdata'));
     }
     public function brandeditpage($id)
     {

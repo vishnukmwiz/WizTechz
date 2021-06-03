@@ -66,6 +66,16 @@
           <div class="col-7">
             <table class="table table-borderless table-warning">
               <tr>
+                <td><label for="">Select Category</label></td>
+                <td>
+                  <select name="cid" class="form-select" >
+                    @foreach($cdata as $category)
+                      <option>{{$category->name }}</option>
+                    @endforeach 
+                  </select>
+                </td>
+              </tr>
+              <tr>
                 <td><label for="">Sub-Category Name</label></td>
                 <td><input type="text" class="form-control"  name="name" value="" ></td>
               </tr>
