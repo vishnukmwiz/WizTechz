@@ -56,9 +56,18 @@
   </div>
 </nav>
 <section class="section m-4">
+                    
 <div class="container-fluid">
+
     <div class="row gap-2 justify-content-center">
+    
         <div class="col-5  ">
+        @if(Session::get('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                        <a href="Cart">&nbsp View Cart</a>
+                    </div>
+                    @endif
             <div class="row bg-white shadow p-3">
                 <div class="col-12">
                     <img class="me-2 ms-2 p-5" width="100%" src="{{ URL::asset('assets/images/'.$dataitem->image) }}" alt="">

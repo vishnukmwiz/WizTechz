@@ -8,7 +8,11 @@ use App\Models\Customer;
 use App\Models\Address;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
-
+use App\Models\Morder;
+use App\Models\Subcategory;
+use App\Models\Brand;
+use App\Models\Corder;
+use App\Models\Item;
 
 class CustomerController extends Controller
 {
@@ -148,6 +152,26 @@ class CustomerController extends Controller
             echo "<script>alert('Only 5 Addresses allowed');window.location='User/Addresses';</script>";
             echo "success";
         }
+    }
+
+    public function addtocart($id)
+    {
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $datauser=Admin::find($data2->id);
+        $cartitem = Item::find($id);
+        
+        $morder = new Morder();
+        $morder->cid = $data2->id;
+        $morder->status = "oncart";
+        $morder->save();
+        $corder =new Corder();
+        $corder->moid = $morder->id;
+        $corder->iid = $cartitem->id;
+        $corder->quantity = '1';
+        $corder->save();
+
+        return back()->with('success','Product Added to Cart Succesfully');
     }
 
     /**

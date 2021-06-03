@@ -78,6 +78,8 @@ Route::get('User/ChangePassword',[CustomerController::class,'passpage']);
 Route::post('/changepassword',[CustomerController::class,'changepassword']);
 Route::post('/addaddress',[CustomerController::class,'addaddresses']);
 Route::get('User/Logout',[MainController::class,'logout']);
+Route::get('/addtocart/{id}',[CustomerController::class,'addtocart']);
+Route::get('/checkout/{id}',[CustomerController::class,'checkout']);
 
 Route::post('Auth/Reg',[MainController::class,'save']);
 Route::post('Auth/Log',[MainController::class,'check']);
