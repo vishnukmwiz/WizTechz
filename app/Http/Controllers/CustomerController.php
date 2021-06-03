@@ -27,7 +27,10 @@ class CustomerController extends Controller
         $data2 = Admin::where('id','=',session('LoggedUser'))->first();
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
-        return view('User/Profile',$data,compact('datauser','datacustomer'));
+        $datacategory=Category::all();
+        return view('User/Profile',$data,compact('datauser','datacustomer','datacategory'));
+        
+        
     }
     public function editprofile()
     {

@@ -23,7 +23,6 @@
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="Profile"><i class="bi bi-person-circle"> </i> User Profile</a></li>
                 <li><a class="dropdown-item" href="MyOrder"><i class="bi bi-handbag-fill"> </i> Orders</a></li>
-                <li><a class="dropdown-item" href="#"><i class="bi bi-heart-fill"> </i> Whishlist</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="Logout"><i class="bi bi-power"> </i> Logout</a></li>
               </ul>
@@ -81,7 +80,6 @@
               <ul class="list-group">
                 <li class="list-group-item active"><a class="text-dark text-decoration-none" href="Profile"><span class="fs-6">Profile Information</span></a></li>
                 <li class="list-group-item"><a class="text-dark text-decoration-none" href="Addresses"><span class="fs-6">Manage Addresses</span></a></li>
-                <li class="list-group-item"><a class="text-dark text-decoration-none" href=""><span class="fs-6">My Whislist</span></a></li>
                 <li class="list-group-item"><a class="text-dark text-decoration-none" href=""><span class="fs-6">My Ratings and Reviews</span></a></li>
               </ul>
             </li>

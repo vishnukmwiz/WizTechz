@@ -24,7 +24,6 @@
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="Profile"><i class="bi bi-person-circle"> </i> User Profile</a></li>
                 <li><a class="dropdown-item" href="MyOrder"><i class="bi bi-handbag-fill"> </i> Orders</a></li>
-                <li><a class="dropdown-item" href="#"><i class="bi bi-heart-fill"> </i> Whishlist</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="Logout"><i class="bi bi-power"> </i> Logout</a></li>
               </ul>
@@ -62,7 +61,7 @@
 
   <div class="container-fluid mt-3">
     <div class="row">
-      <div class="col-3 ">
+      <div class="col-sm-1 col-md-6 col-lg-3 ">
         <div class="d-flex flex-column p-3 text-dark bg-White shadow" style="width: 100%;">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <img class="rounded-circle" width="20%" src="{{ URL::asset('assets/images/'.$datacustomer->image) }}" alt="">
@@ -84,7 +83,6 @@
               <ul class="list-group">
                 <li class="list-group-item"><a class="text-dark text-decoration-none" href="Profile"><span class="fs-6">Profile Information</span></a></li>
                 <li class="list-group-item active"><a class="text-dark text-decoration-none" href="Addresses"><span class="fs-6">Manage Addresses</span></a></li>
-                <li class="list-group-item"><a class="text-dark text-decoration-none" href=""><span class="fs-6">My Whislist</span></a></li>
                 <li class="list-group-item"><a class="text-dark text-decoration-none" href=""><span class="fs-6">My Ratings and Reviews</span></a></li>
               </ul>
             </li>
@@ -97,8 +95,8 @@
           </ul>
         </div>   
       </div>  
-      <div class="col-9 p-4 bg-white shadow  mb-auto">
-        <h3>Saved Addresses</h3> <label for="">{{$check}} out of 5</label><br>
+      <div class="col-sm-12 col-md-6 col-lg-9 p-4 bg-white shadow  mb-auto">
+        <h3>Saved Addresses</h3> <label for="">{{$check}} saved addresses (can add {{5-$check}} more)</label><br>
         
         @foreach($dataaddress as $address)
         <div class=" container bg-light  shadow unititem pb-3 pt-3 ">

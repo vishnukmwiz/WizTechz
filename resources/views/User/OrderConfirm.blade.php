@@ -23,7 +23,6 @@
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle"> </i> User Profile</a></li>
                 <li><a class="dropdown-item" href="#"><i class="bi bi-handbag-fill"> </i> Orders</a></li>
-                <li><a class="dropdown-item" href="#"><i class="bi bi-heart-fill"> </i> Whishlist</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#"><i class="bi bi-power"> </i> Logout</a></li>
               </ul>
