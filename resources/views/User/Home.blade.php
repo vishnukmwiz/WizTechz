@@ -43,7 +43,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav gap-2">
-      @foreach($datacategory as $category)
+        <!-- {{$countp=0}}
+        @foreach($datacategory as $category)
+          @if($countp < 7) -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img class=" mt-1" width="70" height="70" src="{{ URL::asset('assets/images/'.$category->image) }}" alt="">
@@ -51,12 +53,18 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             
-            @foreach($category->id as $catsub)
-            <li><a class="dropdown-item" href="#">{{$catsub->category->name}}</a></li>
+            @foreach($datasubcategory as $catsub)
+            @if($category->id == $catsub->cid)
+            <li><a class="dropdown-item" href="#">{{$catsub->name}}</a></li>
+            @endif
             @endforeach
           </ul>
         </li>
-      @endforeach
+        <!-- {{$countp++}}
+          @else
+            break
+          @endif
+        @endforeach -->
       </ul>
     </div>
   </div>

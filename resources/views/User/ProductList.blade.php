@@ -1,5 +1,5 @@
-@extends('Theme')
-@section('content')
+@extends('User/Theme')
+@section('usercontent')
 <header class="p-3 bg-dark text-white sticky-top">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">

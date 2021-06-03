@@ -90,6 +90,7 @@ class CustomerController extends Controller
         return view('User/EditAddress',$data,compact('datauser','datacustomer','dataaddress'));
     }
     
+    
 
     /**
      * Show the form for creating a new resource.

@@ -77,17 +77,6 @@
                 </td>
               </tr>
               <tr>
-                <td><label for="">Select Category</label></td>
-                <td>
-                  <select name="cid" class="form-select" >
-                    <option value="{{ $dataproduct->category->name }}" selected>{{ $dataproduct->category->name }} </option>
-                    @foreach($cdata as $category)
-                      <option>{{$category->name }}</option>
-                    @endforeach 
-                  </select>
-                </td>
-              </tr>
-              <tr>
                 <td><label for="">Select Sub-Category</label></td>
                 <td>
                   <select name="scid" id="category" class="form-select">

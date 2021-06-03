@@ -9,6 +9,7 @@ use App\Models\Brand;
 use App\Models\Vendor;
 use App\Models\Item;
 use App\Models\Cpurchase;
+use App\Models\Admin;
 
 class ProductController extends Controller
 {
@@ -40,13 +41,14 @@ class ProductController extends Controller
     }
     public function productlist()
     {
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
         $datavendor=Vendor::all();
         $datacategory=Category::all();
         $datasubcategory=Subcategory::all();
         $databrand=Brand::all();
         $dataitem=Item::all();
         
-        return view('Admin/AddProduct',compact('datavendor','datacategory','datasubcategory','databrand','dataitem',''));
+        return view('User/ProductList',$data,compact('datavendor','datacategory','datasubcategory','databrand','dataitem'));
     }
 
     /**
