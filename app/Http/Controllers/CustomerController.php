@@ -161,15 +161,28 @@ class CustomerController extends Controller
         $datauser=Admin::find($data2->id);
         $cartitem = Item::find($id);
         
-        $morder = new Morder();
-        $morder->cid = $data2->id;
-        $morder->status = "oncart";
-        $morder->save();
-        $corder =new Corder();
-        $corder->moid = $morder->id;
-        $corder->iid = $cartitem->id;
-        $corder->quantity = '1';
-        $corder->save();
+        $check = Morder::where('cid','=',$data2->id)->where('status','=','oncart')->count();
+        
+        if($check == 0)
+        {
+            $morder = new Morder();
+            $morder->cid = $data2->id;
+            $morder->status = "oncart";
+            $morder->save();
+            $corder =new Corder();
+            $corder->moid = $morder->id;
+            $corder->iid = $cartitem->id;
+            $corder->quantity = '1';
+            $corder->save();
+        }
+        else{
+            $morder = Morder::where('cid','=',$data2->id)->where('status','=','oncart')->first();
+            $corder =new Corder();
+            $corder->moid = $morder->id;
+            $corder->iid = $cartitem->id;
+            $corder->quantity = '1';
+            $corder->save();
+        }
 
         return back()->with('success','Product Added to Cart Succesfully');
     }

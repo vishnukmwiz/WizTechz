@@ -65,7 +65,7 @@
         @if(Session::get('success'))
                     <div class="alert alert-success">
                         {{ Session::get('success') }}
-                        <a href="Cart">&nbsp View Cart</a>
+                        <a href="../Cart">&nbsp View Cart</a>
                     </div>
                     @endif
             <div class="row bg-white shadow p-3">
