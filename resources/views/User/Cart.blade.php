@@ -52,7 +52,7 @@
                                         <td><label class="fs-6" for="">Seller</label></td>
                                         <td><label class="fs-6" for="">{{$child->item->vendor->name}}</label></td>
                                     </tr>
-                                    <h3>Price: &#8377 {{$child->item->sprice}}</h3>
+                                    <h3>Price: &#8377 @if($child->quantity ==1){{$child->item->sprice}} @else {{$child->item->sprice}} X {{$child->quantity}} = &#8377 {{(int)$child->item->sprice * (int)$child->quantity}}@endif</h3>
                                 </div>
                                 <div class="col-4">
                                     <tr>
@@ -63,12 +63,24 @@
 
                                 </div>
                             </div>
-                            <div class="mt-2 d-flex flex-row justify-content-start gap-3">
-                                
-                                <input id="qty" onChange="incQty()" type="number" class="form-control" style="width:70px;"  size="1" max="5" value="{{$child->quantity}}">
-                                <label for="">Units</label>
+                            <div class="mt-2 d-flex flex-row align-items-center justify-content-start gap-3">
+                                <form action="/addtoqty/{{$child->id}}" method="POST">
+                                {{csrf_field()}}
+                                <table>
+                                  <tr>
+                                    <td><label for="">Quantity</label></td>
+                                    <td><input name="quantity" type="number" class="form-control" style="width:70px;"  size="1" min="1" max="5" value="{{$child->quantity}}"></td>
+                                    <td><button type="submit" class="btn btn-warning">Save</button></td>
+                                  </tr>
+                                </table>
+                                </form>
+                                  
                                 <a href="" class="mbtn ms-2 me-2  fs-5 text-decoration-none">REMOVE</a>
+                                @if(Session::get('saved'))
+                                    <label for="">{{ Session::get('saved') }}</label>
+                                  @endif
                             </div>
+                           
                         </div>
                         <hr>
                       @endforeach
@@ -83,7 +95,7 @@
                     <h5 class="card-header">PRICE DETAILS</h5>
                     <div class="card-body me-3 ms-3">
                         <div class="row mt-2">
-                            <div class="col-6"><label class="text-start fs-5" for="">Price</label></div>
+                            <div class="col-6"><label class="text-start fs-5" for="">Price()</label></div>
                             <div class="col-6 text-end"><label class=" fs-5" for="">Seller</label></div>
                         </div>
                         <div class="row mt-2">

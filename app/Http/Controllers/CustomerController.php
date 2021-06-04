@@ -197,6 +197,15 @@ class CustomerController extends Controller
         return back()->with('success','Product Added to Cart Succesfully');
     }
 
+    public function addtoqty(Request $request,  $id)
+    {
+        $corder = Corder::find($id);
+        $cqty=request('quantity');
+        $corder->quantity=$cqty;
+        $corder->save();
+        return back()->with('saved','Saved!');
+    }
+
     /**
      * Display the specified resource.
      *
