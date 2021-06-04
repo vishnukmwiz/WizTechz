@@ -59,15 +59,17 @@ class CustomerController extends Controller
         $data2 = Admin::where('id','=',session('LoggedUser'))->first();
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
-        $check=Morder::where('cid','=',$data2->id)->where('status','=','oncart')->count();
-        if($check == 0 )
+        $check=Morder::where('cid','=',$data2->id)->where('status','=','oncart')->first();
+        $check2=Corder::where('moid','=',$check->id)->count();
+        if($check2 == 0 )
         {
             return view('User/CartEmpty',$data,compact('datauser','datacustomer'));
         }
         else{
             $morder=Morder::where('cid','=',$data2->id)->where('status','=','oncart')->first();
             $corder=Corder::where('moid','=',$morder->id)->get();
-            return view('User/Cart',$data,compact('datauser','datacustomer','morder','corder'));
+            $itemcheck=Corder::where('moid','=',$morder->id)->count();
+            return view('User/Cart',$data,compact('datauser','datacustomer','morder','corder','itemcheck'));
         }
         
     }
@@ -104,7 +106,18 @@ class CustomerController extends Controller
         return view('User/EditAddress',$data,compact('datauser','datacustomer','dataaddress'));
     }
     
-    
+    public function checkout()
+    {
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $datauser=Admin::find($data2->id);
+        $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        $dataaddress=Address::where('cid','=',$datacustomer->id)->get();
+        $morder=Morder::where('cid','=',$data2->id)->where('status','=','oncart')->first();
+        $corder=Corder::where('moid','=',$morder->id)->get();
+        $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        return view('User/Checkout',$data,compact('datauser','datacustomer','dataaddress','morder','corder','itemcheck'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -206,6 +219,14 @@ class CustomerController extends Controller
         return back()->with('saved','Saved!');
     }
 
+    public function removecart($id)
+    {
+        $corder = Corder::find($id);
+        $corder->delete();
+        return back();
+        
+       
+    }
     /**
      * Display the specified resource.
      *

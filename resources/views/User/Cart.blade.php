@@ -75,7 +75,7 @@
                                 </table>
                                 </form>
                                   
-                                <a href="" class="mbtn ms-2 me-2  fs-5 text-decoration-none">REMOVE</a>
+                                <a href="/removecart/{{$child->id}}" class="mbtn ms-2 me-2  fs-5 text-decoration-none">REMOVE</a>
                                 @if(Session::get('saved'))
                                     <label for="">{{ Session::get('saved') }}</label>
                                   @endif
@@ -95,21 +95,21 @@
                     <h5 class="card-header">PRICE DETAILS</h5>
                     <div class="card-body me-3 ms-3">
                         <div class="row mt-2">
-                            <div class="col-6"><label class="text-start fs-5" for="">Price()</label></div>
-                            <div class="col-6 text-end"><label class=" fs-5" for="">Seller</label></div>
+                            <div class="col-6"><label class="text-start fs-5" for="">Price({{$itemcheck}} items)</label></div>
+                            <div class="col-6 text-end"><label class=" fs-5" for=""><!-- {{$price=0}} @foreach($corder as $child) {{$price = $price + ( (int)$child->item->sprice * (int)$child->quantity )}} @endforeach--> &#8377 {{$price}}</label></div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-6"><label class="text-start fs-5" for="">Discount</label></div>
-                            <div class="col-6 text-end"><label class="text-end fs-5" for="">Seller</label></div>
+                            <div class="col-6 text-end"><label class="text-end fs-5" for="">Not applicable</label></div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-6"><label class="text-start fs-5" for="">Delivery Charges</label></div>
-                            <div class="col-6 text-end"><label class="text-end fs-5" for="">Seller</label></div>
+                            <div class="col-6 text-end"><label class="text-end fs-5" for="">Free</label></div>
                         </div>
                         <hr class="dash">
                         <div class="row">
                             <div class="col-6"><label class="text-start fs-4" for="">Total Payable</label></div>
-                            <div class="col-6 text-end"><label class="text-end fs-4" for="">Seller</label></div>
+                            <div class="col-6 text-end"><label class="text-end fs-4" for="">&#8377 {{$price}}</label></div>
                         </div>
                         <hr class="dash">
                     </div>

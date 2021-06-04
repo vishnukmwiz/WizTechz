@@ -1,5 +1,5 @@
-@extends('Theme')
-@section('content')
+@extends('User/Theme')
+@section('usercontent')
 <header class="p-3 bg-dark text-white sticky-top">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -50,20 +50,20 @@
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                           <div class="accordion-body  m-1 ">
                             <div class="row">
-                              <table class="col-3 m-3">
+                              <table class="col-4 p-2">
                                   <tbody>
                                       <tr >
                                           <td><label for="">Name</label></td>
-                                          <td><strong><label for="">&nbsp Name</label></strong></td>
+                                          <td><strong><label for="">&nbsp {{$datauser->name}}</label></strong></td>
                                       </tr>
                                       <tr >
                                           <td><label for="">Number</label></td>
-                                          <td><strong><label for="">&nbsp Name</label></strong></td>
+                                          <td><strong><label for="">&nbsp {{$datauser->phone}}</label></strong></td>
                                       </tr>
                                   </tbody>
                               </table>
-                              <div class="col-8 m-3">
-                                  <a class="float-end" href="">Logout and login to another account</a>
+                              <div class="col-8 p-2">
+                                  <a class="float-end" href="Logout">Logout and login to another account</a>
                               </div>
                             </div>
                             <div class="row mt-2">
@@ -85,20 +85,23 @@
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
+                          @foreach($dataaddress as $address)
                             <div class="form-check mt-3">
-                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                              <label class="form-check-label" for="flexRadioDefault1">
-                                <strong>Name</strong><button class="btn btn-light btn-sm me-2 ms-2" disabled>Home</button><strong class="me-5">number</strong> <button class="btn btn-light btn-sm ms-5">&nbsp Edit &nbsp</button> <br>
-                                <address>this the address</address>
+                              <input class="form-check-input" type="radio" name="aid" value="{{$address->id}}" id="{{$address->id}}" checked>
+                              <label class="form-check-label" for="{{$address->id}}">
+                                <strong>{{$address->name}}</strong><button class="btn btn-light btn-sm me-2 ms-2" disabled>{{$address->type}}</button><strong class="me-5">{{$address->phone}}</strong> <a href="EditAddress/{{$address->id}}" class="btn btn-light btn-sm ms-5">&nbsp Edit &nbsp</a> <br>
+                                <address>
+                                  <label for="">{{$address->locality}}</label><br>
+                                  <label for="">{{$address->address}}</label><br>
+                                  <label for="">{{$address->city}}</label><br>
+                                  <label for="">{{$address->district}}</label><br>
+                                  <label for="">{{$address->state}}</label><br>
+                                  <label for="">{{$address->landmark}}</label><br>
+                                  <label for="">{{$address->pin}}</label><br>
+                                </address>
                               </label>
                             </div>
-                            <div class="form-check mt-3">
-                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                              <label class="form-check-label" for="flexRadioDefault2">
-                                <strong>Name</strong><button class="btn btn-light btn-sm me-2 ms-2" disabled>Home</button><strong class="me-5">number</strong> <button class="btn btn-light btn-sm ms-5">&nbsp Edit &nbsp</button> <br>
-                                <address>this the address</address>
-                              </label>
-                            </div>
+                          @endforeach
                             <button id="delbtn" class="btn btn-warning collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 DELIVER ON SELECTED ADDRESS
                             </button>
@@ -113,34 +116,50 @@
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
-                            <div class="unititem">
-                                <div class="row d-flex flex-row justify-content-center">
-                                    <div class="col-2">
-                                        <img width="100%" src="https://maxcdn.icons8.com/iOS7/PNG/512/Alphabet/100-512.png" alt="">
-                                    </div>
-                                    <div class="col-6">
-                                        <h4 class="md-2" >Heading</h4>
-                                        <tr>
-                                            <td><label class="fs-6" for="">Seller</label></td>
-                                            <td><label class="fs-6" for="">new</label></td>
-                                        </tr>
-                                        <h3>Price: &#8377 45346</h3>
-                                    </div>
-                                    <div class="col-4">
-                                        <tr>
-                                            <td><label class="fs-7" for="">Delivery Expected by</label></td>
-                                            <td><label class="fs-7" for="">new</label></td>
-                                        </tr>
-                                    </div>
+                          @foreach($corder as $child)
+                        <div class="unititem">
+                            <div class="row d-flex flex-row justify-content-center">
+                                <div class="col-2">
+                                    <img width="100%" src="{{ URL::asset('assets/images/'.$child->item->image) }}" alt="">
                                 </div>
-                                <div class="mt-2 d-flex flex-row justify-content-start gap-3">
-                                    <button style="border-radius: 50%;" class="btn btn-warning"><</button>
-                                    <input type="text" class="" size="1" disabled value="1">
-                                    <button style="border-radius: 50%;" class="btn btn-warning">></button>
-                                    <a href="" class="mbtn ms-2 me-2  fs-5 text-decoration-none">REMOVE</a>
+                                <div class="col-6">
+                                    <h4 class="md-2" >{{$child->item->name}}</h4>
+                                    <tr>
+                                        <td><label class="fs-6" for="">Seller</label></td>
+                                        <td><label class="fs-6" for="">{{$child->item->vendor->name}}</label></td>
+                                    </tr>
+                                    <h3>Price: &#8377 @if($child->quantity ==1){{$child->item->sprice}} @else {{$child->item->sprice}} X {{$child->quantity}} = &#8377 {{(int)$child->item->sprice * (int)$child->quantity}}@endif</h3>
+                                </div>
+                                <div class="col-4">
+                                    <tr>
+                                        <td><label class="fs-7" for="">Delivery Expected by</label></td>
+                                         <td><label class="fs-7 fw-bold" for=""> <!--{{$d= date_add($child->created_at,date_interval_create_from_date_string("5 days"))}}--> {{date_format($d,"d-M-y")}} </label></td> 
+                                    </tr>
+                                    
+
                                 </div>
                             </div>
-                            <hr>
+                            <div class="mt-2 d-flex flex-row align-items-center justify-content-start gap-3">
+                                <form action="/addtoqty/{{$child->id}}" method="POST">
+                                {{csrf_field()}}
+                                <table>
+                                  <tr>
+                                    <td><label for="">Quantity</label></td>
+                                    <td><input name="quantity" type="number" class="form-control" style="width:70px;"  size="1" min="1" max="5" value="{{$child->quantity}}"></td>
+                                    <td><button type="submit" class="btn btn-warning">Save</button></td>
+                                  </tr>
+                                </table>
+                                </form>
+                                  
+                                <a href="/removecart/{{$child->id}}" class="mbtn ms-2 me-2  fs-5 text-decoration-none">REMOVE</a>
+                                @if(Session::get('saved'))
+                                    <label for="">{{ Session::get('saved') }}</label>
+                                  @endif
+                            </div>
+                           
+                        </div>
+                        <hr>
+                      @endforeach
                             <div class="row">
                             <div class="col">
                             <button class=" btn btn-warning btn-lg collapsed float-end " type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
