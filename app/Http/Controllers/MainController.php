@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Item;
 use App\Models\Brand;
 use App\Models\Subcategory;
+use App\Models\Morder;
+use App\Models\Corder;
 
 class MainController extends Controller
 {
@@ -93,7 +95,10 @@ class MainController extends Controller
         $databrand=Brand::all();
         $bcount=Brand::all()->count();
         $dataitem=Item::all();
-        return view('User/Home',$data,compact('datacategory','datasubcategory','dataitem','databrand','bcount'));
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        $corder=Corder::where('moid','=',$morder->id)->get();
+        $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        return view('User/Home',$data,compact('datacategory','datasubcategory','dataitem','databrand','bcount','itemcheck'));
     }
 
     function authhome(){

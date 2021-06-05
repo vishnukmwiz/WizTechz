@@ -29,7 +29,7 @@
             </ul>
           </li>
           <li class="nav-item mt-3 mt-sm-3 mt-md-3 mt-lg-0">
-            <a class="text-decoration-none text-warning  me-5" href=""><i class="bi-cart "></i>Cart<sup><span class="badge bg-danger">0</span></sup></a>
+            <a class="text-decoration-none text-warning  me-5" href="Cart"><i class="bi-cart "></i>Cart @if($itemcheck != 0)<sup><span class="badge bg-danger">{{$itemcheck}}</span></sup>@endif</a>
           </li>
         </ul>
       </div>
@@ -52,7 +52,7 @@
             {{$category->name}}
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            
+            <li><a class="dropdown-item" href="#">{{$catsub->name}}</a></li>
             @foreach($datasubcategory as $catsub)
             @if($category->id == $catsub->cid)
             <li><a class="dropdown-item" href="#">{{$catsub->name}}</a></li>
