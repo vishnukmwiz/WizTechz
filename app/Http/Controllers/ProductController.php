@@ -46,9 +46,9 @@ class ProductController extends Controller
         $datacategory=Category::all();
         $datasubcategory=Subcategory::all();
         $databrand=Brand::all();
-        $dataitem=Item::all();
-        
-        return view('User/ProductList',$data,compact('datavendor','datacategory','datasubcategory','databrand','dataitem'));
+        $searchlist=Item::all();
+        $search=NULL;
+        return view('User/ProductList',$data,compact('datavendor','datacategory','datasubcategory','databrand','searchlist','search'));
     }
     public function productdetails($id)
     {

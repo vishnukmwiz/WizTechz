@@ -84,6 +84,8 @@ Route::get('/checkout/{id}',[CustomerController::class,'checkout']);
 Route::post('/addtoqty/{id}',[CustomerController::class,'addtoqty']);
 Route::get('/removecart/{id}',[CustomerController::class,'removecart']);
 Route::get('User/Checkout',[CustomerController::class,'checkout']);
+Route::post('User/ProductList',[CustomerController::class,'search']);
+
 
 Route::post('Auth/Reg',[MainController::class,'save']);
 Route::post('Auth/Log',[MainController::class,'check']);

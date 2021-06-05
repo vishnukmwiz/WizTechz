@@ -13,6 +13,7 @@ use App\Models\Subcategory;
 use App\Models\Brand;
 use App\Models\Corder;
 use App\Models\Item;
+use App\Models\Vendor;
 
 class CustomerController extends Controller
 {
@@ -119,6 +120,36 @@ class CustomerController extends Controller
         return view('User/Checkout',$data,compact('datauser','datacustomer','dataaddress','morder','corder','itemcheck'));
     }
 
+    public function search(Request $request)
+    {
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $datavendor=Vendor::all();
+        $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $dataitem=Item::all();
+        $search=request('search');
+        $searchsubcategory=Subcategory::where('name','LIKE','%'.$search.'%')->first();
+        $searchbrand=Brand::where('name','LIKE','%'.$search.'%')->first();
+        if($searchsubcategory == NULL && $searchbrand == NULL)
+        {
+            $searchlist=Item::where('name','LIKE','%'.$search.'%')->get();
+        }
+        elseif($searchsubcategory == NULL)
+        {
+            $searchlist=Item::where('name','LIKE','%'.$search.'%')->orwhere('bid','=',$searchbrand->id)->get();
+        }
+        elseif($searchbrand == NULL)
+        {
+            $searchlist=Item::where('name','LIKE','%'.$search.'%')->orwhere('scid','=',$searchsubcategory->id)->get();
+        }
+        else
+        {
+            $searchlist=Item::where('name','LIKE','%'.$search.'%')->orwhere('scid','=',$searchsubcategory->id)->orwhere('bid','=',$searchbrand->id)->get();
+        }
+        return view('User/ProductList',$data,compact('datavendor','datacategory','datasubcategory','databrand','dataitem','searchlist','search'));
+        
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -61,66 +61,11 @@
       <div class="col-3 ">
         <div class="d-flex flex-column p-3 text-dark bg-warning shadow" style="width: 100%;">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <span class="fs-4">Filter</span>
+            <span class="fs-4">Search By</span>
           </a>
-          <div class="d-grid gap-2 d-md-block">
-            <a class="visually-hidden btn btn-outline-light btn-sm text-dark text-decoration-none" href="">New <i class="bi-x"></i></a>
-          </div>
           <hr>
           <h6>CATEGORIES</h6>
-          <ul class="list-unstyled ps-0">
-            <li class="mb-1">
-              <button class="btn btn-toggle align-items-center collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-                Home
-              </button>
-              <div class="collapse" id="home-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <ul class="list-unstyled ps-2">
-                    <li class="mb-1">
-                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse-sub" aria-expanded="false">
-                        Home
-                      </button>
-                      <div class="collapse" id="home-collapse-sub">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                          <li><a href="#" class="link-dark rounded">Overview</a></li>
-                          <li><a href="#" class="link-dark rounded">Updates</a></li>
-                          <li><a href="#" class="link-dark rounded">Reports</a></li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                  <ul class="list-unstyled ps-2">
-                    <li class="mb-1">
-                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse-sub" aria-expanded="false">
-                        Home
-                      </button>
-                      <div class="collapse" id="home-collapse-sub">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                          <li><a href="#" class="link-dark rounded">Overview</a></li>
-                          <li><a href="#" class="link-dark rounded">Updates</a></li>
-                          <li><a href="#" class="link-dark rounded">Reports</a></li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                  <ul class="list-unstyled ps-2">
-                    <li class="mb-1">
-                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse-sub" aria-expanded="false">
-                        Home
-                      </button>
-                      <div class="collapse" id="home-collapse-sub">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                          <li><a href="#" class="link-dark rounded">Overview</a></li>
-                          <li><a href="#" class="link-dark rounded">Updates</a></li>
-                          <li><a href="#" class="link-dark rounded">Reports</a></li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </ul>
-              </div>
-            </li>
-          </ul>
+          
           <hr>
           <div class=" accordion accordion-flush" id="accordionPanelsStayOpenExample">
             <div class=" accordion-item bg-warning border-0">
@@ -255,24 +200,16 @@
         </div>     
       </div>
       <div class="col-9 bg-white shadow">
+         @if($search != '')
         <div class="row mt-2">
-          <nav class="m-0 " style="--bs-breadcrumb-divider: '>'; font-size:80%" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Library</li>
-            </ol>
-            <h5 class="md-2" >Heading <sub class="text-muted"> (Showing 41 – 80 products of 244 products)</sub></h5>
-          </nav>
-          <div class="btn-group">
-            <h6>Sort By</h6>
-            <a href="#" class="me-2 ms-2 active " aria-current="page">Active link</a>
-            <a href="#" class="me-2 ms-2">Link</a>
-            <a href="#" class="me-2 ms-2">Link</a>
-          </div>
+          
+            <h5 class="md-2" >Showing results for the Search " {{$search}} "</h5>
+          
         </div>
         <hr class="m-0">
+        @endif
         <div class="row row-cols-1 row-cols-md-4 g-4 md-auto m-1">
-        @foreach($dataitem as $item)
+        @foreach($searchlist as $item)
           <a class="text-decoration-none text-dark" href={{"ProductDetails/".$item->id}}>
           <div class="col">
           

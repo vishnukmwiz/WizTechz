@@ -12,8 +12,9 @@
       </a>
       
       <div class="collapse navbar-collapse " id="header">
-        <form class="d-flex">
-          <input type="search" size="40"  class="form-control form-control-dark" placeholder="Search for products, brands and more">
+        <form action="ProductList" method="POST"  class="d-flex">
+        {{csrf_field()}}
+          <input name="search" type="search" size="40"  class="form-control form-control-dark" placeholder="Search for products, brands and more">
           <button class="btn btn-outline-secondary" type="button"><i class="bi-search "></i></button>
         </form>
         <ul class="navbar-nav ms-auto mb-auto mb-lg-0 ">
@@ -52,7 +53,7 @@
             {{$category->name}}
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">{{$catsub->name}}</a></li>
+            <li><a class="dropdown-item" href="#">All {{$category->name}}</a></li>
             @foreach($datasubcategory as $catsub)
             @if($category->id == $catsub->cid)
             <li><a class="dropdown-item" href="#">{{$catsub->name}}</a></li>
