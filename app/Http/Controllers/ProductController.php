@@ -42,12 +42,30 @@ class ProductController extends Controller
     public function productlist()
     {
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $searchlist=Item::all();
+        $search=NULL;
+        if($_GET['cat'] != 0){
+            $a = $_GET['cat'];
+            $category=Category::where('id','=',$a)->first();
+            $searchlist=Item::join('subcategories','items.scid','=','subcategories.id')->where('cid','=',$category->id)->get();
+        }
+        elseif($_GET['sub'] != 0){
+            $a = $_GET['sub'];
+            $searchlist=Item::where('scid','=',$a)->get();
+        }
+        elseif($_GET['brand'] != 0){
+            $a = $_GET['brand'];
+            $searchlist=Item::where('bid','=',$a)->get();
+        }
+        else{
+            $searchlist=Item::all();
+            $search=NULL;
+        }
         $datavendor=Vendor::all();
         $datacategory=Category::all();
         $datasubcategory=Subcategory::all();
         $databrand=Brand::all();
-        $searchlist=Item::all();
-        $search=NULL;
+        
         return view('User/ProductList',$data,compact('datavendor','datacategory','datasubcategory','databrand','searchlist','search'));
     }
     public function productdetails($id)

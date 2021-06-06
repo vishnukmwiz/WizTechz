@@ -53,10 +53,10 @@
             {{$category->name}}
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">All {{$category->name}}</a></li>
+            <li><a class="dropdown-item" href="ProductList?cat={{$category->id}}&sub=0&brand=0">All {{$category->name}}</a></li>
             @foreach($datasubcategory as $catsub)
             @if($category->id == $catsub->cid)
-            <li><a class="dropdown-item" href="#">{{$catsub->name}}</a></li>
+            <li><a class="dropdown-item" href="ProductList?cat=0&sub={{$catsub->id}}&brand=0">{{$catsub->name}}</a></li>
             @endif
             @endforeach
           </ul>
@@ -191,7 +191,9 @@
       @if($countb < 12) -->
       <div class="col d-flex align-items-start">
         <div>
+          <a href="ProductList?cat=0&sub=0&brand={{$brand->id}}">
           <img width="80%" src="{{ URL::asset('assets/images/'.$brand->logo) }}" alt="">
+          </a>
         </div>
       </div>
       <!-- {{$countb++}}
