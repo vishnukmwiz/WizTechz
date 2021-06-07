@@ -85,7 +85,14 @@ class CustomerController extends Controller
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
         $dataaddress=Address::where('cid','=',$datacustomer->id)->get();
         $datacategory=Category::all();
-        return view('User/Addresses',$data,compact('datauser','datacustomer','dataaddress','check','datacategory'));
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $bcount=Brand::all()->count();
+        $dataitem=Item::all();
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        $corder=Corder::where('moid','=',$morder->id)->get();
+        $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        return view('User/Addresses',$data,compact('datauser','datacustomer','dataaddress','check','datacategory','datasubcategory','dataitem','databrand','bcount','itemcheck'));
     }
     public function addaddress()
     {
@@ -93,8 +100,17 @@ class CustomerController extends Controller
         $data2 = Admin::where('id','=',session('LoggedUser'))->first();
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $bcount=Brand::all()->count();
+        $dataitem=Item::all();
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        $corder=Corder::where('moid','=',$morder->id)->get();
+        $itemcheck=Corder::where('moid','=',$morder->id)->count();
         
-        return view('User/AddAddress',$data,compact('datauser','datacustomer'));
+        return view('User/AddAddress',$data,compact('datauser','datacustomer','datacategory','datasubcategory','dataitem','databrand','bcount','itemcheck'));
+        
     }
     public function editaddress($id)
     {
