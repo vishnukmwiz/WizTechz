@@ -84,6 +84,7 @@ Route::get('/checkout/{id}',[CustomerController::class,'checkout']);
 Route::post('/addtoqty/{id}',[CustomerController::class,'addtoqty']);
 Route::get('/removecart/{id}',[CustomerController::class,'removecart']);
 Route::get('User/Checkout',[CustomerController::class,'checkout']);
+Route::get('User/Checkout/{id}',[CustomerController::class,'buynow']);
 Route::post('User/ProductList',[CustomerController::class,'search']);
 Route::get('viewcat/{id}',[CustomerController::class,'viewcat']);
 Route::get('viewcat/{id}',[CustomerController::class,'viewcat']);

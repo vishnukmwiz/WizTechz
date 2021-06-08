@@ -33,8 +33,14 @@ class CustomerController extends Controller
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
         $datacategory=Category::all();
-        return view('User/Profile',$data,compact('datauser','datacustomer','datacategory'));
-        
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $bcount=Brand::all()->count();
+        $dataitem=Item::all();
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        $corder=Corder::where('moid','=',$morder->id)->get();
+        $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        return view('User/Profile',$data,compact('datauser','datacustomer','datacategory','datasubcategory','dataitem','databrand','bcount','itemcheck'));
         
     }
     public function editprofile()
@@ -43,7 +49,15 @@ class CustomerController extends Controller
         $data2 = Admin::where('id','=',session('LoggedUser'))->first();
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
-        return view('User/EditProfile',$data,compact('datauser','datacustomer'));
+        $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $bcount=Brand::all()->count();
+        $dataitem=Item::all();
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        $corder=Corder::where('moid','=',$morder->id)->get();
+        $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        return view('User/EditProfile',$data,compact('datauser','datacustomer','datacategory','datasubcategory','dataitem','databrand','bcount','itemcheck'));
     }
     public function passpage()
     {
@@ -51,7 +65,15 @@ class CustomerController extends Controller
         $data2 = Admin::where('id','=',session('LoggedUser'))->first();
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
-        return view('User/ChangePassword',$data,compact('datauser','datacustomer'));
+        $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $bcount=Brand::all()->count();
+        $dataitem=Item::all();
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        $corder=Corder::where('moid','=',$morder->id)->get();
+        $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        return view('User/ChangePassword',$data,compact('datauser','datacustomer','datacategory','datasubcategory','dataitem','databrand','bcount','itemcheck'));
     }
 
     public function cart()
@@ -120,7 +142,15 @@ class CustomerController extends Controller
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
         $dataaddress=Address::where('id','=',$id)->first();
-        return view('User/EditAddress',$data,compact('datauser','datacustomer','dataaddress'));
+        $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $bcount=Brand::all()->count();
+        $dataitem=Item::all();
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        $corder=Corder::where('moid','=',$morder->id)->get();
+        $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        return view('User/EditAddress',$data,compact('datauser','datacustomer','dataaddress','datacategory','datasubcategory','dataitem','databrand','bcount','itemcheck'));
     }
     
     public function checkout()
@@ -131,6 +161,31 @@ class CustomerController extends Controller
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
         $dataaddress=Address::where('cid','=',$datacustomer->id)->get();
         $morder=Morder::where('cid','=',$data2->id)->where('status','=','oncart')->first();
+        $corder=Corder::where('moid','=',$morder->id)->get();
+        $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        return view('User/Checkout',$data,compact('datauser','datacustomer','dataaddress','morder','corder','itemcheck'));
+    }
+
+    public function buynow($id)
+    {
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $datauser=Admin::find($data2->id);
+        $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        $dataaddress=Address::where('cid','=',$datacustomer->id)->get();
+
+        $cartitem = Item::find($id);
+        $morder = new Morder();
+        $morder->cid = $data2->id;
+        $morder->status = "buynow";
+        $morder->save();
+        $corder =new Corder();
+        $corder->moid = $morder->id;
+        $corder->iid = $cartitem->id;
+        $corder->quantity = '1';
+        $save = $corder->save();
+
+        $morder=Morder::where('cid','=',$data2->id)->where('status','=','buynow')->first();
         $corder=Corder::where('moid','=',$morder->id)->get();
         $itemcheck=Corder::where('moid','=',$morder->id)->count();
         return view('User/Checkout',$data,compact('datauser','datacustomer','dataaddress','morder','corder','itemcheck'));

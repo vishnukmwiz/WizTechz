@@ -59,13 +59,13 @@
   <div class="container-fluid mt-3">
     <div class="row">
       <div class="col-3 ">
-        <div class="d-flex flex-column p-3 text-dark bg-White shadow" style="width: 100%;">
+        <div class="d-flex flex-column p-3 text-dark bg-white shadow" style="width: 100%;">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <img class="rounded-circle" width="20%" src="{{ URL::asset('assets/images/'.$datacustomer->image) }}" alt="">
             <span class="fs-4">{{ $LoggedUserInfo['name'] }}</span>
           </a>
         </div>
-        <div class="d-flex flex-column mt-3 p-3 text-dark bg-White shadow" style="width: 100%;">
+        <div class="d-flex flex-column mt-3 p-3 text-dark bg-white shadow" style="width: 100%;">
           <ul class="list-group">
             <li class="list-group-item active" aria-current="true"> 
               <a href="MyOrder" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">

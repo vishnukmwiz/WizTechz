@@ -71,17 +71,16 @@
     </div>
   </div>
 </nav>
-<main class="main m-2">
-  <div class="container-fluid mt-3">
+  <div class="container-fluid mt-3 mb-3">
     <div class="row">
       <div class="col-3 ">
-        <div class="d-flex flex-column p-3 text-dark bg-White shadow" style="width: 100%;">
+        <div class="d-flex flex-column p-3 text-dark bg-white shadow" style="width: 100%;">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <img class="rounded-circle" width="20%" src="{{ URL::asset('assets/images/'.$datacustomer->image) }}" alt="">
             <span class="fs-4">{{ $LoggedUserInfo['name'] }}</span>
           </a>
         </div>
-        <div class="d-flex flex-column mt-3 p-3 text-dark bg-White shadow" style="width: 100%;">
+        <div class="d-flex flex-column mt-3 p-3 text-dark bg-white shadow" style="width: 100%;">
           <ul class="list-group">
             <li class="list-group-item" aria-current="true"> 
               <a href="MyOrder" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -155,7 +154,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><a href="Vendors" class="btn btn-outline-warning  col-12">CANCEL</a></td>
+                            <td><a href="Addresses" class="btn btn-outline-warning  col-12">CANCEL</a></td>
                             <td></td>
                             <td><button class="btn btn-warning  col-12">SAVE</button></td>
                         </tr>
@@ -166,4 +165,3 @@
       </div>
     </div>
   </div>  
-</main>

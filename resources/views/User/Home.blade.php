@@ -15,9 +15,11 @@
         <form action="ProductList" method="POST"  class="d-flex">
         {{csrf_field()}}
           <input name="search" type="search" size="40"  class="form-control form-control-dark" placeholder="Search for products, brands and more">
-          <button class="btn btn-outline-secondary" type="button"><i class="bi-search "></i></button>
         </form>
         <ul class="navbar-nav ms-auto mb-auto mb-lg-0 ">
+          <li class="nav-item mt-3 mt-sm-3 mt-md-3 mt-lg-0">
+            <a class="text-decoration-none text-warning  me-5" href="ProductList?cat=0&sub=0&brand=0">Products</a>
+          </li>
           <li class="nav-item dropdown mt-3 mt-sm-3 mt-md-3 mt-lg-0">
             <a class="text-decoration-none text-warning dropdown-toggle me-5" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{ $LoggedUserInfo['name'] }}
