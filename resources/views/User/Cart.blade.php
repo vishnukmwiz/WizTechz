@@ -89,7 +89,7 @@
                       @endforeach
                     </div>
                     <div class="card-footer shadow">
-                        <button class="btn btn-warning btn-lg ps-5 pe-5 p-3" style="float:right">PLACE ORDER</button>
+                        <a href="Checkout" class="btn btn-warning btn-lg ps-5 pe-5 p-3" style="float:right">PLACE ORDER</a>
                     </div>
                 </div>
             </div>

@@ -96,7 +96,6 @@
               <ul class="list-group">
                 <li class="list-group-item active"><a class="text-dark text-decoration-none" href="Profile"><span class="fs-6">Profile Information</span></a></li>
                 <li class="list-group-item"><a class="text-dark text-decoration-none" href="Addresses"><span class="fs-6">Manage Addresses</span></a></li>
-                <li class="list-group-item"><a class="text-dark text-decoration-none" href=""><span class="fs-6">My Ratings and Reviews</span></a></li>
               </ul>
             </li>
             <br>
@@ -111,7 +110,6 @@
       <div class="d-flex flex-row d-block d-sm-block d-md-block d-lg-none mt-2 mb-2">
         <div class=" col-xs-4 "><a class="col-12 col-md- btn btn-outline-warning text-decoration-none active" href="Profile"><span class="fs-6">Profile Information</span></a></div>
         <div class=" col-xs-4 "><a class="col-12 btn btn-outline-warning text-decoration-none" href="Addresses"><span class="fs-6">Manage Addresses</span></a></div>
-        <div class=" col-xs-4 "><a class="col-12 btn btn-outline-warning text-decoration-none" href=""><span class="fs-6">My Ratings and Reviews</span></a></div>
       </div>
       <div class="col-sm-12 col-md-12 col-lg-9 p-4 bg-white shadow">
         <h3>Personal Information</h3><br>
