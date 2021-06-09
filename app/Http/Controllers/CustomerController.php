@@ -160,10 +160,12 @@ class CustomerController extends Controller
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
         $dataaddress=Address::where('cid','=',$datacustomer->id)->get();
+        $check = Address::where('cid','=',$datacustomer->id)->count();
         $morder=Morder::where('cid','=',$data2->id)->where('status','=','oncart')->first();
         $corder=Corder::where('moid','=',$morder->id)->get();
         $itemcheck=Corder::where('moid','=',$morder->id)->count();
-        return view('User/Checkout',$data,compact('datauser','datacustomer','dataaddress','morder','corder','itemcheck'));
+        $buynow='0';
+        return view('User/Checkout',$data,compact('datauser','datacustomer','dataaddress','morder','corder','itemcheck','buynow','check'));
     }
 
     public function buynow($id)
@@ -188,7 +190,8 @@ class CustomerController extends Controller
         $morder=Morder::where('cid','=',$data2->id)->where('status','=','buynow')->first();
         $corder=Corder::where('moid','=',$morder->id)->get();
         $itemcheck=Corder::where('moid','=',$morder->id)->count();
-        return view('User/Checkout',$data,compact('datauser','datacustomer','dataaddress','morder','corder','itemcheck'));
+        $buynow='1';
+        return view('User/Checkout',$data,compact('datauser','datacustomer','dataaddress','morder','corder','itemcheck','buynow'));
     }
 
     public function search(Request $request)

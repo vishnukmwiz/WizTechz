@@ -51,31 +51,7 @@
     
     
     <script>
-        let input = document.getElementById('form-check-input')
-        let button = document.getElementById('delbtn')
-
-        button.disabled = true
-
-        input.addEventListener("change", swapState)
-
-        function swapState() 
-        {
-            if(document.getElementById('form-check-input').checked == false) 
-          {
-            button.disabled = false
-          } else {
-            button.disabled = true
-          }
-        }
-
-        input.addEventListener("change", swapState)
         
-            if(document.getElementById('form-check-input').checked == true) {   
-            document.write("Summer radio button is selected");   
-            } else {  
-            document.write("Summer radio button is not selected");   
-            } 
-        }
 
         function myFunction() {
             var input, filter, ul, li, a, i, txtValue;

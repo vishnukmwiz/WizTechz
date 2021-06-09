@@ -78,11 +78,12 @@
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
+                            
                           @foreach($dataaddress as $address)
                             <div class="form-check mt-3">
-                              <input class="form-check-input" type="radio" name="aid" value="{{$address->id}}" id="{{$address->id}}" checked>
+                              <input class="form-check-input" type="radio" name="aid" checked value="{{$address->id}}" id="{{$address->id}}" >
                               <label class="form-check-label" for="{{$address->id}}">
-                                <strong>{{$address->name}}</strong><button class="btn btn-light btn-sm me-2 ms-2" disabled>{{$address->type}}</button><strong class="me-5">{{$address->phone}}</strong> <a href="EditAddress/{{$address->id}}" class="btn btn-light btn-sm ms-5">&nbsp Edit &nbsp</a> <br>
+                                <strong>{{$address->name}}</strong><button class="btn btn-light btn-sm me-2 ms-2" disabled>{{$address->type}}</button><strong class="me-5">{{$address->phone}}</strong> <a href="@if($buynow == 1) ../EditAddress/{{$address->id}} @else EditAddress/{{$address->id}} @endif" class="btn btn-light btn-sm ms-5">&nbsp Edit &nbsp</a> <br>
                                 <address>
                                   <label for="">{{$address->locality}}</label><br>
                                   <label for="">{{$address->address}}</label><br>
@@ -95,6 +96,64 @@
                               </label>
                             </div>
                           @endforeach
+                          <strong class="ms-5 me-5">OR</strong> 
+                          <div class="form-check mt-3 mb-3">
+                              <input class="form-check-input" type="radio" name="aid" value="" id="aid"   data-bs-toggle="collapse" data-bs-target="#address" aria-expanded="false" aria-controls="address">
+                              <label class="text-warning fw-bold" for="aid">ADD NEW ADDRESS</label><label id="address" class="form-check-label collapse" for="">
+                                <form action="/addaddress" class="from" method="post">
+                                  {{ csrf_field() }}
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <table class="table table-borderless table-warning">
+                                                <tr>
+                                                    <td><label for="">Name</label></td>
+                                                    <td><input type="text" class="form-control" name="name"></td>
+                                                    <td><label for="">Phone</label></td>
+                                                    <td><input type="text" class="form-control" name="phone"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="">Pin</label></td>
+                                                    <td><input type="text" class="form-control" name="pin"></td>
+                                                    <td><label for="">Locality</label></td>
+                                                    <td><input type="text" class="form-control" name="locality"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="">City</label></td>
+                                                    <td><input type="text" class="form-control" name="city"></td>
+                                                    <td><label for="">District</label></td>
+                                                    <td><input type="text" class="form-control" name="district"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="">State</label></td>
+                                                    <td><input type="text" class="form-control" name="state"></td>
+                                                    <td><label for="">Landmark</label></td>
+                                                    <td><input type="text" class="form-control" name="landmark"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="">Alternate Phone</label></td>
+                                                    <td><input type="text" class="form-control" name="alternatephone"></td>
+                                                    <td><label for="">Type</label></td>
+                                                    <td><select class="form-select" name="type" id="type">
+                                                            <option value="Home">Home</option>
+                                                            <option value="Work">Work</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="">Address</label></td>
+                                                    <td colspan="3"><input type="text" class="form-control" name="address"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox" name="" onclick="addcheck()" id="addresscheck" @if($check < 5) checked @endif><label for="addresscheck"></label> Add to saved addresses</td>
+                                                    <td colspan="2"><label class="@if($check < 5) text-success @else text-danger @endif" style="" id="addstatus" for="">@if($check < 5)This Address will be saved @else Already have 5 saved address @endif</label></td>
+                                                    <td></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </form> 
+                              </label>
+                            </div>
                             <button id="delbtn" class="btn btn-warning collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 DELIVER ON SELECTED ADDRESS
                             </button>
@@ -165,12 +224,12 @@
                         </div>
                     </div>
                     <div class="accordion-item mt-3">
-                        <h2 class="accordion-header" id="headingThree">
+                        <h2 class="accordion-header" id="headingFour">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                             PAYMENT OPTIONS
                           </button>
                         </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div class="accordion" id="accordionpay">
                                     <div class="accordion-item ">
@@ -320,4 +379,16 @@
         </div>
     </div>
 </section>
+<script>
+function addcheck() {
+            var checkBox = document.getElementById("addresscheck");
+            var text = document.getElementById("addstatus");
+            if (checkBox.checked == true){
+              addstatus.style.display = "block";
+            } else {
+              addstatus.style.display = "none";
+            }
+        }
+        
+</script>
 @endsection
