@@ -75,7 +75,7 @@
 
   <div class="container-fluid mt-3">
     <div class="row">
-      <div class="col-sm-1 col-md-6 col-lg-3 ">
+      <div class="col-lg-3 d-none d-lg-block d-xl-block d-xxl-block">
         <div class="d-flex flex-column p-3 text-dark bg-white shadow" style="width: 100%;">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <img class="rounded-circle" width="20%" src="{{ URL::asset('assets/images/'.$datacustomer->image) }}" alt="">
@@ -107,34 +107,32 @@
             </li>  
           </ul>
         </div>   
-      </div>  
-      <div class="col-sm-12 col-md-6 col-lg-9 p-4 bg-white shadow  mb-auto">
+      </div>
+      <div class="d-inline-flex d-sm-inline-flex d-md-inline-flex d-block d-sm-block d-md-block d-lg-none mt-2 mb-2">
+      <div class="col-4 col-xs-4 col-sm-4 col-md-4 "><a class="col-12 btn btn-outline-warning text-decoration-none" href="MyOrder"><span class="fs-6">My Orders & Details</span></a></div>        
+        <div class="col-4 col-xs-4 col-sm-4 col-md-4"><a class="col-12 btn btn-outline-warning text-decoration-none " href="Profile"><span class="">Profile Information</span></a></div>
+        <div class="col-4 col-xs-4 col-sm-4 col-md-4"><a class="col-12 btn btn-outline-warning text-decoration-none active" href="Addresses"><span class="">Manage Addresses</span></a></div>
+      </div> 
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4 bg-white shadow  mb-auto">
         <h3>Saved Addresses</h3> <label for="">{{$check}} saved addresses (can add {{5-$check}} more)</label><br>
         
         @foreach($dataaddress as $address)
         <div class=" container bg-light  shadow unititem pb-3 pt-3 ">
           <div class="row ">
-            <div class="col-3 ">
-              <label for="">{{$datacustomer->id}}</label><br>
-              <label for="">{{$address->name}}</label><br>
-              <label for="">{{$address->phone}}</label><br>
-              <label for="">{{$address->alternatephone}}</label><br>
-              <label for="">{{$address->type}}</label><br>
+            <div class="col-sm-12 col-md-6 col-lg-4 ">
+              <label class="fs-4" for="">{{$address->name}}</label><br>
+              <label for=""><strong>Phone: </strong>{{$address->phone}}</label><br>
+              <label for=""><strong>Alternate Phone: </strong>{{$address->alternatephone}}</label><br>
+              <label for=""><strong>Address Type: </strong>{{$address->type}}</label><br>
             </div>
-            <div class="col-4">
-              <address>
-                <label for="">{{$address->locality}}</label><br>
-                <label for="">{{$address->address}}</label><br>
-              </address>
-            </div>
-            <div class="col-3">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <label for="">{{$address->locality}} , {{$address->landmark}}</label><br>
+              <label for="">{{$address->address}}</label><br>
               <label for="">{{$address->city}}</label><br>
-              <label for="">{{$address->district}}</label><br>
-              <label for="">{{$address->state}}</label><br>
-              <label for="">{{$address->landmark}}</label><br>
+              <label for="">{{$address->district}} , {{$address->state}}</label><br>
               <label for="">{{$address->pin}}</label><br>
             </div>
-            <div class="col-2">
+            <div class="col-sm-12 col-md-12 col-lg-2">
             <a href={{"EditAddress/".$address->id}} class="btn btn-outline-success mt-4 m-2 col-12"><i class=" bi bi-pencil"></i>Edit</a><br>
             <a href={{"/deleteaddress/".$address->id}} class="btn btn-outline-danger mt-4 m-2 col-12"><i class=" bi bi-x"></i>Delete</a>
             </div>

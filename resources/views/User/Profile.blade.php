@@ -107,9 +107,10 @@
           </ul>
         </div>   
       </div>  
-      <div class="d-flex flex-row d-block d-sm-block d-md-block d-lg-none mt-2 mb-2">
-        <div class=" col-xs-4 "><a class="col-12 col-md- btn btn-outline-warning text-decoration-none active" href="Profile"><span class="fs-6">Profile Information</span></a></div>
-        <div class=" col-xs-4 "><a class="col-12 btn btn-outline-warning text-decoration-none" href="Addresses"><span class="fs-6">Manage Addresses</span></a></div>
+      <div class=" d-inline-flex d-sm-inline-flex d-md-inline-flex d-block d-sm-block d-md-block d-lg-none mt-2 mb-2">
+      <div class="col-4 col-xs-4 col-sm-4 col-md-4 "><a class="col-12 btn btn-outline-warning text-decoration-none" href="MyOrder"><span class="fs-6">My Orders & Details</span></a></div>
+        <div class="col-4 col-xs-4 col-sm-4 col-md-4 "><a class="col-12 btn btn-outline-warning text-decoration-none active" href="Profile"><span class="fs-6">Profile Information</span></a></div>
+        <div class="col-4 col-xs-4 col-sm-4 col-md-4 "><a class="col-12 btn btn-outline-warning text-decoration-none" href="Addresses"><span class="fs-6">Manage Addresses</span></a></div>
       </div>
       <div class="col-sm-12 col-md-12 col-lg-9 p-4 bg-white shadow">
         <h3>Personal Information</h3><br>
