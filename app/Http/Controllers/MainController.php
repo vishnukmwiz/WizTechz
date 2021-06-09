@@ -96,8 +96,14 @@ class MainController extends Controller
         $bcount=Brand::all()->count();
         $dataitem=Item::all();
         $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
-        $corder=Corder::where('moid','=',$morder->id)->get();
-        $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        if($morder == NULL)
+        {
+            $itemcheck = 0;
+        }
+        else{
+            $corder=Corder::where('moid','=',$morder->id)->get();
+            $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        }
         return view('User/Home',$data,compact('datacategory','datasubcategory','dataitem','databrand','bcount','itemcheck'));
     }
 
