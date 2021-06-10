@@ -8,8 +8,7 @@
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="nav-link" href="Profile">Profile</a>
-  <ul class="navbar-nav px-3">
+  <ul class="navbar-nav px-3 d-none d-sm-none d-md-block">
     <li class="nav-item text-nowrap">
       <a class="nav-link" href="../Auth/Logout">Sign out</a>
     </li>
@@ -17,7 +16,7 @@
 </header>
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <nav id="sidebarMenu" style="top:0" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -50,9 +49,9 @@
               <i class="bi bi-flag"> Reports</i> 
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link fs-6" href="Feedback">
-              <i class="bi bi-bookmark-star"> Feedbacks</i>
+          <li class="nav-item d-md-none">
+            <a class="nav-link fs-6" href="../Auth/Logout">
+              <i class="bi bi-power"> Sign out</i>
             </a>
           </li>
         </ul>

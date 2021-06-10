@@ -1,44 +1,65 @@
-@extends('Auth/Theme')
-@section('content')
-<header class="p-3 bg-dark text-white sticky-top">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="nav d-flex align-items-center text-decoration-none col-12 col-lg-auto mb-2 mb-md-0 mb-lg-0 me-lg-5">
-        <img class="bi me-1" width="40" height="40" src="https://th.bing.com/th/id/R4b30b35f8df3db92caa4c707abdfde9d?rik=P%2bfWnnC7Aun%2fhA&riu=http%3a%2f%2fwww.newdesignfile.com%2fpostpic%2f2009%2f09%2fcomputer-screen-icon_335081.png&ehk=u7FQZrl9ClBzzpR%2bK2WctwlD2wrOu1QEzbisuuxb0Ho%3d&risl=&pid=ImgRaw" alt="logo">
-        <label class="navbar-brand nav-link px-1 text-warning" for="logo">Wiz Techz</label>
+@extends('User/Theme')
+@section('usercontent')
+<header class="p-2 bg-dark text-white sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#header" aria-controls="header" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a href="/User/Home" class="navbar-brand text-secondary fs-3 ">
+        <img width="40" height="40" src="https://th.bing.com/th/id/R4b30b35f8df3db92caa4c707abdfde9d?rik=P%2bfWnnC7Aun%2fhA&riu=http%3a%2f%2fwww.newdesignfile.com%2fpostpic%2f2009%2f09%2fcomputer-screen-icon_335081.png&ehk=u7FQZrl9ClBzzpR%2bK2WctwlD2wrOu1QEzbisuuxb0Ho%3d&risl=&pid=ImgRaw" alt="logo">
+        Wiz Techz
       </a>
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-auto">
-        <div class="input-group" >
-          <input type="search" size="50" class="form-control form-control-dark" placeholder="Search for products, brands and more">
-          <button class="btn btn-outline-secondary" type="button"><i class="bi-search "></i></button>
-        </div>
-      </form>
-      <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-5">
-      <a href="Login"><button type="button" class="btn btn-warning">LOGIN</button></a>
-      </div>
-      <div class="text-end">
-      <a class="text-decoration-none text-warning fs-5" href=""><i class="bi-cart "></i>Cart<sup><span class="badge bg-danger">0</span></sup></a>
+      
+      <div class="collapse navbar-collapse " id="header">
+        <form action="ProductList" method="POST"  class="d-flex">
+        {{csrf_field()}}
+          <input name="search" type="search" size="40"  class="form-control form-control-dark" placeholder="Search for products, brands and more">
+        </form>
+        <ul class="navbar-nav ms-auto mb-auto mb-lg-0 ">
+          <li class="nav-item mt-3 mt-sm-3 mt-md-3 mt-lg-0">
+            <a href="Login" type="button" class="btn btn-warning me-5">LOGIN</a>
+          </li>
+          <li class="nav-item mt-3 mt-sm-3 mt-md-3 mt-lg-0">
+            <a class="text-decoration-none text-warning  me-5" href="ProductList?cat=0&sub=0&brand=0">Products</a>
+          </li>
+          <li class="nav-item mt-3 mt-sm-3 mt-md-3 mt-lg-0">
+            <a class="text-decoration-none text-warning  me-5" href="../User/Cart"><i class="bi-cart "></i>Cart</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
+  </nav>
 </header>
-
-<nav class="navbar navbar-expand-lg navbar-white bg-white shadow">
-  <div class=" me-lg-auto ms-lg-auto">
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary shadow">
+  <div class=" me-lg-auto ms-lg-auto me-sm-2 ms-sm-2 me-md-auto ms-md-auto">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span> Explore Products
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav gap-2">
+        <!-- {{$countp=0}}
+        @foreach($datacategory as $category)
+          @if($countp < 7) -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img class=" mt-1" width="70" height="70" src="https://th.bing.com/th/id/Rd05e168594a4adbc13589e963e16388e?rik=38EYuhDfwQHsYQ&riu=http%3a%2f%2fwww.newdesignfile.com%2fpostpic%2f2015%2f02%2fcomputer-icon-desktop_248447.png&ehk=N4kFuxxDfqArW4NXDVb12KgKe6AeoQz8D3L55mcoDTU%3d&risl=&pid=ImgRaw" alt="">
-            Dropdown
+            <img class=" mt-1" width="70" height="70" src="{{ URL::asset('assets/images/'.$category->image) }}" alt="">
+            {{$category->name}}
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="ProductList?cat={{$category->id}}&sub=0&brand=0">All {{$category->name}}</a></li>
+            @foreach($datasubcategory as $catsub)
+            @if($category->id == $catsub->cid)
+            <li><a class="dropdown-item" href="ProductList?cat=0&sub={{$catsub->id}}&brand=0">{{$catsub->name}}</a></li>
+            @endif
+            @endforeach
           </ul>
         </li>
+        <!-- {{$countp++}}
+          @else
+            break
+          @endif
+        @endforeach -->
       </ul>
     </div>
   </div>
@@ -53,24 +74,24 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="https://rukminim1.flixcart.com/flap/844/140/image/249048271c5e106d.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
+          <img src="../assets/images/learn-student-desktop.jpg" class="d-block w-100" alt="...">
+          <div style="margin-bottom: 6rem;margin-right: 32rem;" class=" carousel-caption d-none d-md-block ">
+            <h1 class="text-dark">Find the Laptop of your choice..</h1>
+            <a href="" class="btn btn-outline-warning btn-lg">Shop Now</a>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://rukminim1.flixcart.com/flap/844/140/image/249048271c5e106d.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
+          <img src="../assets/images/OMEN-X-2S-desktop.jpg" class="d-block w-100" alt="...">
+          <div style="margin-bottom: 6rem;margin-right: 32rem;" class=" carousel-caption d-none d-md-block ">
+            <h1 class="text-light">Welcome to world of Gaming Computers</h1>
+            <a href="" class="btn btn-warning btn-lg">Explore</a>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://rukminim1.flixcart.com/flap/844/140/image/249048271c5e106d.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
+          <img src="../assets/images/the-new-wonderful-acerprimary-large.jpg" class="d-block w-100" alt="...">
+          <div style="margin-bottom: 12rem;" class=" carousel-caption d-none d-md-block ">
+            <h1 class="text-dark ">Get all accessories for your PC</h1>
+            <a href="" class="btn btn-dark btn-lg">Shop Now</a>
           </div>
         </div>
       </div>
@@ -86,42 +107,96 @@
   </section>
 
   <section class="m-2">
+    <div class="card">
+      <div class="bg-dark card-header">
+            <a class="text-warning fs-2 navbar-brand" href="#">Trending Products</a>
+      </div>
+      <div class="card-body bg-dark">
+        <div class="row justify-content-center">
+        <!-- {{$count=0}}
+        @foreach($dataitem as $item)
+          @if($count < 4) -->
+          <div class="card me-2 ms-2 bg-light mt-2" style="width: 18rem;">
+          <a class="text-decoration-none text-dark" href="/User/ProductDetails/{{$item->id}}">
+            <img src="{{ URL::asset('assets/images/'.$item->image) }}" class="card-img-top p-4" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{$item->name}}</h5>
+              <p class="card-text fs-5">Price: &#8377 {{$item->sprice}}</p>
+              <p class="text-warning">View Details</p> 
+            </div>
+            </a>
+          </div>
+          <!-- {{$count++}}
+          @else
+            break
+          @endif
+        @endforeach -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="me-5 ms-5 mt-5 text-center">
+  <h1 >Available Items</h1>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+      
+      <!-- {{$countc=0}}
+        @foreach($datacategory as $category)
+          @if($countc < 4) -->
+      <div class="col d-flex align-items-start">
+        <div>
+          <h4 class="fw-bold mb-0">{{$category->name}}</h4>
+          <p>{{$category->desc}}</p>
+        </div>
+      </div>
+      <!-- {{$countc++}}
+          @else
+            break
+          @endif
+        @endforeach -->
+    </div>
+  </section>
+
+  <section class="m-2">
     <div>
-      	<img width="100%"  src="img/banner.jpg">
+      	<img width="100%"  src="../assets/images/homepage-primary-remote-solutions-large.jpg">
     </div>
     <div class="bg-dark row m-auto">
-    	<div class="col-4 text-center text-white">
-    		<h4>Something</h4>
-    		<p>Select from wide range of brands available.Choose the best one that suits you.</p>
+    	<div class="col-12 col-sm-12  col-lg-4 text-center text-white p-2">
+    		<h4 class="text-warning">Laptops & Desktops</h4>
+    		<p>Choose the best laptop or desktop according to you usage type.</p>
     	</div>
-    	<div class="col-4 text-center text-white">
-    		<h4>Something</h4>
-    		<p>Select from wide range of brands available.Choose the best one that suits you.</p>
+    	<div class="col-12 col-sm-12 col-lg-4 text-center text-white p-2">
+    		<h4 class="text-warning">Accessories & Peripherals</h4>
+    		<p>Find all accessories and all peripherals for your computer</p>
     	</div>
-    	<div class="col-4 text-center text-white">
-    		<h4>Something</h4>
+    	<div class="col-12 col-sm-12 col-lg-4 text-center text-white p-2">
+    		<h4 class="text-warning">Brands</h4>
     		<p>Select from wide range of brands available.Choose the best one that suits you.</p>
     	</div>
     </div>
   </section>
 
-  <section class="m-2">
-    <div class="card">
-      <div class="bg-dark card-header">
-            <a class="text-warning fs-2 navbar-brand" href="#">Active</a>
-      </div>
-      <div class="card-body bg-dark">
-        <div class="row">
-          <div class="card me-auto ms-auto bg-light" style="width: 18rem;">
-            <img src="https://th.bing.com/th/id/Rf8b5ed303c4eb3b3ab9c67b890139bbe?rik=fmz5hMM%2fUUWmJw&riu=http%3a%2f%2f2.bp.blogspot.com%2f_9vgJ1nwu_xA%2fTA4K0LghblI%2fAAAAAAAADnE%2fgFShkPhdra4%2fs640%2fmonitortestscreenshot5.gif&ehk=2zlOEJl3Ffj7nhqnPdJ8YqrdH288vX4xwA67xYNCNWo%3d&risl=&pid=ImgRaw" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-            </div>
-          </div>
+  <section class="me-2 ms-2 mt-5 text-center">
+  <h1 >Brands Available</h1>
+  <div class="row row-cols-4 row-cols-sm-4 row-cols-md-5 row-cols-lg-6 g-4 py-5 me-2 ms-2">
+      <!-- {{$countb=0}}
+      @foreach($databrand as $brand)
+      @if($countb < 12) -->
+      <div class="col d-flex align-items-start">
+        <div>
+          <a href="ProductList?cat=0&sub=0&brand={{$brand->id}}">
+          <img width="80%" src="{{ URL::asset('assets/images/'.$brand->logo) }}" alt="">
+          </a>
         </div>
       </div>
+      <!-- {{$countb++}}
+      @else
+        break
+      @endif
+      @endforeach -->
     </div>
   </section>
+  
 
 @endsection

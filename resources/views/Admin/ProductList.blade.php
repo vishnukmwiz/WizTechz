@@ -8,8 +8,7 @@
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="nav-link" href="Profile">Profile</a>
-  <ul class="navbar-nav px-3">
+  <ul class="navbar-nav px-3 d-none d-sm-none d-md-block">
     <li class="nav-item text-nowrap">
       <a class="nav-link" href="../Auth/Logout">Sign out</a>
     </li>
@@ -17,7 +16,7 @@
 </header>
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <nav id="sidebarMenu" style="top:0" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -50,9 +49,9 @@
               <i class="bi bi-flag"> Reports</i> 
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link fs-6" href="Feedback">
-              <i class="bi bi-bookmark-star"> Feedbacks</i>
+          <li class="nav-item d-md-none">
+            <a class="nav-link fs-6" href="../Auth/Logout">
+              <i class="bi bi-power"> Sign out</i>
             </a>
           </li>
         </ul>
@@ -60,35 +59,35 @@
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
       <div class="row mt-1 ">
-        <div class="col-sm-3 col-3 ">
+        <div class="col-sm-12 col-12 col-md-6 col-lg-3">
           <a href="CategoryList" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Categories</h4>
-              <p>{{ $ccount }}</p> 
+              <p class="d-none d-sm-none d-md-block">{{ $ccount }}</p> 
             </div>
           </a>
         </div>
-        <div class="col-sm-3 col-3 ">
+        <div class="col-sm-12 col-12 col-md-6 col-lg-3">
           <a href="SubcategoryList" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Sub-Categories</h4>
-              <p>{{ $sccount }}</p> 
+              <p class="d-none d-sm-none d-md-block">{{ $sccount }}</p> 
             </div>
           </a>
         </div>
-        <div class="col-sm-3 col-3 ">
+        <div class="col-sm-12 col-12 col-md-6 col-lg-3">
           <a href="BrandList" class="text-decoration-none text-dark">
             <div class="well p-2 shadow">
               <h4>Brands</h4>
-              <p>{{ $bcount }}</p> 
+              <p class="d-none d-sm-none d-md-block">{{ $bcount }}</p> 
             </div>
           </a>
         </div>
-        <div class="col-sm-3 col-3 ">
+        <div class="col-sm-12 col-12 col-md-6 col-lg-3">
           <a href="AddProduct" class="text-decoration-none text-dark">
             <div class="well p-2 shadow bg-warning">
               <h4><i class="bi bi-plus"></i>Add New Product</h4>
-              <p>Add new product & details</p> 
+              <p class="d-none d-sm-none d-md-block">Add new product & details</p> 
             </div>
           </a>
         </div>

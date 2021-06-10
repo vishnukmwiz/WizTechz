@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Models\Address;
 use App\Models\Admin;
 use App\Models\Brand;
 use App\Models\Category;
@@ -13,21 +15,14 @@ use App\Models\Customer;
 use App\Models\Corder;
 use App\Models\Morder;
 use App\Models\Cpurchase;
-use App\Models\Mpurchase;
 use App\Models\Sale;
 
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
-        
         $ucount=Admin::where('phone','NOT LIKE',"0123456789")->count();
         $pcount=Item::all()->count();
         $ocount=Morder::all()->count();
