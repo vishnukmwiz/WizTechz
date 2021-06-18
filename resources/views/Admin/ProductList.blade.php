@@ -122,7 +122,7 @@
               <tr>
                 <th scope="row">{{ $item->id }}</th>
                 <td><img width="100px" src="{{ URL::asset('assets/images/'.$item->image) }}" alt=""></td>
-                <td>{{ $item->name }}</td>
+                <td>{{$item->brand->name}} {{$item->model}} {{ $item->name }}</td>
                 <td>{{ $item->sprice }}</td>
                 <td>{{ $item->cprice }}</td>
                 
