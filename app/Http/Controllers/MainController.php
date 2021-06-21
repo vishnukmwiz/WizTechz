@@ -15,6 +15,7 @@ use App\Models\Corder;
 
 class MainController extends Controller
 {
+
     function login(){
         return view('Auth/Login');
     }
@@ -114,6 +115,14 @@ class MainController extends Controller
         $bcount=Brand::all()->count();
         $dataitem=Item::all();
         return view('Auth/Home',compact('datacategory','datasubcategory','dataitem','databrand','bcount'));
+    }
+    function index(){
+        $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $bcount=Brand::all()->count();
+        $dataitem=Item::all();
+        return view('/index',compact('datacategory','datasubcategory','dataitem','databrand','bcount'));
     }
     function pd(){
         return view('Auth/ProductDetails');

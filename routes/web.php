@@ -24,7 +24,7 @@ use App\Http\Controllers\FeedbackController;
 
 
 
-
+Route::get('/',[MainController::class,'index']);
 Route::post('Auth/Reg',[MainController::class,'save']);
 Route::post('Auth/Log',[MainController::class,'check']);
 Route::get('Auth/Logout',[MainController::class,'logout']);
