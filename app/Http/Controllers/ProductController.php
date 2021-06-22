@@ -10,6 +10,9 @@ use App\Models\Vendor;
 use App\Models\Item;
 use App\Models\Cpurchase;
 use App\Models\Admin;
+use App\Models\Customer;
+use App\Models\Morder;
+use App\Models\Corder;
 
 class ProductController extends Controller
 {
@@ -42,7 +45,23 @@ class ProductController extends Controller
     public function productlist()
     {
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $datauser=Admin::find($data2->id);
+        $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $bcount=Brand::all()->count();
         $searchlist=Item::all();
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        if($morder == NULL)
+        {
+            $itemcheck = 0;
+        }
+        else{
+            $corder=Corder::where('moid','=',$morder->id)->get();
+            $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        }
         $search=NULL;
         if($_GET['cat'] != 0){
             $a = $_GET['cat'];
@@ -61,12 +80,8 @@ class ProductController extends Controller
             $searchlist=Item::all();
             $search=NULL;
         }
-        $datavendor=Vendor::all();
-        $datacategory=Category::all();
-        $datasubcategory=Subcategory::all();
-        $databrand=Brand::all();
-        
-        return view('User/ProductList',$data,compact('datavendor','datacategory','datasubcategory','databrand','searchlist','search'));
+        $datavendor=Vendor::all();    
+        return view('User/ProductList',$data,compact('datauser','datacustomer','datavendor','datacategory','datasubcategory','databrand','searchlist','search','bcount','itemcheck'));
     }
     public function productdetails($id)
     {
@@ -76,7 +91,16 @@ class ProductController extends Controller
         $datasubcategory=Subcategory::where('id','=',$dataitem->scid)->first();
         $databrand=Brand::where('id','=',$dataitem->bid)->first();
         $datacategory=Category::where('id','=',$datasubcategory->cid)->first();
-        return view('User/ProductDetails',$data,compact('datavendor','datacategory','datasubcategory','databrand','dataitem'));
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        if($morder == NULL)
+        {
+            $itemcheck = 0;
+        }
+        else{
+            $corder=Corder::where('moid','=',$morder->id)->get();
+            $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        }
+        return view('User/ProductDetails',$data,compact('datavendor','datacategory','datasubcategory','databrand','dataitem','itemcheck'));
     }
 
     /**

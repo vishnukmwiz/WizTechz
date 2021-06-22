@@ -230,6 +230,7 @@ class CustomerController extends Controller
         $datauser=Admin::find($data2->id);
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
         $dataaddress=Address::where('cid','=',$datacustomer->id)->get();
+        $check = Address::where('cid','=',$datacustomer->id)->count();
 
         $cartitem = Item::find($id);
         $morder = new Morder();
@@ -252,7 +253,7 @@ class CustomerController extends Controller
             $itemcheck=Corder::where('moid','=',$morder->id)->count();
         }
         $buynow='1';
-        return view('User/Checkout',$data,compact('datauser','datacustomer','dataaddress','morder','corder','itemcheck','buynow'));
+        return view('User/Checkout',$data,compact('datauser','datacustomer','dataaddress','morder','corder','itemcheck','buynow','check'));
     }
 
     public function search(Request $request)
