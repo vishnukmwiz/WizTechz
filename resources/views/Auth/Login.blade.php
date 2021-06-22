@@ -61,7 +61,6 @@
 										<input type="password" class="form-control" name="password" size="40">
 										<span class="text-danger">@error('password'){{ $message }} @enderror</span>
 									</td>
-									<td><a class="text-warning text-decoration-none" href="">&nbsp Forgot?</a></td>
 			        			</tr>
 								<tr>
 									<td></td>

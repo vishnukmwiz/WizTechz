@@ -17,6 +17,17 @@ class CreateSalesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('moid');
             $table->foreign('moid')->references('id')->on('morders')->onUpdate('cascade')->OnDelete('cascade');
+            $table->string('name');
+            $table->string('phone');
+            $table->string('pin');
+            $table->string('locality');
+            $table->string('address');
+            $table->string('city');
+            $table->string('district');
+            $table->string('state');
+            $table->string('landmark');
+            $table->string('alternatephone');
+            $table->string('type');
             $table->string('paymode');
             $table->string('paystatus');
             $table->string('delistatus');

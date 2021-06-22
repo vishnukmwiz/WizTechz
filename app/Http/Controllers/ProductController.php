@@ -62,26 +62,31 @@ class ProductController extends Controller
             $corder=Corder::where('moid','=',$morder->id)->get();
             $itemcheck=Corder::where('moid','=',$morder->id)->count();
         }
+        $searchlistcount=Item::all()->count();
         $search=NULL;
         if($_GET['cat'] != 0){
             $a = $_GET['cat'];
             $category=Category::where('id','=',$a)->first();
             $searchlist=Item::join('subcategories','items.scid','=','subcategories.id')->where('cid','=',$category->id)->get();
+            $searchlistcount=Item::join('subcategories','items.scid','=','subcategories.id')->where('cid','=',$category->id)->get()->count();
         }
         elseif($_GET['sub'] != 0){
             $a = $_GET['sub'];
             $searchlist=Item::where('scid','=',$a)->get();
+            $searchlistcount=Item::where('scid','=',$a)->get()->count();
         }
         elseif($_GET['brand'] != 0){
             $a = $_GET['brand'];
             $searchlist=Item::where('bid','=',$a)->get();
+            $searchlistcount=Item::where('bid','=',$a)->get()->count();
         }
         else{
             $searchlist=Item::all();
+            $searchlistcount=Item::all()->count();
             $search=NULL;
         }
         $datavendor=Vendor::all();    
-        return view('User/ProductList',$data,compact('datauser','datacustomer','datavendor','datacategory','datasubcategory','databrand','searchlist','search','bcount','itemcheck'));
+        return view('User/ProductList',$data,compact('datauser','datacustomer','datavendor','datacategory','datasubcategory','databrand','searchlist','searchlistcount','search','bcount','itemcheck'));
     }
     public function productdetails($id)
     {

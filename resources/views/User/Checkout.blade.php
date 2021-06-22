@@ -78,7 +78,8 @@
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
-                            
+                          <form action="/addsale" id="checkout" method="POST">
+                          {{ csrf_field() }}
                           @foreach($dataaddress as $address)
                             <div class="form-check mt-3">
                               <input class="form-check-input" type="radio" name="aid" checked value="{{$address->id}}" id="{{$address->id}}" >
@@ -96,44 +97,44 @@
                               </label>
                             </div>
                           @endforeach
+                          </form>
                           <strong class="ms-5 me-5">OR</strong> 
                           <div class="form-check mt-3 mb-3">
-                              <input class="form-check-input" type="radio" name="aid" value="" id="aid"   data-bs-toggle="collapse" data-bs-target="#address" aria-expanded="false" aria-controls="address">
+                              <input class="form-check-input" type="radio" name="aid" value="0" id="0" form="checkout"  data-bs-toggle="collapse" data-bs-target="#address" aria-expanded="false" aria-controls="address">
                               <label class="text-warning fw-bold" for="aid">ADD NEW ADDRESS</label><label id="address" class="form-check-label collapse" for="">
-                                <form action="/addaddress" class="from" method="post">
-                                  {{ csrf_field() }}
+                                  
                                     <div class="row">
                                         <div class="col-12">
                                             <table class="table table-borderless table-warning">
                                                 <tr>
                                                     <td><label for="">Name</label></td>
-                                                    <td><input type="text" class="form-control" name="name"></td>
+                                                    <td><input type="text" class="form-control" name="name" form="checkout"></td>
                                                     <td><label for="">Phone</label></td>
-                                                    <td><input type="text" class="form-control" name="phone"></td>
+                                                    <td><input type="text" class="form-control" name="phone" form="checkout"></td>
                                                 </tr>
                                                 <tr>
                                                     <td><label for="">Pin</label></td>
-                                                    <td><input type="text" class="form-control" name="pin"></td>
+                                                    <td><input type="text" class="form-control" name="pin" form="checkout"></td>
                                                     <td><label for="">Locality</label></td>
-                                                    <td><input type="text" class="form-control" name="locality"></td>
+                                                    <td><input type="text" class="form-control" name="locality" form="checkout"></td>
                                                 </tr>
                                                 <tr>
                                                     <td><label for="">City</label></td>
-                                                    <td><input type="text" class="form-control" name="city"></td>
+                                                    <td><input type="text" class="form-control" name="city" form="checkout"></td>
                                                     <td><label for="">District</label></td>
-                                                    <td><input type="text" class="form-control" name="district"></td>
+                                                    <td><input type="text" class="form-control" name="district" form="checkout"></td>
                                                 </tr>
                                                 <tr>
                                                     <td><label for="">State</label></td>
-                                                    <td><input type="text" class="form-control" name="state"></td>
+                                                    <td><input type="text" class="form-control" name="state" form="checkout"></td>
                                                     <td><label for="">Landmark</label></td>
-                                                    <td><input type="text" class="form-control" name="landmark"></td>
+                                                    <td><input type="text" class="form-control" name="landmark" form="checkout"></td>
                                                 </tr>
                                                 <tr>
                                                     <td><label for="">Alternate Phone</label></td>
-                                                    <td><input type="text" class="form-control" name="alternatephone"></td>
+                                                    <td><input type="text" class="form-control" name="alternatephone" form="checkout"></td>
                                                     <td><label for="">Type</label></td>
-                                                    <td><select class="form-select" name="type" id="type">
+                                                    <td><select class="form-select" name="type" id="type" form="checkout">
                                                             <option value="Home">Home</option>
                                                             <option value="Work">Work</option>
                                                         </select>
@@ -141,10 +142,10 @@
                                                 </tr>
                                                 <tr>
                                                     <td><label for="">Address</label></td>
-                                                    <td colspan="3"><input type="text" class="form-control" name="address"></td>
+                                                    <td colspan="3"><input type="text" class="form-control" name="address" form="checkout"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><input type="checkbox" name="" onclick="addcheck()" id="addresscheck" @if($check < 5) checked @endif><label for="addresscheck"></label> Add to saved addresses</td>
+                                                    <td><input type="checkbox" name="check" form="checkout" onclick="addcheck()" id="addresscheck" @if($check < 5) checked @endif><label for="addresscheck"></label> Add to saved addresses</td>
                                                     <td colspan="2"><label class="@if($check < 5) text-success @else text-danger @endif" style="" id="addstatus" for="">@if($check < 5)This Address will be saved @else Already have 5 saved address @endif</label></td>
                                                     <td></td>
                                                 </tr>
@@ -168,6 +169,7 @@
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
+                          <input type="text" name="moid" value="{{$morder->id}}" hidden  id="" form="checkout">
                           @foreach($corder as $child)
                         <div class="unititem">
                             <div class="row d-flex flex-row justify-content-center">
@@ -234,7 +236,7 @@
                                 <div class="accordion" id="accordionpay">
                                     <div class="accordion-item ">
                                         <h5 class="accordion-header" id="payheadingOne">
-                                          <input class="form-check-input" type="radio" name="checkpay"    id="Checkpay1"     data-bs-toggle="collapse"      data-bs-target="#collapseOnePay" aria-expanded="false"       aria-controls="collapseOnePay">
+                                          <input class="form-check-input" type="radio" name="paymode"  form="checkout"  value="card"  id="Checkpay1"     data-bs-toggle="collapse"      data-bs-target="#collapseOnePay" aria-expanded="false"       aria-controls="collapseOnePay">
                                           Credit / Debit / ATM Card
                                         </h5>
                                         <div id="collapseOnePay" class="accordion-collapse collapse "     aria-labelledby="headingOnePay"                                       data-bs-parent="#accordionpay">
@@ -242,11 +244,11 @@
                                                 <div class="form-check mt-3">
                                                     <label class="form-check-label col-6" for="Checkpay1">
                                                         <form action="" class="form">
-                                                            <input type="number" class="form-control" pattern="   [0-9]{16}            "       placeholder="Card    Number">
+                                                            <input type="number" class="form-control" form="checkout"  pattern="   [0-9]{16}            "       placeholder="Card    Number">
                                                             <div class="row mt-3">
                                                                 <div class="col"> Valid thru</div>
                                                                 <div class="col">
-                                                                    <select class="form-control" name="month"     required=""               tabindex="4">
+                                                                    <select class="form-control" name="month"   form="checkout"  required=""               tabindex="4">
                                                                         <option disabled="" value="MM">MM</   option>
                                                                         <option value="01">01</option>
                                                                         <option value="02">02</option>
@@ -263,7 +265,7 @@
                                                                     </select>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <select class="form-control" name="year"      required=""                tabindex="5">
+                                                                    <select class="form-control" name="year"  form="checkout"    required=""                tabindex="5">
                                                                         <option disabled="" value="YY">YY</   option>
                                                                         <option value="21">21</option>
                                                                         <option value="22">22</option>
@@ -310,8 +312,8 @@
                                                             </div>
                                                             <div class="row mt-3">
                                                                 <div class="col-6 d-flex flex-row gap-3">
-                                                                    <input type="password"    class="form-control"     pattern=" [0-9]          {3}   "  size="3"   min="000"     max="999" maxlength="3"                 placeholder="CVV">
-                                                                    <button class="btn btn-warning">Pay</button>
+                                                                    <input type="password"    class="form-control"  form="checkout"    size="3"   min="000"     max="999" maxlength="3"                 placeholder="CVV">
+                                                                    <button class="btn btn-warning" form="checkout"  formaction="/addsales">Pay</button>
                                                                 </div>
                                                             </div>
                                                         </form>
@@ -322,7 +324,7 @@
                                     </div>
                                     <div class="accordion-item mt-3">
                                         <h5 class="accordion-header" id="headingTwoPay">
-                                          <input class="form-check-input" type="radio" name="checkpay"    id="Checkpay2"     data-bs-toggle="collapse"      data-bs-target="#collapseTwoPay" aria-expanded="false"       aria-controls="collapseTwoPay">
+                                          <input class="form-check-input" type="radio" name="paymode" value="cod" form="checkout"  id="Checkpay2"     data-bs-toggle="collapse"      data-bs-target="#collapseTwoPay" aria-expanded="false"       aria-controls="collapseTwoPay">
                                           Cash On Delivery
                                         </h5>
                                         <div id="collapseTwoPay" class="accordion-collapse collapse "     aria-labelledby="headingTwoPay"                                       data-bs-parent="#accordionpay">
@@ -335,8 +337,8 @@
                                                                 <img width="100%" src="https://1001freedownloads.s3.amazonaws.com/vector/thumb/106064/CAPTCHA_001.png" alt="">
                                                                 </div>
                                                                 <div class="col-6 d-flex flex-row gap-3">
-                                                                    <input type="password"    class="form-control"     pattern=" [0-9]          {3}   "  size="3"   min="000"     max="999" maxlength="3"                 placeholder="Enter The Captcha">
-                                                                    <button class="btn btn-warning">Confirm Order</button>
+                                                                    <input type="password"    class="form-control"   form="checkout"  pattern=" [0-9]          {3}   "  size="3"   min="000"     max="999" maxlength="3"                 placeholder="Enter The Captcha">
+                                                                    <button class="btn btn-warning" form="checkout" formaction="/addsales">Confirm Order</button>
                                                                 </div>
                                                             </div>
                                                         </form>
@@ -356,21 +358,21 @@
                     <h5 class="card-header">PRICE DETAILS</h5>
                     <div class="card-body me-3 ms-3">
                         <div class="row mt-2">
-                            <div class="col-6"><label class="text-start fs-5" for="">Price</label></div>
-                            <div class="col-6 text-end"><label class=" fs-5" for="">Seller</label></div>
+                            <div class="col-6"><label class="text-start fs-5" for="">Price({{$itemcheck}} items)</label></div>
+                            <div class="col-6 text-end"><label class=" fs-5" for=""><!-- {{$price=0}} @foreach($corder as $child) {{$price = $price + ( (int)$child->item->sprice * (int)$child->quantity )}} @endforeach--> &#8377 {{$price}}</label></div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-6"><label class="text-start fs-5" for="">Discount</label></div>
-                            <div class="col-6 text-end"><label class="text-end fs-5" for="">Seller</label></div>
+                            <div class="col-6 text-end"><label class="text-end fs-5" for="">Not applicable</label></div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-6"><label class="text-start fs-5" for="">Delivery Charges</label></div>
-                            <div class="col-6 text-end"><label class="text-end fs-5" for="">Seller</label></div>
+                            <div class="col-6 text-end"><label class="text-end fs-5" for="">Free</label></div>
                         </div>
                         <hr class="dash">
                         <div class="row">
                             <div class="col-6"><label class="text-start fs-4" for="">Total Payable</label></div>
-                            <div class="col-6 text-end"><label class="text-end fs-4" for="">Seller</label></div>
+                            <div class="col-6 text-end"><label class="text-end fs-4" for="">&#8377 {{$price}}</label></div>
                         </div>
                         <hr class="dash">
                     </div>

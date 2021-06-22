@@ -14,6 +14,7 @@ use App\Models\Brand;
 use App\Models\Corder;
 use App\Models\Item;
 use App\Models\Vendor;
+use App\Models\Sale;
 
 class CustomerController extends Controller
 {
@@ -264,27 +265,137 @@ class CustomerController extends Controller
         $datasubcategory=Subcategory::all();
         $databrand=Brand::all();
         $dataitem=Item::all();
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        if($morder == NULL)
+        {
+            $itemcheck = 0;
+        }
+        else{
+            $corder=Corder::where('moid','=',$morder->id)->get();
+            $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        }
         $search=request('search');
         $searchsubcategory=Subcategory::where('name','LIKE','%'.$search.'%')->first();
         $searchbrand=Brand::where('name','LIKE','%'.$search.'%')->first();
         if($searchsubcategory == NULL && $searchbrand == NULL)
         {
             $searchlist=Item::where('name','LIKE','%'.$search.'%')->get();
+            $searchlistcount=Item::where('name','LIKE','%'.$search.'%')->get()->count();
         }
         elseif($searchsubcategory == NULL)
         {
             $searchlist=Item::where('name','LIKE','%'.$search.'%')->orwhere('bid','=',$searchbrand->id)->get();
+            $searchlistcount=Item::where('name','LIKE','%'.$search.'%')->orwhere('bid','=',$searchbrand->id)->get()->count();
+        
         }
         elseif($searchbrand == NULL)
         {
             $searchlist=Item::where('name','LIKE','%'.$search.'%')->orwhere('scid','=',$searchsubcategory->id)->get();
+            $searchlistcount=Item::where('name','LIKE','%'.$search.'%')->orwhere('scid','=',$searchsubcategory->id)->get()->count();
         }
         else
         {
             $searchlist=Item::where('name','LIKE','%'.$search.'%')->orwhere('scid','=',$searchsubcategory->id)->orwhere('bid','=',$searchbrand->id)->get();
+            $searchlistcount=Item::where('name','LIKE','%'.$search.'%')->orwhere('scid','=',$searchsubcategory->id)->orwhere('bid','=',$searchbrand->id)->get()->count();
         }
-        return view('User/ProductList',$data,compact('datavendor','datacategory','datasubcategory','databrand','dataitem','searchlist','search'));
+        return view('User/ProductList',$data,compact('datavendor','itemcheck','searchlistcount','datacategory','datasubcategory','databrand','dataitem','searchlist','search'));
         
+    }
+
+    public function addsales(Request $request){
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $datauser=Admin::find($data2->id);
+        $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        $smoid = request('moid');
+        $aid=request('aid');
+        if($aid == 0)
+        {
+            $saname=request('name');
+            $saphone=request('phone');
+            $sapin=request('pin');
+            $salocality=request('locality');
+            $saalternatephone=request('alternatephone');
+            $saaddress=request('address');
+            $sacity=request('city');
+            $sadistrict=request('district');
+            $sastate=request('state');
+            $salandmark=request('landmark');
+            $satype=request('type');
+        }
+        else{
+            $dataaddress=Address::where('cid','=',$aid)->first();
+            $saname= $dataaddress->name;
+            $saphone= $dataaddress->phone;
+            $sapin= $dataaddress->pin;
+            $salocality= $dataaddress->locality;
+            $saalternatephone= $dataaddress->alternatephone;
+            $saaddress=$dataaddress->address;
+            $sacity=$dataaddress->city;
+            $sadistrict=$dataaddress->district;
+            $sastate=$dataaddress->state;
+            $salandmark=$dataaddress->landmark;
+            $satype=$dataaddress->type;
+        }
+        $savecheck = request('check');
+        if($savecheck == 'on'){
+            $check = Address::where('cid','=',$acid)->count();
+            if($check<5){
+                $aname=request('name');
+                $aphone=request('phone');
+                $apin=request('pin');
+                $alocality=request('locality');
+                $aalternatephone=request('alternatephone');
+                $aaddress=request('address');
+                $acity=request('city');
+                $adistrict=request('district');
+                $astate=request('state');
+                $alandmark=request('landmark');
+                $atype=request('type');
+
+                $address = new Address();
+                $address->cid = $acid;
+                $address->name = $aname;
+                $address->phone = $aphone;
+                $address->pin = $apin;
+                $address->locality = $alocality;
+                $address->alternatephone = $aalternatephone;
+                $address->address = $aaddress;
+                $address->city = $acity;
+                $address->district = $adistrict;
+                $address->state = $astate;
+                $address->landmark = $alandmark;
+                $address->type = $atype;
+
+                $address->save();
+            }
+        }
+        $spaymode = request('paymode');
+        if($spaymode == 'card'){
+            $spaystatus = "Paid";
+        }
+        else{
+            $spaystatus = "Not Paid";
+        }
+        $sdelistatus = "Not Delivered";
+
+        $sale = new Sale();
+        $sale->moid = $smoid ;
+        $sale->name = $saname;
+        $sale->phone = $saphone;
+        $sale->pin = $sapin;
+        $sale->locality = $salocality;
+        $sale->alternatephone = $saalternatephone;
+        $sale->address = $saaddress;
+        $sale->city = $sacity;
+        $sale->district = $sadistrict;
+        $sale->state = $sastate;
+        $sale->landmark = $salandmark;
+        $sale->type = $satype;
+        $sale->paymode = $spaymode;
+        $sale->paystatus = $spaystatus;
+        $sale->delistatus = $sdelistatus;
+        $sale->save();
     }
     /**
      * Show the form for creating a new resource.

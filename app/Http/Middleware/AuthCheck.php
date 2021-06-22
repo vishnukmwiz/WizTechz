@@ -16,7 +16,7 @@ class AuthCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!session()->has('LoggedUser') && ($request->path() !='Auth/Login' && $request->path() !='Auth/Register' && $request->path() !='Auth/Home' && $request->path() !='Auth/ProductList' && $request->path() !='Auth/ProductDetails')){
+        if(!session()->has('LoggedUser') && ($request->path() !='Auth/Login' && $request->path() !='Auth/Register' && $request->path() !='Auth/Home' && $request->path() !='Auth/ProductList')){
             return redirect('Auth/Login')->with('fail','You must be logged in');
         }
         $data =  Admin::where('id','=',session('LoggedUser'))->first();

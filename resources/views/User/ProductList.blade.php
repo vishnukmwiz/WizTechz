@@ -115,6 +115,15 @@
         </div>
         <hr class="m-0">
         @endif
+        @if($searchlistcount == 0)
+        <div class="row mt-2">
+          
+            <h5 class="md-2" >No results in this list</h5>
+          
+        </div>
+        <hr class="m-0">
+        @endif
+
         <div class="row row-cols-1 row-cols-md-4 g-4 md-auto m-1">
         @foreach($searchlist as $item)
           <a class="text-decoration-none text-dark" href={{"ProductDetails/".$item->id}}>

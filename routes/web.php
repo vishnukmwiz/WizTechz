@@ -32,7 +32,6 @@ Route::group(['middleware'=>['AuthCheck']],function(){
     Route::get('Auth/Login',[MainController::class,'login']);
     Route::get('Auth/Register',[MainController::class,'register']);
     Route::get('Auth/Home',[MainController::class,'authhome']);
-    Route::get('Auth/ProductDetails',[MainController::class,'pd']);
     Route::get('Auth/ProductList',[MainController::class,'pl']);
     Route::get('User/Home',[MainController::class,'userhome']);
     Route::get('User/Profile',[CustomerController::class,'userprofile']);
@@ -103,4 +102,6 @@ Route::group(['middleware'=>['AuthCheck']],function(){
     Route::post('User/ProductList',[CustomerController::class,'search']);
     Route::get('viewcat/{id}',[CustomerController::class,'viewcat']);
     Route::get('viewcat/{id}',[CustomerController::class,'viewcat']);
+    
+    Route::post('/addsales',[CustomerController::class,'addsales']);
 });

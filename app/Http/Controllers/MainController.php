@@ -12,6 +12,7 @@ use App\Models\Brand;
 use App\Models\Subcategory;
 use App\Models\Morder;
 use App\Models\Corder;
+use App\Models\Vendor;
 
 class MainController extends Controller
 {
@@ -124,11 +125,38 @@ class MainController extends Controller
         $dataitem=Item::all();
         return view('/index',compact('datacategory','datasubcategory','dataitem','databrand','bcount'));
     }
-    function pd(){
-        return view('Auth/ProductDetails');
-    }
+
     function pl(){
-        return view('Auth/ProductList');
+        $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $bcount=Brand::all()->count();
+        $searchlist=Item::all();
+        $searchlistcount=Item::all()->count();
+        $search=NULL;
+        if($_GET['cat'] != 0){
+            $a = $_GET['cat'];
+            $category=Category::where('id','=',$a)->first();
+            $searchlist=Item::join('subcategories','items.scid','=','subcategories.id')->where('cid','=',$category->id)->get();
+            $searchlistcount=Item::join('subcategories','items.scid','=','subcategories.id')->where('cid','=',$category->id)->get()->count();
+        }
+        elseif($_GET['sub'] != 0){
+            $a = $_GET['sub'];
+            $searchlist=Item::where('scid','=',$a)->get();
+            $searchlistcount=Item::where('scid','=',$a)->get()->count();
+        }
+        elseif($_GET['brand'] != 0){
+            $a = $_GET['brand'];
+            $searchlist=Item::where('bid','=',$a)->get();
+            $searchlistcount=Item::where('bid','=',$a)->get()->count();
+        }
+        else{
+            $searchlist=Item::all();
+            $searchlistcount=Item::all()->count();
+            $search=NULL;
+        }
+        $datavendor=Vendor::all();    
+        return view('Auth/ProductList',compact('datavendor','datacategory','datasubcategory','databrand','searchlist','searchlistcount','search','bcount'));
     }
 
 }

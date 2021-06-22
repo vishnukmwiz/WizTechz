@@ -85,21 +85,21 @@
           <img src="../assets/images/learn-student-desktop.jpg" class="d-block w-100" alt="...">
           <div style="margin-bottom: 6rem;margin-right: 32rem;" class=" carousel-caption d-none d-md-block ">
             <h1 class="text-dark">Find the Laptop of your choice..</h1>
-            <a href="" class="btn btn-outline-warning btn-lg">Shop Now</a>
+            <a href="ProductList?cat=1&sub=0&brand=0" class="btn btn-outline-warning btn-lg">Shop Now</a>
           </div>
         </div>
         <div class="carousel-item">
           <img src="../assets/images/OMEN-X-2S-desktop.jpg" class="d-block w-100" alt="...">
           <div style="margin-bottom: 6rem;margin-right: 32rem;" class=" carousel-caption d-none d-md-block ">
             <h1 class="text-light">Welcome to world of Gaming Computers</h1>
-            <a href="" class="btn btn-warning btn-lg">Explore</a>
+            <a href="ProductList?cat=0&sub=9&brand=0" class="btn btn-warning btn-lg">Explore</a>
           </div>
         </div>
         <div class="carousel-item">
           <img src="../assets/images/the-new-wonderful-acerprimary-large.jpg" class="d-block w-100" alt="...">
           <div style="margin-bottom: 12rem;" class=" carousel-caption d-none d-md-block ">
             <h1 class="text-dark ">Get all accessories for your PC</h1>
-            <a href="" class="btn btn-dark btn-lg">Shop Now</a>
+            <a href="ProductList?cat=3&sub=0&brand=0" class="btn btn-dark btn-lg">Shop Now</a>
           </div>
         </div>
       </div>
