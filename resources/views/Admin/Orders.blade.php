@@ -64,34 +64,22 @@
   <thead>
     <tr>
       <th scope="col">Order ID</th>
-      <th scope="col">Customer ID</th>
+      <th scope="col">Customer Name</th>
       <th scope="col">Order Status</th>
       <th scope="col">Date</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
+  @foreach($morder as $order)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td><a href="">View Details</a></td>
+      <th scope="row">{{$order->id}}</th>
+      <td>{{$order->cid}}</td>
+      <td>{{$order->status}}</td>
+      <td>{{$order->created_at}}</td>
+      <td><a href="OrderDetails/{{$order->id}}">View Details</a></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td><a href="">View Details</a></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>Thornton</td>
-      <td>@twitter</td>
-      <td><a href="">View Details</a></td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
     </div>

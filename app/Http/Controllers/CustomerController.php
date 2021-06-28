@@ -304,6 +304,50 @@ class CustomerController extends Controller
         return view('User/ProductList',$data,compact('datavendor','itemcheck','searchlistcount','datacategory','datasubcategory','databrand','dataitem','searchlist','search'));
         
     }
+    public function search2(Request $request)
+    {
+       
+        $datavendor=Vendor::all();
+        $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $dataitem=Item::all();
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        if($morder == NULL)
+        {
+            $itemcheck = 0;
+        }
+        else{
+            $corder=Corder::where('moid','=',$morder->id)->get();
+            $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        }
+        $search=request('search');
+        $searchsubcategory=Subcategory::where('name','LIKE','%'.$search.'%')->first();
+        $searchbrand=Brand::where('name','LIKE','%'.$search.'%')->first();
+        if($searchsubcategory == NULL && $searchbrand == NULL)
+        {
+            $searchlist=Item::where('name','LIKE','%'.$search.'%')->get();
+            $searchlistcount=Item::where('name','LIKE','%'.$search.'%')->get()->count();
+        }
+        elseif($searchsubcategory == NULL)
+        {
+            $searchlist=Item::where('name','LIKE','%'.$search.'%')->orwhere('bid','=',$searchbrand->id)->get();
+            $searchlistcount=Item::where('name','LIKE','%'.$search.'%')->orwhere('bid','=',$searchbrand->id)->get()->count();
+        
+        }
+        elseif($searchbrand == NULL)
+        {
+            $searchlist=Item::where('name','LIKE','%'.$search.'%')->orwhere('scid','=',$searchsubcategory->id)->get();
+            $searchlistcount=Item::where('name','LIKE','%'.$search.'%')->orwhere('scid','=',$searchsubcategory->id)->get()->count();
+        }
+        else
+        {
+            $searchlist=Item::where('name','LIKE','%'.$search.'%')->orwhere('scid','=',$searchsubcategory->id)->orwhere('bid','=',$searchbrand->id)->get();
+            $searchlistcount=Item::where('name','LIKE','%'.$search.'%')->orwhere('scid','=',$searchsubcategory->id)->orwhere('bid','=',$searchbrand->id)->get()->count();
+        }
+        return view('Auth/ProductList',compact('datavendor','itemcheck','searchlistcount','datacategory','datasubcategory','databrand','dataitem','searchlist','search'));
+        
+    }
 
     public function orderconfirm(){
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];

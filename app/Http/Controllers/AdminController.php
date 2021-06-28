@@ -35,7 +35,8 @@ class AdminController extends Controller
 
     public function orderpage()
     {
-        return view('Admin/Orders');
+        $morder=Morder::all();
+        return view('Admin/Orders',compact('morder'));
     }
     public function orderdpage()
     {

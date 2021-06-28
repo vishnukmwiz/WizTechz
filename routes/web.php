@@ -40,7 +40,7 @@ Route::group(['middleware'=>['AuthCheck']],function(){
         
     Route::get('Admin/Home',[AdminController::class,'index']);
     Route::get('Admin/Orders',[AdminController::class,'orderpage']);
-    Route::get('Admin/OrderDetails',[AdminController::class,'orderdpage']);
+    Route::get('Admin/OrderDetails/{id}',[AdminController::class,'orderdpage']);
     Route::get('Admin/Customers',[AdminController::class,'cuspage']);
     Route::get('Admin/CustomerDetails/{id}',[AdminController::class,'cusdpage']);
     Route::get('Admin/Vendors',[AdminController::class,'vendorpage']);
@@ -101,6 +101,7 @@ Route::group(['middleware'=>['AuthCheck']],function(){
     Route::get('User/Checkout',[CustomerController::class,'checkout']);
     Route::get('User/Checkout/{id}',[CustomerController::class,'buynow']);
     Route::post('User/ProductList',[CustomerController::class,'search']);
+    Route::post('Auth/ProductList',[CustomerController::class,'search2']);
     Route::get('viewcat/{id}',[CustomerController::class,'viewcat']);
     Route::get('viewcat/{id}',[CustomerController::class,'viewcat']);
     
