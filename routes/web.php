@@ -85,6 +85,7 @@ Route::group(['middleware'=>['AuthCheck']],function(){
     Route::get('User/Cart',[CustomerController::class,'cart']);
     Route::get('User/CartEmpty',[CustomerController::class,'cart']);
     Route::get('User/ProductList',[ProductController::class,'productlist']);
+    Route::get('User/OrderConfirm',[CustomerController::class,'orderconfirm']);
     Route::get('User/ProductDetails/{id}',[ProductController::class,'productdetails']);
     Route::post('/editprofile/{id}',[CustomerController::class,'update']);
     Route::post('/editaddress/{id}',[CustomerController::class,'updateaddress']);

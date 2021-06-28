@@ -34,10 +34,10 @@
 	<section class="m-2">
 		<div class="container-fluid ">
             <div class="row flex flex-row bg-white justify-content-center align-items-center">
-				<div class="col-5">
+				<div class="d-none d-lg-block col-md-5 col-lg-5">
 					<img width="100%" src="https://th.bing.com/th/id/Rd05e168594a4adbc13589e963e16388e?rik=38EYuhDfwQHsYQ&riu=http%3a%2f%2fwww.newdesignfile.com%2fpostpic%2f2015%2f02%2fcomputer-icon-desktop_248447.png&ehk=N4kFuxxDfqArW4NXDVb12KgKe6AeoQz8D3L55mcoDTU%3d&risl=&pid=ImgRaw" alt="">
 				</div>
-                <div class="col-5 form ">  
+                <div class="col-12 col-sm-10 col-md-8 col-lg-5 form mt-sm-5 mt-5">  
 			        <form action="Log" method="POST">
 					@if(Session::get('fail'))
                     <div class="alert alert-danger">

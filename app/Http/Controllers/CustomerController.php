@@ -232,7 +232,10 @@ class CustomerController extends Controller
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
         $dataaddress=Address::where('cid','=',$datacustomer->id)->get();
         $check = Address::where('cid','=',$datacustomer->id)->count();
-
+        $morder=Morder::where('cid','=',$data2->id)->where('status','=','buynow')->first();
+        if($morder!=NULL){
+            $morder->delete();
+        }
         $cartitem = Item::find($id);
         $morder = new Morder();
         $morder->cid = $data2->id;
@@ -302,6 +305,10 @@ class CustomerController extends Controller
         
     }
 
+    public function orderconfirm(){
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        return view('User/OrderConfirm',$data);
+    }
     public function addsales(Request $request){
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
         $data2 = Admin::where('id','=',session('LoggedUser'))->first();
@@ -322,24 +329,10 @@ class CustomerController extends Controller
             $sastate=request('state');
             $salandmark=request('landmark');
             $satype=request('type');
-        }
-        else{
-            $dataaddress=Address::where('cid','=',$aid)->first();
-            $saname= $dataaddress->name;
-            $saphone= $dataaddress->phone;
-            $sapin= $dataaddress->pin;
-            $salocality= $dataaddress->locality;
-            $saalternatephone= $dataaddress->alternatephone;
-            $saaddress=$dataaddress->address;
-            $sacity=$dataaddress->city;
-            $sadistrict=$dataaddress->district;
-            $sastate=$dataaddress->state;
-            $salandmark=$dataaddress->landmark;
-            $satype=$dataaddress->type;
-        }
-        $savecheck = request('check');
-        if($savecheck == 'on'){
-            $check = Address::where('cid','=',$acid)->count();
+            
+            $savecheck = request('check');
+            if($savecheck == 'on'){
+            $check = Address::where('cid','=',$data2->id)->count();
             if($check<5){
                 $aname=request('name');
                 $aphone=request('phone');
@@ -354,7 +347,7 @@ class CustomerController extends Controller
                 $atype=request('type');
 
                 $address = new Address();
-                $address->cid = $acid;
+                $address->cid = $data2->id;
                 $address->name = $aname;
                 $address->phone = $aphone;
                 $address->pin = $apin;
@@ -369,6 +362,21 @@ class CustomerController extends Controller
 
                 $address->save();
             }
+        }
+        }
+        else{
+            $dataaddress=Address::where('id','=',$aid)->first();
+            $saname= $dataaddress->name;
+            $saphone= $dataaddress->phone;
+            $sapin= $dataaddress->pin;
+            $salocality= $dataaddress->locality;
+            $saalternatephone= $dataaddress->alternatephone;
+            $saaddress=$dataaddress->address;
+            $sacity=$dataaddress->city;
+            $sadistrict=$dataaddress->district;
+            $sastate=$dataaddress->state;
+            $salandmark=$dataaddress->landmark;
+            $satype=$dataaddress->type;
         }
         $spaymode = request('paymode');
         if($spaymode == 'card'){
@@ -396,6 +404,12 @@ class CustomerController extends Controller
         $sale->paystatus = $spaystatus;
         $sale->delistatus = $sdelistatus;
         $sale->save();
+        
+        $morder = Morder::find($smoid);
+        $morder->status = "Order Confimed";
+        $morder->save();
+        echo "<script>alert('Order Placed');window.location='User/OrderConfirm';</script>";
+
     }
     /**
      * Show the form for creating a new resource.

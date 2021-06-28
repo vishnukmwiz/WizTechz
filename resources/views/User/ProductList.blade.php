@@ -71,10 +71,9 @@
     </div>
   </div>
 </nav>
-<main class="main m-2">
   <div class="container-fluid mt-3">
     <div class="row">
-      <div class="col-3 ">
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
         <div class="d-flex flex-column p-3 text-dark bg-warning shadow" style="width: 100%;">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <span class="fs-4">Search By</span>
@@ -106,7 +105,7 @@
           </div>
         </div>     
       </div>
-      <div class="col-9 bg-white shadow">
+      <div class="col-12 col-sm-12 col-md-9 col-lg-9 bg-white shadow">
          @if($search != '')
         <div class="row mt-2">
           
@@ -124,7 +123,7 @@
         <hr class="m-0">
         @endif
 
-        <div class="row row-cols-1 row-cols-md-4 g-4 md-auto m-1">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 md-auto m-1">
         @foreach($searchlist as $item)
           <a class="text-decoration-none text-dark" href={{"ProductDetails/".$item->id}}>
           <div class="col">
@@ -149,5 +148,4 @@
       </div>
     </div>
   </div>  
-</main>
 @endsection

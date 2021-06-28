@@ -67,7 +67,8 @@ class ProductController extends Controller
         if($_GET['cat'] != 0){
             $a = $_GET['cat'];
             $category=Category::where('id','=',$a)->first();
-            $searchlist=Item::join('subcategories','items.scid','=','subcategories.id')->where('cid','=',$category->id)->get();
+            
+            $searchlist=Item::whereIn('scid', Subcategory::where('cid','=',$a)->select('id'))->get();
             $searchlistcount=Item::join('subcategories','items.scid','=','subcategories.id')->where('cid','=',$category->id)->get()->count();
         }
         elseif($_GET['sub'] != 0){

@@ -82,7 +82,7 @@
                           {{ csrf_field() }}
                           @foreach($dataaddress as $address)
                             <div class="form-check mt-3">
-                              <input class="form-check-input" type="radio" name="aid" checked value="{{$address->id}}" id="{{$address->id}}" >
+                              <input class="form-check-input" type="radio" name="aid" form="checkout"  value="{{$address->id}}" id="{{$address->id}}" >
                               <label class="form-check-label" for="{{$address->id}}">
                                 <strong>{{$address->name}}</strong><button class="btn btn-light btn-sm me-2 ms-2" disabled>{{$address->type}}</button><strong class="me-5">{{$address->phone}}</strong> <a href="@if($buynow == 1) ../EditAddress/{{$address->id}} @else EditAddress/{{$address->id}} @endif" class="btn btn-light btn-sm ms-5">&nbsp Edit &nbsp</a> <br>
                                 <address>

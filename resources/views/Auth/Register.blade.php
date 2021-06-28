@@ -34,7 +34,7 @@
 	<section class="m-2">
 		<div class="container-fluid ">
             <div class="row flex flex-row bg-white justify-content-center align-items-center">
-                <div class="col-5 form ">  
+                <div class="col-12 col-sm-10 col-md-8 col-lg-5 form mt-sm-5 mt-5">  
 			        <form action="Reg" method="POST">
                     @if(Session::get('success'))
                     <div class="alert alert-success">
@@ -96,7 +96,7 @@
                         </table>
 			        </form>
 		        </div>
-                <div class="col-5">
+                <div class="d-none d-lg-block col-lg-5">
 					<img width="100%" src="https://www.buyitdirect.ie/Images/81MT002AUK_6_Supersize.jpg?width=937&height=937&v=2" alt="">
 				</div>
             </div>
