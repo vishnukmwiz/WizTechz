@@ -232,9 +232,14 @@ class CustomerController extends Controller
         $datacustomer=Customer::where('cid','=',$data2->id)->first();
         $dataaddress=Address::where('cid','=',$datacustomer->id)->get();
         $check = Address::where('cid','=',$datacustomer->id)->count();
-        $morder=Morder::where('cid','=',$data2->id)->where('status','=','buynow')->first();
-        if($morder!=NULL){
-            $morder->delete();
+        $delmorder=Morder::where('cid','=',$data2->id)->where('status','=','buynow')->first();
+        
+        if($delmorder!=NULL){
+            $delcorder=Corder::where('moid','=',$delmorder->id)->first();
+            if($delcorder!=NULL){
+            $delcorder->delete();
+            }
+            $delmorder->delete();
         }
         $cartitem = Item::find($id);
         $morder = new Morder();
@@ -353,6 +358,7 @@ class CustomerController extends Controller
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
         return view('User/OrderConfirm',$data);
     }
+    
     public function addsales(Request $request){
         $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
         $data2 = Admin::where('id','=',session('LoggedUser'))->first();
@@ -447,12 +453,35 @@ class CustomerController extends Controller
         $sale->paymode = $spaymode;
         $sale->paystatus = $spaystatus;
         $sale->delistatus = $sdelistatus;
+
+        $stockmorder = Morder::where('id','=',$smoid)->first();
+        $stockcorder = Corder::where('moid','=',$smoid)->get();
+        $stockcheck =0;
+        foreach($stockcorder as $child){
+            $qty=$child->quantity;
+            $stockitem=Item::where('id','=',$child->iid)->first();
+            $stock=$stockitem->stock;
+            if($stock-$qty<0){
+                $stockcheck =0;
+            }else{
+                $stockcheck =1;
+            }
+        }
+        if($stockcheck != 0)
+        {
         $sale->save();
-        
+        $stockitem->stock = $stock-$qty;
+        $stockitem->save();
         $morder = Morder::find($smoid);
         $morder->status = "Order Confimed";
         $morder->save();
         echo "<script>alert('Order Placed');window.location='User/OrderConfirm';</script>";
+        }
+        else
+        {
+        echo "<script>alert('1 or more item in this order is out stock');window.location='User/Cart';</script>";
+        }
+        
 
     }
     /**

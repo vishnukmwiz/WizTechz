@@ -65,17 +65,37 @@
     <tr>
       <th scope="col">Order ID</th>
       <th scope="col">Customer Name</th>
+      <th scope="col">Order Item(s)</th>
       <th scope="col">Order Status</th>
+      <th scope="col">Payment Status</th>
+      <th scope="col">Delivery Status</th>
       <th scope="col">Date</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
+  <!-- {{$ordercount=0}} -->
   @foreach($morder as $order)
     <tr>
       <th scope="row">{{$order->id}}</th>
-      <td>{{$order->cid}}</td>
+      <td>{{$order->admin->name}}</td>
+      <td>@foreach($corder as $child)
+        @if($child->moid == $order->id)
+          <!-- {{$ordercount++}} -->
+        @endif
+      @endforeach{{$ordercount}} item(s)
+      <!-- {{$ordercount=0}} --></td>
       <td>{{$order->status}}</td>
+      <td>@foreach($sale as $saled)
+        @if($saled->moid == $order->id)
+        {{$saled->paystatus}}
+        @endif
+        @endforeach</td>
+        <td>@foreach($sale as $saled)
+        @if($saled->moid == $order->id)
+        {{$saled->delistatus}}
+        @endif
+        @endforeach</td>
       <td>{{$order->created_at}}</td>
       <td><a href="OrderDetails/{{$order->id}}">View Details</a></td>
     </tr>

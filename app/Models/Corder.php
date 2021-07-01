@@ -11,4 +11,7 @@ class Corder extends Model
     public function item(){
         return $this->belongsTo('App\Models\Item','iid');
     }
+    public function morder(){
+        return $this->belongsTo('App\Models\Morder','moid');
+    }
 }
