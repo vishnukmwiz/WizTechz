@@ -309,6 +309,33 @@ class CustomerController extends Controller
         return view('User/ProductList',$data,compact('datavendor','itemcheck','searchlistcount','datacategory','datasubcategory','databrand','dataitem','searchlist','search'));
         
     }
+    public function myorder()
+    {
+        $data = ['LoggedUserInfo' => Admin::where('id','=',session('LoggedUser'))->first()];
+        $data2 = Admin::where('id','=',session('LoggedUser'))->first();
+        $acid=$data2->id;
+        $check = Address::where('cid','=',$acid)->count();
+        $datauser=Admin::find($data2->id);
+        $datacustomer=Customer::where('cid','=',$data2->id)->first();
+        $dataaddress=Address::where('cid','=',$datacustomer->id)->get();
+        $datacategory=Category::all();
+        $datasubcategory=Subcategory::all();
+        $databrand=Brand::all();
+        $bcount=Brand::all()->count();
+        $dataitem=Item::all();
+        $morder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','oncart')->first();
+        if($morder == NULL)
+        {
+            $itemcheck = 0;
+        }
+        else{
+            $corder=Corder::where('moid','=',$morder->id)->get();
+            $itemcheck=Corder::where('moid','=',$morder->id)->count();
+        }
+        $mymorder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','Order Confirmed')->get();
+        $mycorder=Corder::all();
+        return view('User/MyOrder',$data,compact('datacustomer','itemcheck','datacategory','datasubcategory','mycorder','mymorder'));
+    }
     public function search2(Request $request)
     {
        

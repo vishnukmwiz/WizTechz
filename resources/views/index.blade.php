@@ -156,7 +156,7 @@
         @foreach($dataitem as $item)
           @if($count < 4) -->
           <div class="card me-2 ms-2 bg-light mt-2" style="width: 18rem;">
-          <a class="text-decoration-none text-dark" href="Auth/ProductDetails/{{$item->id}}">
+          <a class="text-decoration-none text-dark" href="User/ProductDetails/{{$item->id}}">
             <img src="{{ URL::asset('assets/images/'.$item->image) }}" class="card-img-top p-4" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{$item->name}}</h5>
