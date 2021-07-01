@@ -25,14 +25,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Admin::create( [
-            'id'=>1,
-            'name'=>'Admin',
-            'phone'=>'0123456789',
-            'password'=>'$2y$10$xpCCGPbGyI9uNhA9lTjxXe5bJCZTwUa8h7PLIfCJ4kvh7jK1uhBve',
-            'created_at'=>'2021-05-30 04:32:50',
-            'updated_at'=>'2021-05-30 04:32:50'
-        ] );
+       
 
         Category::create( [
             'id'=>1,
