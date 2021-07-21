@@ -334,7 +334,8 @@ class CustomerController extends Controller
         }
         $mymorder=Morder::where('cid','=',session('LoggedUser'))->where('status','=','Order Confirmed')->get();
         $mycorder=Corder::all();
-        return view('User/MyOrder',$data,compact('datacustomer','itemcheck','datacategory','datasubcategory','mycorder','mymorder'));
+        $mysales=Sale::all();
+        return view('User/MyOrder',$data,compact('datacustomer','itemcheck','datacategory','datasubcategory','mycorder','mymorder','mysales'));
     }
     public function search2(Request $request)
     {

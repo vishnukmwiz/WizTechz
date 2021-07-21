@@ -116,51 +116,39 @@
         <div class="container-fluid unititem bg-white shadow md-3">
           <div class="row d-flex flex-row ">
             <div class="col-2">
-                <img width="100%" src="https://maxcdn.icons8.com/iOS7/PNG/512/Alphabet/100-512.png" alt="">
+                <img width="100%" src="../assets/images/{{$order->item->image}}" alt="">
             </div>
             <div class="col-4 mt-4">
               <h5 class="md-2" >{{$order->item->name}}</h5>
               <tr>
+                <td><label class="fs-7 " for=""><strong>Seller:</strong></label></td>
                 <td><label class="fs-7" for="">{{$order->item->vendor->name}}</label></td>
-                <td><label class="fs-7" for="">new</label></td>
+                
               </tr>
             </div>
             <div class="col-2 mt-4">
-              <h6>Price: &#8377 45346</h6>
+              <h6>Price: &#8377 @if($order->quantity ==1){{$order->item->sprice}} @else {{$order->item->sprice}} X {{$order->quantity}} = &#8377 {{(int)$order->item->sprice * (int)$order->quantity}}@endif</h6>
             </div>
             <div class="col-4 mt-4">
               <tr>
+                <td><label class="fs-7" for="">Delivery Status:</label></td>
+                <td><label class="fs-7" for="">@foreach($mysales as $sales) @if($sales->moid == $order->moid ){{$sales->delistatus}}@endif @endforeach</label></td>
+              </tr>
+              @foreach($mysales as $sales) @if($sales->moid == $order->moid && $sales->delistatus == "Not Delivered")
+              <tr>
                 <td><label class="fs-7" for="">Delivery Expected by</label></td>
-                <td><label class="fs-7" for="">new</label></td>
+                <td><label class="fs-7 fw-bold" for=""> <!--{{$d= date_add($order->created_at,date_interval_create_from_date_string("5 days"))}}--> {{date_format($d,"d-M-y")}} </label></td> 
+              </tr>
+              @endif @endforeach
+              <tr>
+                <td><label class="fs-7" for="">Payment Status:</label></td>
+                <td><label class="fs-7" for="">@foreach($mysales as $sales) @if($sales->moid == $order->moid ){{$sales->paystatus}}@endif @endforeach</label></td>
               </tr>
             </div>
           </div>
         </div>
         <hr width="0" >
         @endforeach
-        <div class="container-fluid unititem bg-white shadow md-3">
-          <div class="row d-flex flex-row ">
-            <div class="col-2">
-                <img width="100%" src="https://maxcdn.icons8.com/iOS7/PNG/512/Alphabet/100-512.png" alt="">
-            </div>
-            <div class="col-4 mt-4">
-              <h5 class="md-2" >Heading</h5>
-              <tr>
-                <td><label class="fs-7" for="">Seller</label></td>
-                <td><label class="fs-7" for="">new</label></td>
-              </tr>
-            </div>
-            <div class="col-2 mt-4">
-              <h6>Price: &#8377 45346</h6>
-            </div>
-            <div class="col-4 mt-4">
-              <tr>
-                <td><label class="fs-7" for="">Delivery Expected by</label></td>
-                <td><label class="fs-7" for="">new</label></td>
-              </tr>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>  

@@ -46,7 +46,7 @@
 
     <div class="row gap-2 justify-content-center">
     
-        <div class="col-5  ">
+        <div class="col-12 col-sm-12 col-md-5 col-lg-5  ">
         @if(Session::get('success'))
                     <div class="alert alert-success">
                         {{ Session::get('success') }}
@@ -56,20 +56,30 @@
             <div class="row bg-white shadow p-3">
                 <div class="col-12">
                     <img class="me-2 ms-2 p-5" width="100%" src="{{ URL::asset('assets/images/'.$dataitem->image) }}" alt="">
-                    <div class="row">
+                    <div class="row mt-2 row d-block d-sm-block d-md-none ">
+                    
+                      <h3 class="md-2" >{{$databrand->name }}&nbsp{{ $dataitem->name}}&nbsp{{$dataitem->model}}</h3>
+                
+                      <h2>Price: &#8377 {{$dataitem->sprice}}</h2>
+                    </div> 
+                    <div class="row d-none d-sm-none d-md-block ">
                             <a href="/addtocart/{{$dataitem->id}}" class="btn btn-lg btn-outline-warning md-2"><i class="bi-cart-fill"></i> Add to cart</a>
                             <a href="../Checkout/{{$dataitem->id}}" class="btn btn-lg btn-warning mt-2 md-2"><i class="bi-lightning-charge-fill"></i> Buy Now</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-6 p-4 bg-white shadow">
-            <div class="row mt-2">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 p-4 bg-white shadow">
+            <div class="row mt-2 row d-none d-sm-none d-md-block">
                     
                     <h3 class="md-2" >{{$databrand->name }}&nbsp{{ $dataitem->name}}&nbsp{{$dataitem->model}}</h3>
                 
                 <h2>Price: &#8377 {{$dataitem->sprice}}</h2>
             </div> 
+            <div class="row d-block d-sm-block d-md-none">
+                            <a href="/addtocart/{{$dataitem->id}}" class="btn btn-lg btn-outline-warning md-2"><i class="bi-cart-fill"></i> Add to cart</a>
+                            <a href="../Checkout/{{$dataitem->id}}" class="btn btn-lg btn-warning mt-2 md-2"><i class="bi-lightning-charge-fill"></i> Buy Now</a>
+                    </div>
             <table class="table">
                 <tbody>
                     <tr>
