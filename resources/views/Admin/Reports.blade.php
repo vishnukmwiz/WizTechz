@@ -58,31 +58,30 @@
       </div>
     </nav>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 m-2">
+    <h2>Sales Report</h2>
     <table class="table table-bordered" id="example">
 
 <thead>
-  <th>S/N</th>
-  <th>Firstname</th>
-  <th>Lastname</th>
+  <th>Sales ID</th>
+  <th>Order ID</th>
+  <th>Address</th>
+  <th>Payment Method</th>
+  <th>Payment Status</th>
+  <th>Delivery Status</th>
 </thead>
 
 <tbody>
+  @foreach($sales as $sale)
   <tr>
-    <td>1</td>
-    <td>Saheedb</td>
-    <td>Babatunde</td>
+    <td>{{$sale->id}}</td>
+    <td>{{$sale->moid}}</td>
+    <td><strong>{{$sale->name}} <br> {{$sale->phone}}</strong><address>{{$sale->address}} <br>{{$sale->locality}} <br>{{$sale->city}} <br>{{$sale->district}} <br>{{$sale->state}} <br>{{$sale->pin}} <br></address></td>
+    <td>{{$sale->paymode}}</td>
+    <td>{{$sale->paystatus}}</td>
+    <td>{{$sale->delistatus}}</td>
   </tr>
-  <tr>
-    <td>2</td>
-    <td>Saheedb</td>
-    <td>Babatunde</td>
-  </tr>
-
-  <tr>
-    <td>3</td>
-    <td>Saheedb</td>
-    <td>Babatunde</td>
-  </tr>
+  @endforeach
+  
 </tbody>
 
 </table>

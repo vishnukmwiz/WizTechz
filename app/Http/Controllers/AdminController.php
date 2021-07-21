@@ -40,9 +40,12 @@ class AdminController extends Controller
         $sale=Sale::all();
         return view('Admin/Orders',compact('morder','corder','sale'));
     }
-    public function orderdpage()
+    public function orderdpage($id)
     {
-        return view('Admin/OrderDetails');
+        $morder=Morder::where('id','=',$id)->first();
+        $corder=Corder::where('moid','=',$id)->get();
+        $sale=Sale::where('moid','=',$id)->first();
+        return view('Admin/OrderDetails',compact('morder','corder','sale'));
     }
     public function cuspage()
     {
@@ -155,7 +158,8 @@ class AdminController extends Controller
     }
     public function reports()
     {
-        return view('Admin/Reports');
+        $sales=Sale::all();
+        return view('Admin/Reports',compact('sales'));
     }
 
     /**
