@@ -35,7 +35,7 @@ class AdminController extends Controller
 
     public function orderpage()
     {
-        $morder=Morder::all();
+        $morder=Morder::where('status','=','Order Confirmed')->get();
         $corder=Corder::all();
         $sale=Sale::all();
         return view('Admin/Orders',compact('morder','corder','sale'));

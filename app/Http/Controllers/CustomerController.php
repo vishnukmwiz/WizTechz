@@ -501,7 +501,7 @@ class CustomerController extends Controller
         $stockitem->stock = $stock-$qty;
         $stockitem->save();
         $morder = Morder::find($smoid);
-        $morder->status = "Order Confimed";
+        $morder->status = "Order Confirmed";
         $morder->save();
         echo "<script>alert('Order Placed');window.location='User/OrderConfirm';</script>";
         }
